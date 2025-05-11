@@ -3,10 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function GenerateContentPage() {
   return (
-    <div className="container py-8">
-      <div className="flex flex-col gap-8">
+    <div className="container py-6 px-4 md:px-6 md:py-8">
+      <div className="flex flex-col gap-6 md:gap-8">
         <div>
-          <h1 className="text-3xl font-bold">Generate Content</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Generate Content</h1>
           <p className="text-gray-500">
             Upload a product image and get AI-generated descriptions and social
             media content
@@ -14,13 +14,13 @@ export default function GenerateContentPage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <Card>
+          <Card className="order-1">
             <CardHeader>
               <CardTitle>Upload Product Image</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-4">
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 flex flex-col items-center justify-center">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 md:p-12 flex flex-col items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -31,15 +31,15 @@ export default function GenerateContentPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-10 w-10 text-gray-400 mb-4"
+                    className="h-8 w-8 md:h-10 md:w-10 text-gray-400 mb-3 md:mb-4"
                   >
                     <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
                     <circle cx="12" cy="13" r="3" />
                   </svg>
-                  <p className="text-sm text-gray-500 mb-2">
+                  <p className="text-sm text-gray-500 mb-2 text-center">
                     Drag and drop your product image here
                   </p>
-                  <p className="text-xs text-gray-400 mb-4">
+                  <p className="text-xs text-gray-400 mb-4 text-center">
                     Supports: JPG, PNG, WEBP (Max 5MB)
                   </p>
                   <Button size="sm">Browse Files</Button>
@@ -91,12 +91,12 @@ export default function GenerateContentPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="order-2">
             <CardHeader>
               <CardTitle>Generated Content</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-12">
+              <div className="text-center py-8 md:py-12">
                 <p className="text-gray-500">
                   Upload a product image and fill in the details to generate
                   content

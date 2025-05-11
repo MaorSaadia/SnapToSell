@@ -3,17 +3,20 @@ import { Button } from "@/components/ui/button";
 
 export default function RegisterPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-8">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4 md:p-8">
+      <div className="w-full max-w-md space-y-6">
         <div className="text-center">
+          <Link href="/" className="inline-block mb-6">
+            <span className="text-2xl font-bold">SnapToSell</span>
+          </Link>
           <h1 className="text-2xl font-bold">Create your SnapToSell account</h1>
           <p className="mt-2 text-sm text-gray-500">
             Start your 7-day free trial, no credit card required
           </p>
         </div>
-        <div className="mt-8 space-y-6">
+        <div className="mt-6 space-y-5">
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
                   htmlFor="first-name"

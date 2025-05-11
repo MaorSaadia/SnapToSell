@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function DashboardLayout({
@@ -6,6 +9,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -42,10 +47,16 @@ export default function DashboardLayout({
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Button variant="outline" asChild>
+            <Button variant="outline" className="hidden md:inline-flex" asChild>
               <Link href="/">Logout</Link>
             </Button>
-            <Button variant="outline" className="md:hidden" size="icon">
+            <Button
+              variant="outline"
+              className="md:hidden"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -65,6 +76,47 @@ export default function DashboardLayout({
             </Button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t">
+            <div className="container py-4 space-y-4">
+              <nav className="flex flex-col space-y-3">
+                <Link
+                  href="/dashboard"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  href="/dashboard/generate"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Generate Content
+                </Link>
+                <Link
+                  href="/dashboard/history"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  History
+                </Link>
+                <Link
+                  href="/dashboard/settings"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Settings
+                </Link>
+              </nav>
+              <Button variant="outline" asChild className="w-full">
+                <Link href="/">Logout</Link>
+              </Button>
+            </div>
+          </div>
+        )}
       </header>
       <main className="flex-1">{children}</main>
       <footer className="border-t py-6">

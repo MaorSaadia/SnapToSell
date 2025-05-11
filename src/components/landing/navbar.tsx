@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -31,13 +36,21 @@ export function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center gap-4">
-          <Button variant="outline" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/register">Get Started</Link>
-          </Button>
-          <Button variant="outline" className="md:hidden" size="icon">
+          <div className="hidden md:flex items-center gap-4">
+            <Button variant="outline" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/register">Get Started</Link>
+            </Button>
+          </div>
+          <Button
+            variant="outline"
+            className="md:hidden"
+            size="icon"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -57,6 +70,45 @@ export function Navbar() {
           </Button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t">
+          <div className="container py-4 space-y-4">
+            <nav className="flex flex-col space-y-4">
+              <Link
+                href="#features"
+                className="text-sm font-medium transition-colors hover:text-primary"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </Link>
+              <Link
+                href="#pricing"
+                className="text-sm font-medium transition-colors hover:text-primary"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="#testimonials"
+                className="text-sm font-medium transition-colors hover:text-primary"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Testimonials
+              </Link>
+            </nav>
+            <div className="flex flex-col space-y-2">
+              <Button variant="outline" asChild className="w-full">
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button asChild className="w-full">
+                <Link href="/register">Get Started</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

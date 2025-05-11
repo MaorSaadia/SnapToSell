@@ -18,16 +18,21 @@ export function Hero() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" asChild>
+              <Button size="lg" className="w-full sm:w-auto" asChild>
                 <Link href="/register">Get Started</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto"
+                asChild
+              >
                 <Link href="#features">Learn More</Link>
               </Button>
             </div>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 p-1">
+          <div className="flex items-center justify-center mt-8 lg:mt-0">
+            <div className="relative w-full h-[300px] md:h-[350px] lg:h-[500px] overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 p-1">
               <div className="absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-black/90 rounded-lg m-[1px]">
                 <div className="p-4 text-center">
                   <div className="mb-4 text-gray-500">
@@ -52,7 +57,7 @@ export function Hero() {
                     <p className="text-sm text-gray-500">
                       AI-Generated Content:
                     </p>
-                    <p className="mt-2 text-left">
+                    <p className="mt-2 text-left text-sm md:text-base">
                       &ldquo;Elevate your home office with our Ergonomic Desk
                       Chair. Designed with premium materials and adjustable
                       lumbar support, this chair provides all-day comfort for

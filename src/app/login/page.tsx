@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-8">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4 md:p-8">
+      <div className="w-full max-w-md space-y-6">
         <div className="text-center">
+          <Link href="/" className="inline-block mb-6">
+            <span className="text-2xl font-bold">SnapToSell</span>
+          </Link>
           <h1 className="text-2xl font-bold">Login to SnapToSell</h1>
           <p className="mt-2 text-sm text-gray-500">
             Enter your credentials to access your account
           </p>
         </div>
-        <div className="mt-8 space-y-6">
+        <div className="mt-6 space-y-5">
           <div className="space-y-4">
             <div>
               <label
@@ -49,7 +52,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
             <div className="flex items-center">
               <input
                 id="remember-me"

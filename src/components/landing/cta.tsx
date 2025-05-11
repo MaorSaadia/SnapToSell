@@ -27,7 +27,7 @@ export function CTA() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-primary-foreground/10"
+              className="border-white text-black hover:bg-gray-100"
               asChild
             >
               <Link href="#pricing">View Pricing</Link>
