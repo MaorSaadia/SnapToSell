@@ -1,7 +1,58 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    company: "",
+  });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!termsAccepted) {
+      setError("You must accept the Terms of Service and Privacy Policy");
+      return;
+    }
+
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // In a real app, you'd make an API call to register the user
+      // For now, we'll just simulate a successful registration
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Redirect to login page after successful registration
+      router.push("/login?registered=true");
+    } catch {
+      setError("An error occurred during registration. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-md space-y-6">
@@ -14,39 +65,48 @@ export default function RegisterPage() {
             Start your 7-day free trial, no credit card required
           </p>
         </div>
-        <div className="mt-6 space-y-5">
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="mt-6 space-y-5">
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
-                  htmlFor="first-name"
+                  htmlFor="firstName"
                   className="block text-sm font-medium text-gray-700"
                 >
                   First name
                 </label>
                 <input
-                  id="first-name"
-                  name="first-name"
+                  id="firstName"
+                  name="firstName"
                   type="text"
                   autoComplete="given-name"
                   required
+                  value={formData.firstName}
+                  onChange={handleChange}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                   placeholder="John"
                 />
               </div>
               <div>
                 <label
-                  htmlFor="last-name"
+                  htmlFor="lastName"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Last name
                 </label>
                 <input
-                  id="last-name"
-                  name="last-name"
+                  id="lastName"
+                  name="lastName"
                   type="text"
                   autoComplete="family-name"
                   required
+                  value={formData.lastName}
+                  onChange={handleChange}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                   placeholder="Doe"
                 />
@@ -65,6 +125,8 @@ export default function RegisterPage() {
                 type="email"
                 autoComplete="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                 placeholder="you@example.com"
               />
@@ -82,9 +144,14 @@ export default function RegisterPage() {
                 type="password"
                 autoComplete="new-password"
                 required
+                value={formData.password}
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                 placeholder="••••••••"
               />
+              <p className="mt-1 text-xs text-gray-500">
+                Must be at least 8 characters
+              </p>
             </div>
             <div>
               <label
@@ -98,6 +165,8 @@ export default function RegisterPage() {
                 name="company"
                 type="text"
                 autoComplete="organization"
+                value={formData.company}
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                 placeholder="Your Company"
               />
@@ -110,6 +179,8 @@ export default function RegisterPage() {
               name="terms"
               type="checkbox"
               required
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
               className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
@@ -131,11 +202,11 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <Button className="w-full" type="submit">
-              Create account
+            <Button className="w-full" type="submit" disabled={isLoading}>
+              {isLoading ? "Creating account..." : "Create account"}
             </Button>
           </div>
-        </div>
+        </form>
 
         <div className="mt-6 text-center text-sm">
           <p className="text-gray-500">

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { LogoutButton } from "@/components/auth/logout-button";
+import { useAuth } from "@/lib/auth";
 
 export default function DashboardLayout({
   children,
@@ -10,13 +12,28 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isLoading } = useAuth();
+
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <div className="mb-4 text-2xl font-bold">Loading...</div>
+          <p className="text-gray-500">
+            Please wait while we load your dashboard.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Link href="/dashboard" className="flex items-center space-x-2">
+            <Link href="/dashboard" className="flex items-center space-x-2 m-2">
               <span className="text-2xl font-bold">SnapToSell</span>
             </Link>
           </div>
@@ -47,9 +64,12 @@ export default function DashboardLayout({
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Button variant="outline" className="hidden md:inline-flex" asChild>
-              <Link href="/">Logout</Link>
-            </Button>
+            <div className="hidden md:flex items-center gap-4">
+              <span className="text-sm text-gray-500">
+                {user?.name || user?.email}
+              </span>
+              <LogoutButton variant="outline" />
+            </div>
             <Button
               variant="outline"
               className="md:hidden"
@@ -111,9 +131,12 @@ export default function DashboardLayout({
                   Settings
                 </Link>
               </nav>
-              <Button variant="outline" asChild className="w-full">
-                <Link href="/">Logout</Link>
-              </Button>
+              <div className="pt-2">
+                <p className="text-sm text-gray-500 mb-2">
+                  {user?.name || user?.email}
+                </p>
+                <LogoutButton variant="outline" className="w-full" />
+              </div>
             </div>
           </div>
         )}
