@@ -40,14 +40,30 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // In a real app, you'd make an API call to register the user
-      // For now, we'll just simulate a successful registration
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Call the registration API
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Registration failed");
+      }
 
       // Redirect to login page after successful registration
       router.push("/login?registered=true");
-    } catch {
-      setError("An error occurred during registration. Please try again.");
+    } catch (err) {
+      console.error(err);
+      setError(
+        err instanceof Error
+          ? err.message
+          : "An error occurred during registration. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
