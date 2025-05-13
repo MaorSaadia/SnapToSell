@@ -5,23 +5,41 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { loginSchema, type LoginFormData } from "@/lib/validations";
+import { ZodError } from "zod";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      setRememberMe(checked);
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true);
 
     try {
+      // Validate form data with Zod
+      loginSchema.parse(formData);
+
+      setIsLoading(true);
+
       const result = await signIn("credentials", {
-        email,
-        password,
+        email: formData.email,
+        password: formData.password,
         redirect: false,
       });
 
@@ -31,8 +49,13 @@ export default function LoginPage() {
         router.push("/dashboard");
         router.refresh();
       }
-    } catch {
-      setError("An error occurred. Please try again.");
+    } catch (err) {
+      if (err instanceof ZodError) {
+        // Format Zod error messages
+        setError(err.errors[0].message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -70,8 +93,8 @@ export default function LoginPage() {
                 type="email"
                 autoComplete="email"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                 placeholder="you@example.com"
               />
@@ -89,8 +112,8 @@ export default function LoginPage() {
                 type="password"
                 autoComplete="current-password"
                 required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
                 placeholder="••••••••"
               />
@@ -103,6 +126,8 @@ export default function LoginPage() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
+                checked={rememberMe}
+                onChange={handleChange}
                 className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
               />
               <label

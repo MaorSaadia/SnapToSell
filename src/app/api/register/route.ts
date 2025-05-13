@@ -1,10 +1,16 @@
 import { NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { prisma } from "@/lib/db";
+import { registerSchema } from "@/lib/validations";
+import { ZodError } from "zod";
 
 export async function POST(req: Request) {
   try {
-    const { firstName, lastName, email, password } = await req.json();
+    const body = await req.json();
+
+    // Validate request body with Zod
+    const validatedData = registerSchema.parse(body);
+    const { firstName, lastName, email, password } = validatedData;
 
     // Check if user already exists
     const userExists = await prisma.user.findUnique({
@@ -99,6 +105,15 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error("Registration error:", error);
+
+    // Return validation errors if it's a Zod error
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        { error: error.errors[0].message },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

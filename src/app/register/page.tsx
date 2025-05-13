@@ -4,42 +4,40 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { registerSchema, type RegisterFormData } from "@/lib/validations";
+import { ZodError } from "zod";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<RegisterFormData>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     company: "",
+    termsAccepted: false,
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    if (!termsAccepted) {
-      setError("You must accept the Terms of Service and Privacy Policy");
-      return;
-    }
-
-    if (formData.password.length < 8) {
-      setError("Password must be at least 8 characters long");
-      return;
-    }
-
-    setIsLoading(true);
-
     try {
+      // Validate form data with Zod
+      registerSchema.parse(formData);
+
+      setIsLoading(true);
+
       // Call the registration API
       const response = await fetch("/api/register", {
         method: "POST",
@@ -59,11 +57,16 @@ export default function RegisterPage() {
       router.push("/login?registered=true");
     } catch (err) {
       console.error(err);
-      setError(
-        err instanceof Error
-          ? err.message
-          : "An error occurred during registration. Please try again."
-      );
+      if (err instanceof ZodError) {
+        // Format Zod error messages
+        setError(err.errors[0].message);
+      } else {
+        setError(
+          err instanceof Error
+            ? err.message
+            : "An error occurred during registration. Please try again."
+        );
+      }
     } finally {
       setIsLoading(false);
     }
@@ -191,15 +194,18 @@ export default function RegisterPage() {
 
           <div className="flex items-center">
             <input
-              id="terms"
-              name="terms"
+              id="termsAccepted"
+              name="termsAccepted"
               type="checkbox"
               required
-              checked={termsAccepted}
-              onChange={(e) => setTermsAccepted(e.target.checked)}
+              checked={formData.termsAccepted}
+              onChange={handleChange}
               className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
-            <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+            <label
+              htmlFor="termsAccepted"
+              className="ml-2 block text-sm text-gray-900"
+            >
               I agree to the{" "}
               <Link
                 href="/terms"
