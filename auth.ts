@@ -1,18 +1,20 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
+import { prisma } from "@/lib/db";
 
-// This is a mock user database - in a real app, you'd use a database
-const users = [
-  {
-    id: "1",
-    name: "Demo User",
-    email: "user@example.com",
-    // This is a hashed version of "password123"
-    password: "$2b$10$uFwud11Wspi6hMjpC5rsAOLCVbvgSEXsWLlDEyvmfuyE.Nsru92vS",
-    image: null,
-  },
-];
+// Define the User type with subscription information
+type UserWithSubscription = {
+  id: string;
+  name: string | null;
+  email: string;
+  image: string | null;
+  subscription: {
+    status: string;
+    tier: string;
+    remainingCredits: number;
+  } | null;
+};
 
 export const { auth, handlers } = NextAuth({
   providers: [
@@ -27,28 +29,51 @@ export const { auth, handlers } = NextAuth({
           return null;
         }
 
-        // In a real app, you'd query your database here
-        const user = users.find((user) => user.email === credentials.email);
+        try {
+          // Query user from database using Prisma
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email },
+            include: {
+              subscription: {
+                include: {
+                  tier: true,
+                },
+              },
+            },
+          });
 
-        if (!user) {
+          if (!user) {
+            return null;
+          }
+
+          const passwordMatch = await compare(
+            String(credentials.password),
+            user.password
+          );
+
+          if (!passwordMatch) {
+            return null;
+          }
+
+          const userWithSubscription: UserWithSubscription = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            image: user.image,
+            subscription: user.subscription
+              ? {
+                  status: user.subscription.status,
+                  tier: user.subscription.tier.name,
+                  remainingCredits: user.subscription.remainingCredits,
+                }
+              : null,
+          };
+
+          return userWithSubscription;
+        } catch (error) {
+          console.error("Auth error:", error);
           return null;
         }
-
-        const passwordMatch = await compare(
-          String(credentials.password),
-          user.password
-        );
-
-        if (!passwordMatch) {
-          return null;
-        }
-
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        };
       },
     }),
   ],
@@ -62,12 +87,14 @@ export const { auth, handlers } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.subscription = (user as UserWithSubscription).subscription;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.subscription = token.subscription;
       }
       return session;
     },
