@@ -171,6 +171,33 @@ exports.Prisma.SubscriptionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  userId: 'userId',
+  thumbnailUrl: 'thumbnailUrl',
+  status: 'status',
+  category: 'category',
+  tags: 'tags',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MediaScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  name: 'name',
+  size: 'size',
+  type: 'type',
+  productId: 'productId',
+  userId: 'userId',
+  isPublic: 'isPublic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -191,11 +218,20 @@ exports.SubscriptionStatus = exports.$Enums.SubscriptionStatus = {
   EXPIRED: 'EXPIRED'
 };
 
+exports.ProductStatus = exports.$Enums.ProductStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  SOLD: 'SOLD',
+  ARCHIVED: 'ARCHIVED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   SubscriptionTier: 'SubscriptionTier',
-  Subscription: 'Subscription'
+  Subscription: 'Subscription',
+  Product: 'Product',
+  Media: 'Media'
 };
 
 /**

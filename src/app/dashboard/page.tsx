@@ -98,6 +98,22 @@ export default function DashboardPage() {
               </Button>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Media Library</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-500">
+                Upload, manage, and organize your product images and other media
+                files.
+              </p>
+              <Button asChild variant="outline" className="w-full sm:w-auto">
+                <Link href="/dashboard/media">Media Library</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>Recent Activity</CardTitle>

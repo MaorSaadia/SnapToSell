@@ -169,7 +169,7 @@ export default function RegisterPage() {
                 placeholder="••••••••"
               />
               <p className="mt-1 text-xs text-gray-500">
-                Must be at least 8 characters
+                Must be at least 6 characters
               </p>
             </div>
             <div>
