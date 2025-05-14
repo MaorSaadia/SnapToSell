@@ -60,7 +60,7 @@ export function MediaManager({ onSelectMedia, className }: MediaManagerProps) {
   // Initial load
   useEffect(() => {
     loadMediaItems();
-  });
+  }, []);
 
   // Handle search
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
