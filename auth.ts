@@ -29,7 +29,7 @@ export const { auth, handlers } = NextAuth({
         try {
           // First, try to get user from database
           const user = await prisma.user.findUnique({
-            where: { email: credentials.email },
+            where: { email: String(credentials.email) },
             include: {
               subscription: {
                 include: {
