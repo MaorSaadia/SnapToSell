@@ -40,8 +40,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Parse the request
-    const { imageBase64, textPrompt, options, videoUrl, cacheKey } =
-      await request.json();
+    const {
+      imageBase64,
+      textPrompt,
+      options,
+      videoUrl,
+      cacheKey,
+      extractedFrames,
+    } = await request.json();
 
     // Validate input
     if (!imageBase64 && !textPrompt && !videoUrl) {
@@ -100,32 +106,58 @@ export async function POST(request: NextRequest) {
     // Prepare enhanced prompt based on platform and provided video
     let enhancedPrompt = textPrompt || "";
 
-    // Add video URL if provided
-    if (videoUrl) {
-      enhancedPrompt += enhancedPrompt
-        ? `\n\nVideo URL: ${videoUrl}`
-        : `Video URL: ${videoUrl}`;
-      enhancedPrompt +=
-        "\nPlease create caption and description for this video.";
-    }
-
-    // Add platform-specific formatting instructions
-    if (
-      contentOptions.platform &&
-      VIDEO_PLATFORM_FORMATS[contentOptions.platform]
-    ) {
-      const formatPrompt =
-        VIDEO_PLATFORM_FORMATS[contentOptions.platform].formatPrompt;
-      enhancedPrompt = enhancedPrompt
-        ? `${enhancedPrompt}\n\n${formatPrompt}`
-        : formatPrompt;
-    }
-
     // Generate content with Gemini
     let content: string;
-    if (imageBase64) {
+
+    // If we have extracted frames from the video, use the first frame for visual analysis
+    if (extractedFrames && extractedFrames.length > 0) {
+      // Create a detailed prompt describing the video based on all frames
+      enhancedPrompt += enhancedPrompt ? "\n\n" : "";
+      enhancedPrompt +=
+        "This video contains the following key frames (analyze these to understand the video content):";
+
+      // We'll use the first frame for image analysis and describe the rest
+      const firstFrame = extractedFrames[0];
+
+      // Add platform-specific formatting instructions
+      if (
+        contentOptions.platform &&
+        VIDEO_PLATFORM_FORMATS[contentOptions.platform]
+      ) {
+        const formatPrompt =
+          VIDEO_PLATFORM_FORMATS[contentOptions.platform].formatPrompt;
+        enhancedPrompt = enhancedPrompt
+          ? `${enhancedPrompt}\n\n${formatPrompt}`
+          : formatPrompt;
+      }
+
+      // Generate content using the first frame as the image
+      content = await generateContentFromImage(firstFrame, contentOptions);
+    } else if (imageBase64) {
+      // Traditional image analysis if an image is directly provided
       content = await generateContentFromImage(imageBase64, contentOptions);
     } else {
+      // If no extracted frames or direct image, just use the text prompt with video URL
+      if (videoUrl) {
+        enhancedPrompt += enhancedPrompt
+          ? `\n\nVideo URL: ${videoUrl}`
+          : `Video URL: ${videoUrl}`;
+        enhancedPrompt +=
+          "\nPlease create caption and description for this video.";
+      }
+
+      // Add platform-specific formatting instructions
+      if (
+        contentOptions.platform &&
+        VIDEO_PLATFORM_FORMATS[contentOptions.platform]
+      ) {
+        const formatPrompt =
+          VIDEO_PLATFORM_FORMATS[contentOptions.platform].formatPrompt;
+        enhancedPrompt = enhancedPrompt
+          ? `${enhancedPrompt}\n\n${formatPrompt}`
+          : formatPrompt;
+      }
+
       content = await generateContentFromText(enhancedPrompt, contentOptions);
     }
 

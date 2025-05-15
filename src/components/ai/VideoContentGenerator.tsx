@@ -20,7 +20,8 @@ interface VideoContentGeneratorProps {
   onGenerate: (
     options: ContentGenerationOptions,
     videoUrl?: string,
-    textPrompt?: string
+    textPrompt?: string,
+    extractedFrames?: string[]
   ) => Promise<void>;
   isGenerating: boolean;
 }
@@ -87,9 +88,13 @@ const VideoContentGenerator: React.FC<VideoContentGeneratorProps> = ({
   const [selectedTone, setSelectedTone] = useState<ToneType>("enthusiastic");
   const [keywords, setKeywords] = useState<string>("");
   const [activeTab, setActiveTab] = useState<string>("video-only");
+  const [extractedFrames, setExtractedFrames] = useState<string[]>([]);
 
-  const handleVideoSelect = (url: string) => {
+  const handleVideoSelect = (url: string, file: File, frames?: string[]) => {
     setVideoUrl(url);
+    if (frames && frames.length > 0) {
+      setExtractedFrames(frames);
+    }
   };
 
   const handleGenerate = async () => {
@@ -123,8 +128,13 @@ const VideoContentGenerator: React.FC<VideoContentGeneratorProps> = ({
       includeKeywords: keywordsArray,
     };
 
-    // Call the generate function
-    await onGenerate(options, videoUrl, enhancedPrompt || undefined);
+    // Call the generate function with extracted frames
+    await onGenerate(
+      options,
+      videoUrl,
+      enhancedPrompt || undefined,
+      extractedFrames.length > 0 ? extractedFrames : undefined
+    );
   };
 
   return (
@@ -140,7 +150,9 @@ const VideoContentGenerator: React.FC<VideoContentGeneratorProps> = ({
             <div>
               <Label>Upload Video</Label>
               <VideoUploader
-                onVideoSelect={(url) => handleVideoSelect(url)}
+                onVideoSelect={(url, file, frames) =>
+                  handleVideoSelect(url, file, frames)
+                }
                 className="mt-2"
               />
               <p className="text-xs text-gray-500 mt-1">

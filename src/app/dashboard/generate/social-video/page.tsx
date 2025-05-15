@@ -16,12 +16,16 @@ export default function SocialVideoPage() {
     useState<ContentGenerationOptions | null>(null);
   const [lastVideoUrl, setLastVideoUrl] = useState<string | null>(null);
   const [lastTextPrompt, setLastTextPrompt] = useState<string | null>(null);
+  const [lastExtractedFrames, setLastExtractedFrames] = useState<
+    string[] | null
+  >(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleGenerateContent = async (
     options: ContentGenerationOptions,
     videoUrl?: string,
-    textPrompt?: string
+    textPrompt?: string,
+    extractedFrames?: string[]
   ) => {
     try {
       setError(null);
@@ -31,6 +35,7 @@ export default function SocialVideoPage() {
       setLastOptions(options);
       setLastVideoUrl(videoUrl || null);
       setLastTextPrompt(textPrompt || null);
+      setLastExtractedFrames(extractedFrames || null);
 
       // Call API
       const cacheKey = videoUrl
@@ -51,6 +56,7 @@ export default function SocialVideoPage() {
           textPrompt,
           options,
           cacheKey,
+          extractedFrames,
         }),
       });
 
@@ -88,6 +94,7 @@ export default function SocialVideoPage() {
           videoUrl: lastVideoUrl,
           textPrompt: lastTextPrompt,
           options: lastOptions,
+          extractedFrames: lastExtractedFrames,
         }),
       });
 

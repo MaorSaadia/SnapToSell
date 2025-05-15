@@ -13,6 +13,8 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
     "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^6.7.0",
     "@radix-ui/react-label": "^2.1.6",

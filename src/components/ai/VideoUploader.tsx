@@ -3,13 +3,16 @@
 import React, { useState, useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import { cn } from "@/lib/utils";
+import { extractVideoFrames } from "@/lib/video-utils";
 
 interface VideoUploaderProps {
-  onVideoSelect: (videoUrl: string, file: File) => void;
+  onVideoSelect: (videoUrl: string, file: File, frames?: string[]) => void;
   videoPreview?: string;
   className?: string;
   accept?: string;
   maxSize?: number;
+  extractFrames?: boolean;
+  numFrames?: number;
 }
 
 const VideoUploader: React.FC<VideoUploaderProps> = ({
@@ -18,6 +21,8 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
   className = "",
   accept = "video/mp4, video/quicktime, video/webm",
   maxSize = 50 * 1024 * 1024, // 50MB default
+  extractFrames = true,
+  numFrames = 3,
 }) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>(
     videoPreview
@@ -27,6 +32,8 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
   const [uploadProgress, setUploadProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [duration, setDuration] = useState<number | null>(null);
+  const [extractedFrames, setExtractedFrames] = useState<string[]>([]);
+  const [processingFrames, setProcessingFrames] = useState(false);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
@@ -35,6 +42,7 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
       setIsLoading(true);
       setError(null);
       setUploadProgress(0);
+      setExtractedFrames([]);
 
       const file = acceptedFiles[0];
 
@@ -67,10 +75,26 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
           }
         };
 
-        xhr.onload = () => {
+        xhr.onload = async () => {
           if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
-            onVideoSelect(response.secure_url, file);
+
+            // Extract frames if enabled
+            let frames: string[] = [];
+            if (extractFrames) {
+              try {
+                setProcessingFrames(true);
+                frames = await extractVideoFrames(file, numFrames);
+                setExtractedFrames(frames);
+              } catch (frameError) {
+                console.error("Error extracting frames:", frameError);
+              } finally {
+                setProcessingFrames(false);
+              }
+            }
+
+            // Call the onVideoSelect callback with video URL and frames
+            onVideoSelect(response.secure_url, file, frames);
             setIsLoading(false);
           } else {
             setError("Upload failed. Please try again.");
@@ -90,7 +114,7 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
         setIsLoading(false);
       }
     },
-    [maxSize, onVideoSelect]
+    [maxSize, onVideoSelect, extractFrames, numFrames]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -115,6 +139,7 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
     setPreviewUrl(undefined);
     setDuration(null);
     setUploadProgress(0);
+    setExtractedFrames([]);
   };
 
   const formatDuration = (seconds: number): string => {
@@ -195,6 +220,38 @@ const VideoUploader: React.FC<VideoUploaderProps> = ({
             <p className="text-center mt-2 text-sm text-gray-500">
               Uploading: {uploadProgress}%
             </p>
+          </div>
+        )}
+
+        {processingFrames && (
+          <div className="mt-4 text-center">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p className="mt-2 text-sm text-gray-600">
+              Processing video frames...
+            </p>
+          </div>
+        )}
+
+        {extractedFrames.length > 0 && (
+          <div className="mt-4 w-full">
+            <p className="text-sm font-medium text-gray-700 mb-2">
+              Extracted Frames:
+            </p>
+            <div className="flex overflow-x-auto space-x-2 pb-2">
+              {extractedFrames.map((frame, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 relative h-24 w-24 border rounded overflow-hidden"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={frame}
+                    alt={`Frame ${index + 1}`}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
