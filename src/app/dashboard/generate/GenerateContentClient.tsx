@@ -205,7 +205,7 @@ const GenerateContentClient: React.FC = () => {
         onValueChange={handleTabChange}
       >
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="website">Website Content</TabsTrigger>
+          <TabsTrigger value="website">Website</TabsTrigger>
           <TabsTrigger value="social">Social Media</TabsTrigger>
           <TabsTrigger value="video">Video Content</TabsTrigger>
         </TabsList>
