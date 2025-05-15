@@ -2,7 +2,26 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+First, set up the environment variables:
+
+1. Create a `.env.local` file in the root directory
+2. Add the following variables:
+
+   ```
+   # Database
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/snap_to_sell"
+
+   # Auth
+   NEXTAUTH_URL="http://localhost:3000"
+   NEXTAUTH_SECRET="your-secret-key"
+
+   # Gemini AI
+   GEMINI_API_KEY="your-gemini-api-key"
+   ```
+
+3. Get a Gemini API key from [Google AI Studio](https://ai.google.dev/) and add it to the `.env.local` file
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -19,6 +38,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Gemini AI Integration
+
+This project uses Google's Gemini Pro Vision API for analyzing product images and generating product descriptions. The integration provides:
+
+- Standard descriptive paragraphs
+- Bullet point feature lists
+- Social media copy for various platforms
+
+To use this feature:
+
+1. Upload a product image
+2. Enter the product name and category
+3. Select your preferred format
+4. Click "Generate Content"
 
 ## Learn More
 

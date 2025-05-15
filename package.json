@@ -13,6 +13,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^6.7.0",
     "@radix-ui/react-label": "^2.1.6",
     "@radix-ui/react-separator": "^1.1.6",
