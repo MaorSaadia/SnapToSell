@@ -3,6 +3,7 @@ import { ContentGenerationOptions } from "@/lib/gemini";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Components } from "react-markdown";
+import SocialCaptionFormatter from "./SocialCaptionFormatter";
 
 interface ContentDisplayProps {
   content: string;
@@ -82,6 +83,7 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(content);
+  const [showSocialFormatter, setShowSocialFormatter] = useState(false);
 
   // Handle copy to clipboard
   const handleCopy = async () => {
@@ -106,6 +108,11 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
     setIsEditing(false);
   };
 
+  // Toggle social formatting tools
+  const toggleSocialFormatter = () => {
+    setShowSocialFormatter(!showSocialFormatter);
+  };
+
   // Calculate character count and words
   const charCount = editedContent.length;
   const wordCount = editedContent.trim().split(/\s+/).length;
@@ -127,6 +134,9 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         return "Generated Content";
     }
   };
+
+  // Show special formatter for social media content
+  const isSocialContent = contentType === "social" || contentType === "video";
 
   return (
     <div className="bg-white shadow rounded-lg p-6">
@@ -199,6 +209,29 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
                   </>
                 )}
               </button>
+              {isSocialContent && (
+                <button
+                  type="button"
+                  onClick={toggleSocialFormatter}
+                  className="inline-flex items-center px-3 py-1.5 border border-purple-300 text-xs font-medium rounded-md text-purple-700 bg-purple-50 hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mr-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                  {showSocialFormatter ? "Hide Formatter" : "Format for Social"}
+                </button>
+              )}
             </>
           ) : (
             <button
@@ -283,35 +316,46 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
         </div>
       </div>
 
-      <div
-        className={`mt-2 p-4 rounded-md ${
-          isEditing ? "bg-white border border-blue-200" : "bg-gray-50"
-        }`}
-      >
-        {isEditing ? (
-          <textarea
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
-            className="w-full h-64 p-0 border-0 focus:ring-0 text-gray-800 resize-none"
-            autoFocus
+      {/* Show social media formatter if enabled */}
+      {showSocialFormatter && isSocialContent ? (
+        <div className="mt-4 border rounded-lg p-4 bg-gray-50">
+          <h4 className="text-md font-medium mb-3">Social Media Formatting</h4>
+          <SocialCaptionFormatter
+            content={editedContent}
+            platform={platform || "instagram"}
           />
-        ) : (
-          <div ref={contentRef} className="prose max-w-none text-gray-800">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={markdownRenderers}
-            >
-              {editedContent}
-            </ReactMarkdown>
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div
+          className={`mt-2 p-4 rounded-md ${
+            isEditing ? "bg-white border border-blue-200" : "bg-gray-50"
+          }`}
+        >
+          {isEditing ? (
+            <textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              className="w-full h-64 p-0 border-0 focus:ring-0 text-gray-800 resize-none"
+              autoFocus
+            />
+          ) : (
+            <div ref={contentRef} className="prose max-w-none text-gray-800">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownRenderers}
+              >
+                {editedContent}
+              </ReactMarkdown>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="mt-3 flex justify-between items-center text-xs text-gray-500">
         <div>
           {charCount} characters · {wordCount} words
         </div>
-        {platform && contentType === "social" && (
+        {platform && (contentType === "social" || contentType === "video") && (
           <div>
             Platform: <span className="font-medium">{platform}</span>
           </div>

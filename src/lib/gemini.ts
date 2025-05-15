@@ -74,7 +74,13 @@ function processBase64Image(base64String: string): string {
 export interface ContentGenerationOptions {
   contentType: "website" | "social" | "video";
   platform?: "instagram" | "tiktok" | "facebook" | "youtube";
-  tone: "professional" | "casual" | "enthusiastic" | "formal";
+  tone:
+    | "professional"
+    | "casual"
+    | "enthusiastic"
+    | "formal"
+    | "humorous"
+    | "inspirational";
   maxLength?: number;
   includeKeywords?: string[];
 }

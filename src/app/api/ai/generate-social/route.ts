@@ -7,12 +7,28 @@ import {
 import { auth } from "@/../auth";
 import globalCache from "@/lib/cache";
 
-// Character limits by platform
-const PLATFORM_LIMITS = {
-  instagram: 2200,
-  tiktok: 2200,
-  facebook: 63206,
-  twitter: 280,
+// Platform-specific limits and formatting guidelines
+const PLATFORM_FORMATS = {
+  instagram: {
+    maxLength: 2200,
+    formatPrompt:
+      "Format with appropriate line breaks, emojis, and hashtags that work well on Instagram. Include 5-10 relevant hashtags at the end.",
+  },
+  tiktok: {
+    maxLength: 2200,
+    formatPrompt:
+      "Format with short, punchy sentences and trending TikTok hashtags. Include 3-5 relevant hashtags.",
+  },
+  facebook: {
+    maxLength: 63206,
+    formatPrompt:
+      "Format with appropriate paragraphs and minimal hashtags. Focus on storytelling and engagement questions.",
+  },
+  youtube: {
+    maxLength: 5000,
+    formatPrompt:
+      "Format as a YouTube description with timestamps, links, and calls to action. Include relevant keywords for SEO.",
+  },
 };
 
 export async function POST(request: NextRequest) {
@@ -42,18 +58,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Ensure we have the right options for social media
+    // Ensure we have the right options for social media content
     const contentOptions: ContentGenerationOptions = {
       ...options,
       contentType: "social",
     };
 
-    // Apply platform-specific character limits if needed
-    if (contentOptions.platform && !contentOptions.maxLength) {
-      contentOptions.maxLength =
-        PLATFORM_LIMITS[
-          contentOptions.platform as keyof typeof PLATFORM_LIMITS
-        ] || 2000;
+    // Apply platform-specific constraints if platform is specified
+    if (contentOptions.platform && PLATFORM_FORMATS[contentOptions.platform]) {
+      const platformFormat = PLATFORM_FORMATS[contentOptions.platform];
+
+      // Set the max length for the platform if not specified
+      if (!contentOptions.maxLength) {
+        contentOptions.maxLength = platformFormat.maxLength;
+      }
+
+      // Don't exceed platform limits
+      contentOptions.maxLength = Math.min(
+        contentOptions.maxLength,
+        platformFormat.maxLength
+      );
     }
 
     // Check cache if cacheKey is provided
@@ -69,13 +93,21 @@ export async function POST(request: NextRequest) {
 
     // Generate content with Gemini
     let content: string;
+
+    // Construct enhanced prompt with platform-specific formatting guidelines
+    let enhancedPrompt = textPrompt || "";
+    if (contentOptions.platform && PLATFORM_FORMATS[contentOptions.platform]) {
+      const formatPrompt =
+        PLATFORM_FORMATS[contentOptions.platform].formatPrompt;
+      enhancedPrompt = enhancedPrompt
+        ? `${enhancedPrompt}\n\n${formatPrompt}`
+        : formatPrompt;
+    }
+
     if (imageBase64) {
       content = await generateContentFromImage(imageBase64, contentOptions);
     } else {
-      content = await generateContentFromText(
-        textPrompt as string,
-        contentOptions
-      );
+      content = await generateContentFromText(enhancedPrompt, contentOptions);
     }
 
     // Store in cache if cacheKey is provided

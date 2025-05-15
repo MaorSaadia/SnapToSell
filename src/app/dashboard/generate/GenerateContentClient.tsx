@@ -5,6 +5,8 @@ import ContentGenerationForm from "@/components/ai/ContentGenerationForm";
 import ContentDisplay from "@/components/ai/ContentDisplay";
 import { ContentGenerationOptions } from "@/lib/gemini";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const GenerateContentClient: React.FC = () => {
   // State for content generation
@@ -261,15 +263,32 @@ const GenerateContentClient: React.FC = () => {
             <p className="text-gray-600 mb-6">
               Create catchy titles and descriptions for your product videos.
             </p>
-            <ContentGenerationForm
-              onGenerate={handleVideoGenerate}
-              isGenerating={isGenerating}
-              defaultOptions={{
-                tone: "enthusiastic",
-                contentType: "video",
-              }}
-              hideContentTypeSelector={true}
-            />
+            <div className="space-y-4">
+              <ContentGenerationForm
+                onGenerate={handleVideoGenerate}
+                isGenerating={isGenerating}
+                defaultOptions={{
+                  tone: "enthusiastic",
+                  contentType: "video",
+                }}
+                hideContentTypeSelector={true}
+              />
+
+              <div className="mt-6 border-t pt-4">
+                <h3 className="text-lg font-medium mb-2">
+                  Advanced Video Features
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Need more control over your social media video content? Try
+                  our dedicated video content generator.
+                </p>
+                <Link href="/dashboard/generate/social-video">
+                  <Button className="w-full">
+                    Social Media Video Content Generator
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </TabsContent>
       </Tabs>
