@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerSchema, type RegisterFormData } from "@/lib/validations";
 import { ZodError } from "zod";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -53,8 +54,20 @@ export default function RegisterPage() {
         throw new Error(data.error || "Registration failed");
       }
 
-      // Redirect to login page after successful registration
-      router.push("/login?registered=true");
+      // Automatically sign in after successful registration
+      const signInResult = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (signInResult?.error) {
+        throw new Error("Sign in failed after registration");
+      }
+
+      // Redirect to dashboard after successful sign in
+      router.push("/dashboard");
+      router.refresh();
     } catch (err) {
       console.error(err);
       if (err instanceof ZodError) {
