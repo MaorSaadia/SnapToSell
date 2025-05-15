@@ -57,6 +57,19 @@ function recordRequest(): void {
   requestTimestamps.push(Date.now());
 }
 
+// Helper function to properly process Base64 image data
+function processBase64Image(base64String: string): string {
+  // If the string already has a data URL prefix, extract just the Base64 part
+  if (base64String.startsWith("data:image")) {
+    // Extract the actual base64 data after the comma
+    const commaIndex = base64String.indexOf(",");
+    if (commaIndex !== -1) {
+      return base64String.substring(commaIndex + 1);
+    }
+  }
+  return base64String;
+}
+
 // Interface for content generation options
 export interface ContentGenerationOptions {
   contentType: "website" | "social" | "video";
@@ -81,7 +94,7 @@ export async function generateContentFromImage(
     recordRequest();
 
     // Select appropriate model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     // Construct the prompt based on options
     let promptText = `Analyze this product image and `;
@@ -112,11 +125,14 @@ export async function generateContentFromImage(
       )}. `;
     }
 
+    // Process the base64 image data properly
+    const processedImageData = processBase64Image(imageBase64);
+
     // Prepare the image for the prompt
     const imageParts = [
       {
         inlineData: {
-          data: imageBase64,
+          data: processedImageData,
           mimeType: "image/jpeg",
         },
       },
@@ -163,7 +179,7 @@ export async function generateContentFromText(
     recordRequest();
 
     // Select appropriate model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     // Construct the prompt based on options
     let promptText = prompt + ` `;

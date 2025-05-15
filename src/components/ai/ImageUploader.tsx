@@ -34,21 +34,38 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
       const file = acceptedFiles[0];
 
-      // Read the file as base64
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result as string;
-        setPreviewSrc(base64);
-        onImageSelect(base64, file);
-        setIsLoading(false);
-      };
+      // Ensure image is properly encoded
+      try {
+        // Read the file as base64
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            if (typeof reader.result !== "string") {
+              throw new Error("Failed to convert image to string");
+            }
 
-      reader.onerror = () => {
-        setError("Failed to read file");
-        setIsLoading(false);
-      };
+            const base64 = reader.result;
+            setPreviewSrc(base64);
+            onImageSelect(base64, file);
+            setIsLoading(false);
+          } catch (err) {
+            console.error("Error processing image:", err);
+            setError("Failed to process image. Please try another image.");
+            setIsLoading(false);
+          }
+        };
 
-      reader.readAsDataURL(file);
+        reader.onerror = () => {
+          setError("Failed to read file");
+          setIsLoading(false);
+        };
+
+        reader.readAsDataURL(file);
+      } catch (err) {
+        console.error("Error reading file:", err);
+        setError("Failed to read file. Please try another image.");
+        setIsLoading(false);
+      }
     },
     [onImageSelect]
   );

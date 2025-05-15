@@ -59,6 +59,32 @@ function validateOptions(
   return true;
 }
 
+// Validate if string is a valid base64 image
+function isValidBase64Image(str: string): boolean {
+  // Check if it's a data URL
+  if (str.startsWith("data:image/")) {
+    // Extract the base64 part after the comma
+    const base64Part = str.split(",")[1];
+    if (!base64Part) return false;
+
+    // Check if it's a valid base64 string
+    try {
+      return /^[A-Za-z0-9+/]*={0,2}$/.test(base64Part);
+    } catch {
+      // Ignore error and return false
+      return false;
+    }
+  }
+
+  // If it's not a data URL, check if it's just a base64 string
+  try {
+    return /^[A-Za-z0-9+/]*={0,2}$/.test(str);
+  } catch {
+    // Ignore error and return false
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Authenticate user
@@ -74,6 +100,17 @@ export async function POST(request: NextRequest) {
     if (!imageBase64 || typeof imageBase64 !== "string") {
       return NextResponse.json(
         { error: "Missing or invalid image data" },
+        { status: 400 }
+      );
+    }
+
+    // Validate if it's a proper base64 image
+    if (!isValidBase64Image(imageBase64)) {
+      return NextResponse.json(
+        {
+          error:
+            "Invalid image format. Please provide a valid base64 encoded image",
+        },
         { status: 400 }
       );
     }
