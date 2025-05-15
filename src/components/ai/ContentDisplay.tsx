@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import { ContentGenerationOptions } from "@/lib/gemini";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Components } from "react-markdown";
 
 interface ContentDisplayProps {
   content: string;
@@ -8,6 +11,65 @@ interface ContentDisplayProps {
   onRegenerate?: () => Promise<void>;
   isRegenerating?: boolean;
 }
+
+// Define the code element props type to include the inline property
+interface CodeProps extends React.HTMLAttributes<HTMLElement> {
+  inline?: boolean;
+}
+
+// Custom renderers for markdown elements to improve appearance
+const markdownRenderers: Components = {
+  // Style headings with better typography and spacing
+  h1: (props) => (
+    <h1 className="text-xl font-semibold text-gray-900 mb-3 mt-4" {...props} />
+  ),
+  h2: (props) => (
+    <h2 className="text-lg font-semibold text-gray-800 mb-2 mt-4" {...props} />
+  ),
+  h3: (props) => (
+    <h3
+      className="text-base font-semibold text-gray-800 mb-2 mt-3"
+      {...props}
+    />
+  ),
+  // Enhance bullet points
+  ul: (props) => <ul className="list-disc pl-5 my-3 space-y-1" {...props} />,
+  // Style ordered lists
+  ol: (props) => <ol className="list-decimal pl-5 my-3 space-y-1" {...props} />,
+  // Better formatting for list items
+  li: (props) => <li className="text-gray-700 mb-1" {...props} />,
+  // Style links attractively
+  a: ({ href, ...props }) => (
+    <a
+      href={href}
+      className="text-blue-600 hover:text-blue-800 hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  ),
+  // Style bold text without showing asterisks
+  strong: (props) => <span className="font-bold text-gray-900" {...props} />,
+  // Style italics without showing asterisks
+  em: (props) => <span className="italic text-gray-800" {...props} />,
+  // Style code blocks with syntax highlighting appearance
+  code: ({ className, inline, ...props }: CodeProps) => {
+    const match = /language-(\w+)/.exec(className || "");
+    const isInline = !match && (inline || false);
+    return (
+      <code
+        className={`${
+          isInline
+            ? "px-1 py-0.5 bg-gray-100 rounded"
+            : "block p-2 bg-gray-100 overflow-x-auto my-2"
+        } text-sm font-mono text-gray-800`}
+        {...props}
+      />
+    );
+  },
+  // Better paragraphs with proper spacing
+  p: (props) => <p className="mb-3 text-gray-800" {...props} />,
+};
 
 const ContentDisplay: React.FC<ContentDisplayProps> = ({
   content,
@@ -234,11 +296,13 @@ const ContentDisplay: React.FC<ContentDisplayProps> = ({
             autoFocus
           />
         ) : (
-          <div
-            ref={contentRef}
-            className="prose max-w-none text-gray-800 whitespace-pre-wrap"
-          >
-            {editedContent}
+          <div ref={contentRef} className="prose max-w-none text-gray-800">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={markdownRenderers}
+            >
+              {editedContent}
+            </ReactMarkdown>
           </div>
         )}
       </div>
