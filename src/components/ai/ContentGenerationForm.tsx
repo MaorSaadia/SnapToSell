@@ -19,7 +19,7 @@ const PLATFORM_LIMITS = {
   instagram: 2200,
   tiktok: 2200,
   facebook: 63206,
-  twitter: 280,
+  youtube: 5000,
 };
 
 const ContentGenerationForm: React.FC<ContentGenerationFormProps> = ({
@@ -197,14 +197,14 @@ const ContentGenerationForm: React.FC<ContentGenerationFormProps> = ({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setPlatform("twitter")}
+                  onClick={() => setPlatform("youtube")}
                   className={`px-4 py-2 text-sm rounded-md border ${
-                    platform === "twitter"
+                    platform === "youtube"
                       ? "bg-blue-50 border-blue-500 text-blue-700"
                       : "border-gray-300 text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  Twitter
+                  YouTube
                 </button>
               </div>
             </div>
