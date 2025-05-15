@@ -51,6 +51,12 @@ export default function DashboardLayout({
               Generate Content
             </Link>
             <Link
+              href="/dashboard/chat"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              AI Chat
+            </Link>
+            <Link
               href="/dashboard/media"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
@@ -121,6 +127,13 @@ export default function DashboardLayout({
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Generate Content
+                </Link>
+                <Link
+                  href="/dashboard/chat"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  AI Chat
                 </Link>
                 <Link
                   href="/dashboard/media"
