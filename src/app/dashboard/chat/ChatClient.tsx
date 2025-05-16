@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import Chat from "@/components/ai/Chat";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Sparkles, MessageSquare, TrendingUp } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -80,141 +81,100 @@ export default function ChatClient() {
     }
   };
 
-  // Helper function for product description requests
-  const handleProductDescriptionRequest = useCallback(() => {
-    const message =
-      "Create a concise, ready-to-use product description for an e-commerce site. Focus on key features and benefits only.";
-    handleSendMessage(message);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const examplePrompts = [
+    {
+      text: "Write a compelling product description for our new eco-friendly water bottle that keeps drinks cold for 24 hours",
+      icon: <Sparkles className="w-4 h-4" />,
+      color: "bg-gradient-to-r from-blue-500 to-teal-400",
+    },
+    {
+      text: "Create an Instagram carousel post for our summer fashion collection targeting Gen Z",
+      icon: <MessageSquare className="w-4 h-4" />,
+      color: "bg-gradient-to-r from-purple-500 to-pink-500",
+    },
+    {
+      text: "Suggest a full marketing strategy for launching our new organic skincare line",
+      icon: <TrendingUp className="w-4 h-4" />,
+      color: "bg-gradient-to-r from-amber-500 to-red-500",
+    },
+    {
+      text: "Create a newsletter subject line and opening paragraph that will increase our open rates",
+      icon: <Sparkles className="w-4 h-4" />,
+      color: "bg-gradient-to-r from-emerald-500 to-cyan-500",
+    },
+  ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
       {/* Left sidebar: Features and context */}
       <div className="lg:col-span-3">
-        <Card className="h-full">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-semibold mb-4">
-              AI Marketing Assistant
+        <Card className="h-full bg-white shadow-lg border-0 overflow-hidden">
+          <div className="bg-black p-6">
+            <h2 className="text-xl font-bold text-white mb-2 flex items-center">
+              <Sparkles className="w-5 h-5 mr-2" />
+              SnapToSell AI
             </h2>
-            <p className="text-sm text-gray-600 mb-6">
-              Ask anything about product marketing and content creation.
+            <p className="text-blue-100 text-sm">
+              Your AI marketing partner for e-commerce success
             </p>
+          </div>
 
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="font-medium">
-                  Generate product descriptions
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="font-medium">Create social media posts</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="font-medium">
-                  Get marketing strategy advice
-                </span>
-              </li>
-            </ul>
-
-            <div className="my-6 pt-6 border-t border-b pb-6">
-              <h3 className="font-medium text-sm mb-3">Quick Actions:</h3>
-              <div className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="w-full text-left justify-start text-sm h-auto py-2"
-                  onClick={handleProductDescriptionRequest}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                  Get concise product description
-                </Button>
+          <CardContent className="p-6">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-sm font-medium text-gray-900 mb-3">
+                  What I can help with:
+                </h3>
+                <div className="space-y-2.5">
+                  <div className="flex items-start gap-3">
+                    <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-50 p-1">
+                      <Sparkles className="w-3.5 h-3.5" />
+                    </Badge>
+                    <span className="text-sm font-medium text-gray-800">
+                      Product descriptions that convert
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Badge className="bg-purple-50 text-purple-700 hover:bg-purple-50 p-1">
+                      <MessageSquare className="w-3.5 h-3.5" />
+                    </Badge>
+                    <span className="text-sm font-medium text-gray-800">
+                      Engaging social media content
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Badge className="bg-amber-50 text-amber-700 hover:bg-amber-50 p-1">
+                      <TrendingUp className="w-3.5 h-3.5" />
+                    </Badge>
+                    <span className="text-sm font-medium text-gray-800">
+                      Data-driven marketing strategies
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="mt-8 pt-6 border-t">
-              <h3 className="font-medium text-sm mb-3">
-                Example prompts to try:
-              </h3>
-              <div className="space-y-2">
-                <div
-                  className="text-xs bg-gray-50 p-2 rounded-md cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200"
-                  onClick={() =>
-                    handleSendMessage(
-                      "Write a brief, compelling product description for a premium coffee maker"
-                    )
-                  }
-                >
-                  Write a brief, compelling product description for a premium
-                  coffee maker
-                </div>
-                <div
-                  className="text-xs bg-gray-50 p-2 rounded-md cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200"
-                  onClick={() =>
-                    handleSendMessage(
-                      "Create an Instagram post for a fitness apparel brand"
-                    )
-                  }
-                >
-                  Create an Instagram post for a fitness apparel brand
-                </div>
-                <div
-                  className="text-xs bg-gray-50 p-2 rounded-md cursor-pointer hover:bg-gray-100 transition-colors border border-gray-200"
-                  onClick={() =>
-                    handleSendMessage(
-                      "What are 5 strategies to increase customer engagement?"
-                    )
-                  }
-                >
-                  What are 5 strategies to increase customer engagement?
+              <div className="pt-5 border-t border-gray-100">
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Try these prompts:
+                </h3>
+                <div className="space-y-3">
+                  {examplePrompts.map((prompt, index) => (
+                    <div
+                      key={index}
+                      className="group relative cursor-pointer p-0.5 rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]"
+                      style={{ background: prompt.color }}
+                      onClick={() => handleSendMessage(prompt.text)}
+                    >
+                      <div className="bg-white p-3 rounded-md flex items-start gap-2 transition-all">
+                        <div className="flex-shrink-0 mt-0.5">
+                          {prompt.icon}
+                        </div>
+                        <p className="text-sm text-gray-800 font-medium group-hover:text-gray-900">
+                          {prompt.text}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -224,11 +184,21 @@ export default function ChatClient() {
 
       {/* Right side: Chat interface */}
       <div className="lg:col-span-9">
-        <Chat
-          initialMessages={messages}
-          onSendMessage={handleSendMessage}
-          isLoading={isLoading}
-        />
+        <Card className="border-0 shadow-lg overflow-hidden h-full">
+          <CardContent className="p-0">
+            <div className="bg-black p-4">
+              <h2 className="text-lg font-semibold text-white flex items-center">
+                <MessageSquare className="w-5 h-5 mr-2" />
+                Chat with SnapToSell AI
+              </h2>
+            </div>
+            <Chat
+              initialMessages={messages}
+              onSendMessage={handleSendMessage}
+              isLoading={isLoading}
+            />
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

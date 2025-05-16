@@ -202,7 +202,7 @@ const Chat: React.FC<ChatProps> = ({
           <Button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-stone-600 hover:bg-stone-700"
           >
             {isLoading ? (
               <svg

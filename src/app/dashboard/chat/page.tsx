@@ -9,19 +9,27 @@ export const metadata: Metadata = {
 
 export default function ChatPage() {
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">
-          AI Marketing Assistant
-        </h1>
-        <p className="text-gray-600 mb-8">
-          Chat with our AI assistant to get marketing advice, content
-          suggestions, and answers to your questions.
-        </p>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto py-6 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            {/* <div className="inline-flex items-center justify-center p-2 bg-blue-100 rounded-full mb-4">
+              <Sparkles className="w-6 h-6 text-black-600" />
+            </div> */}
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-black mb-4">
+              AI Marketing Assistant
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Transform your e-commerce content with our AI assistant. Get
+              product descriptions, social media posts, and marketing strategies
+              tailored to your brand.
+            </p>
+          </div>
 
-        {/* Client component loaded */}
-        <div className="mb-10">
-          <ChatClient />
+          {/* Client component loaded */}
+          <div className="mb-6">
+            <ChatClient />
+          </div>
         </div>
       </div>
     </div>
