@@ -205,37 +205,6 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="flex items-center">
-            <input
-              id="termsAccepted"
-              name="termsAccepted"
-              type="checkbox"
-              required
-              checked={formData.termsAccepted}
-              onChange={handleChange}
-              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
-            />
-            <label
-              htmlFor="termsAccepted"
-              className="ml-2 block text-sm text-gray-900"
-            >
-              I agree to the{" "}
-              <Link
-                href="/terms"
-                className="font-medium text-primary hover:text-primary/80"
-              >
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="font-medium text-primary hover:text-primary/80"
-              >
-                Privacy Policy
-              </Link>
-            </label>
-          </div>
-
           <div>
             <Button className="w-full" type="submit" disabled={isLoading}>
               {isLoading ? "Creating account..." : "Create account"}
