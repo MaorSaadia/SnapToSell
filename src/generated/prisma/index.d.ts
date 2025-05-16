@@ -43,6 +43,21 @@ export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
  * 
  */
 export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
+/**
+ * Model ContentGeneration
+ * 
+ */
+export type ContentGeneration = $Result.DefaultSelection<Prisma.$ContentGenerationPayload>
+/**
+ * Model SavedContent
+ * 
+ */
+export type SavedContent = $Result.DefaultSelection<Prisma.$SavedContentPayload>
+/**
+ * Model GenerationStats
+ * 
+ */
+export type GenerationStats = $Result.DefaultSelection<Prisma.$GenerationStatsPayload>
 
 /**
  * Enums
@@ -260,6 +275,36 @@ export class PrismaClient<
     * ```
     */
   get media(): Prisma.MediaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contentGeneration`: Exposes CRUD operations for the **ContentGeneration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContentGenerations
+    * const contentGenerations = await prisma.contentGeneration.findMany()
+    * ```
+    */
+  get contentGeneration(): Prisma.ContentGenerationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.savedContent`: Exposes CRUD operations for the **SavedContent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SavedContents
+    * const savedContents = await prisma.savedContent.findMany()
+    * ```
+    */
+  get savedContent(): Prisma.SavedContentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.generationStats`: Exposes CRUD operations for the **GenerationStats** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GenerationStats
+    * const generationStats = await prisma.generationStats.findMany()
+    * ```
+    */
+  get generationStats(): Prisma.GenerationStatsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +750,10 @@ export namespace Prisma {
     SubscriptionTier: 'SubscriptionTier',
     Subscription: 'Subscription',
     Product: 'Product',
-    Media: 'Media'
+    Media: 'Media',
+    ContentGeneration: 'ContentGeneration',
+    SavedContent: 'SavedContent',
+    GenerationStats: 'GenerationStats'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +772,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "subscriptionTier" | "subscription" | "product" | "media"
+      modelProps: "user" | "account" | "subscriptionTier" | "subscription" | "product" | "media" | "contentGeneration" | "savedContent" | "generationStats"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1172,6 +1220,228 @@ export namespace Prisma {
           }
         }
       }
+      ContentGeneration: {
+        payload: Prisma.$ContentGenerationPayload<ExtArgs>
+        fields: Prisma.ContentGenerationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContentGenerationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContentGenerationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          findFirst: {
+            args: Prisma.ContentGenerationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContentGenerationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          findMany: {
+            args: Prisma.ContentGenerationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>[]
+          }
+          create: {
+            args: Prisma.ContentGenerationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          createMany: {
+            args: Prisma.ContentGenerationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContentGenerationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>[]
+          }
+          delete: {
+            args: Prisma.ContentGenerationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          update: {
+            args: Prisma.ContentGenerationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContentGenerationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContentGenerationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContentGenerationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContentGenerationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentGenerationPayload>
+          }
+          aggregate: {
+            args: Prisma.ContentGenerationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContentGeneration>
+          }
+          groupBy: {
+            args: Prisma.ContentGenerationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContentGenerationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContentGenerationCountArgs<ExtArgs>
+            result: $Utils.Optional<ContentGenerationCountAggregateOutputType> | number
+          }
+        }
+      }
+      SavedContent: {
+        payload: Prisma.$SavedContentPayload<ExtArgs>
+        fields: Prisma.SavedContentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SavedContentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SavedContentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          findFirst: {
+            args: Prisma.SavedContentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SavedContentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          findMany: {
+            args: Prisma.SavedContentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>[]
+          }
+          create: {
+            args: Prisma.SavedContentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          createMany: {
+            args: Prisma.SavedContentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SavedContentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>[]
+          }
+          delete: {
+            args: Prisma.SavedContentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          update: {
+            args: Prisma.SavedContentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          deleteMany: {
+            args: Prisma.SavedContentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SavedContentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SavedContentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>[]
+          }
+          upsert: {
+            args: Prisma.SavedContentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SavedContentPayload>
+          }
+          aggregate: {
+            args: Prisma.SavedContentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSavedContent>
+          }
+          groupBy: {
+            args: Prisma.SavedContentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SavedContentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SavedContentCountArgs<ExtArgs>
+            result: $Utils.Optional<SavedContentCountAggregateOutputType> | number
+          }
+        }
+      }
+      GenerationStats: {
+        payload: Prisma.$GenerationStatsPayload<ExtArgs>
+        fields: Prisma.GenerationStatsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GenerationStatsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GenerationStatsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          findFirst: {
+            args: Prisma.GenerationStatsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GenerationStatsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          findMany: {
+            args: Prisma.GenerationStatsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>[]
+          }
+          create: {
+            args: Prisma.GenerationStatsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          createMany: {
+            args: Prisma.GenerationStatsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GenerationStatsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>[]
+          }
+          delete: {
+            args: Prisma.GenerationStatsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          update: {
+            args: Prisma.GenerationStatsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          deleteMany: {
+            args: Prisma.GenerationStatsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GenerationStatsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GenerationStatsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>[]
+          }
+          upsert: {
+            args: Prisma.GenerationStatsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerationStatsPayload>
+          }
+          aggregate: {
+            args: Prisma.GenerationStatsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGenerationStats>
+          }
+          groupBy: {
+            args: Prisma.GenerationStatsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GenerationStatsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GenerationStatsCountArgs<ExtArgs>
+            result: $Utils.Optional<GenerationStatsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1262,6 +1532,9 @@ export namespace Prisma {
     subscription?: SubscriptionOmit
     product?: ProductOmit
     media?: MediaOmit
+    contentGeneration?: ContentGenerationOmit
+    savedContent?: SavedContentOmit
+    generationStats?: GenerationStatsOmit
   }
 
   /* Types for Logging */
@@ -1359,12 +1632,16 @@ export namespace Prisma {
     accounts: number
     products: number
     mediaItems: number
+    contentHistory: number
+    savedContent: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     products?: boolean | UserCountOutputTypeCountProductsArgs
     mediaItems?: boolean | UserCountOutputTypeCountMediaItemsArgs
+    contentHistory?: boolean | UserCountOutputTypeCountContentHistoryArgs
+    savedContent?: boolean | UserCountOutputTypeCountSavedContentArgs
   }
 
   // Custom InputTypes
@@ -1397,6 +1674,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMediaItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MediaWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountContentHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentGenerationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSavedContentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SavedContentWhereInput
   }
 
 
@@ -1459,6 +1750,68 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountMediaItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MediaWhereInput
+  }
+
+
+  /**
+   * Count Type MediaCountOutputType
+   */
+
+  export type MediaCountOutputType = {
+    contentGenerations: number
+  }
+
+  export type MediaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contentGenerations?: boolean | MediaCountOutputTypeCountContentGenerationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MediaCountOutputType without action
+   */
+  export type MediaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaCountOutputType
+     */
+    select?: MediaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MediaCountOutputType without action
+   */
+  export type MediaCountOutputTypeCountContentGenerationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentGenerationWhereInput
+  }
+
+
+  /**
+   * Count Type ContentGenerationCountOutputType
+   */
+
+  export type ContentGenerationCountOutputType = {
+    savedBy: number
+  }
+
+  export type ContentGenerationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    savedBy?: boolean | ContentGenerationCountOutputTypeCountSavedByArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContentGenerationCountOutputType without action
+   */
+  export type ContentGenerationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGenerationCountOutputType
+     */
+    select?: ContentGenerationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContentGenerationCountOutputType without action
+   */
+  export type ContentGenerationCountOutputTypeCountSavedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SavedContentWhereInput
   }
 
 
@@ -1658,6 +2011,9 @@ export namespace Prisma {
     subscription?: boolean | User$subscriptionArgs<ExtArgs>
     products?: boolean | User$productsArgs<ExtArgs>
     mediaItems?: boolean | User$mediaItemsArgs<ExtArgs>
+    contentHistory?: boolean | User$contentHistoryArgs<ExtArgs>
+    savedContent?: boolean | User$savedContentArgs<ExtArgs>
+    generationStats?: boolean | User$generationStatsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1700,6 +2056,9 @@ export namespace Prisma {
     subscription?: boolean | User$subscriptionArgs<ExtArgs>
     products?: boolean | User$productsArgs<ExtArgs>
     mediaItems?: boolean | User$mediaItemsArgs<ExtArgs>
+    contentHistory?: boolean | User$contentHistoryArgs<ExtArgs>
+    savedContent?: boolean | User$savedContentArgs<ExtArgs>
+    generationStats?: boolean | User$generationStatsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1712,6 +2071,9 @@ export namespace Prisma {
       subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
       products: Prisma.$ProductPayload<ExtArgs>[]
       mediaItems: Prisma.$MediaPayload<ExtArgs>[]
+      contentHistory: Prisma.$ContentGenerationPayload<ExtArgs>[]
+      savedContent: Prisma.$SavedContentPayload<ExtArgs>[]
+      generationStats: Prisma.$GenerationStatsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2120,6 +2482,9 @@ export namespace Prisma {
     subscription<T extends User$subscriptionArgs<ExtArgs> = {}>(args?: Subset<T, User$subscriptionArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     products<T extends User$productsArgs<ExtArgs> = {}>(args?: Subset<T, User$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mediaItems<T extends User$mediaItemsArgs<ExtArgs> = {}>(args?: Subset<T, User$mediaItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    contentHistory<T extends User$contentHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$contentHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    savedContent<T extends User$savedContentArgs<ExtArgs> = {}>(args?: Subset<T, User$savedContentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    generationStats<T extends User$generationStatsArgs<ExtArgs> = {}>(args?: Subset<T, User$generationStatsArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2633,6 +2998,73 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+  }
+
+  /**
+   * User.contentHistory
+   */
+  export type User$contentHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    where?: ContentGenerationWhereInput
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    cursor?: ContentGenerationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ContentGenerationScalarFieldEnum | ContentGenerationScalarFieldEnum[]
+  }
+
+  /**
+   * User.savedContent
+   */
+  export type User$savedContentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    where?: SavedContentWhereInput
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    cursor?: SavedContentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SavedContentScalarFieldEnum | SavedContentScalarFieldEnum[]
+  }
+
+  /**
+   * User.generationStats
+   */
+  export type User$generationStatsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    where?: GenerationStatsWhereInput
   }
 
   /**
@@ -7594,6 +8026,8 @@ export namespace Prisma {
     updatedAt?: boolean
     product?: boolean | Media$productArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGenerations?: boolean | Media$contentGenerationsArgs<ExtArgs>
+    _count?: boolean | MediaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["media"]>
 
   export type MediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7643,6 +8077,8 @@ export namespace Prisma {
   export type MediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | Media$productArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGenerations?: boolean | Media$contentGenerationsArgs<ExtArgs>
+    _count?: boolean | MediaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | Media$productArgs<ExtArgs>
@@ -7658,6 +8094,7 @@ export namespace Prisma {
     objects: {
       product: Prisma.$ProductPayload<ExtArgs> | null
       user: Prisma.$UserPayload<ExtArgs>
+      contentGenerations: Prisma.$ContentGenerationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8066,6 +8503,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     product<T extends Media$productArgs<ExtArgs> = {}>(args?: Subset<T, Media$productArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    contentGenerations<T extends Media$contentGenerationsArgs<ExtArgs> = {}>(args?: Subset<T, Media$contentGenerationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8520,6 +8958,30 @@ export namespace Prisma {
   }
 
   /**
+   * Media.contentGenerations
+   */
+  export type Media$contentGenerationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    where?: ContentGenerationWhereInput
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    cursor?: ContentGenerationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ContentGenerationScalarFieldEnum | ContentGenerationScalarFieldEnum[]
+  }
+
+  /**
    * Media without action
    */
   export type MediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8535,6 +8997,3455 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContentGeneration
+   */
+
+  export type AggregateContentGeneration = {
+    _count: ContentGenerationCountAggregateOutputType | null
+    _avg: ContentGenerationAvgAggregateOutputType | null
+    _sum: ContentGenerationSumAggregateOutputType | null
+    _min: ContentGenerationMinAggregateOutputType | null
+    _max: ContentGenerationMaxAggregateOutputType | null
+  }
+
+  export type ContentGenerationAvgAggregateOutputType = {
+    creditsUsed: number | null
+  }
+
+  export type ContentGenerationSumAggregateOutputType = {
+    creditsUsed: number | null
+  }
+
+  export type ContentGenerationMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    mediaId: string | null
+    contentType: string | null
+    platform: string | null
+    tone: string | null
+    promptText: string | null
+    generatedContent: string | null
+    creditsUsed: number | null
+    createdAt: Date | null
+  }
+
+  export type ContentGenerationMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    mediaId: string | null
+    contentType: string | null
+    platform: string | null
+    tone: string | null
+    promptText: string | null
+    generatedContent: string | null
+    creditsUsed: number | null
+    createdAt: Date | null
+  }
+
+  export type ContentGenerationCountAggregateOutputType = {
+    id: number
+    userId: number
+    mediaId: number
+    contentType: number
+    platform: number
+    tone: number
+    promptText: number
+    generatedContent: number
+    keywords: number
+    creditsUsed: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ContentGenerationAvgAggregateInputType = {
+    creditsUsed?: true
+  }
+
+  export type ContentGenerationSumAggregateInputType = {
+    creditsUsed?: true
+  }
+
+  export type ContentGenerationMinAggregateInputType = {
+    id?: true
+    userId?: true
+    mediaId?: true
+    contentType?: true
+    platform?: true
+    tone?: true
+    promptText?: true
+    generatedContent?: true
+    creditsUsed?: true
+    createdAt?: true
+  }
+
+  export type ContentGenerationMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    mediaId?: true
+    contentType?: true
+    platform?: true
+    tone?: true
+    promptText?: true
+    generatedContent?: true
+    creditsUsed?: true
+    createdAt?: true
+  }
+
+  export type ContentGenerationCountAggregateInputType = {
+    id?: true
+    userId?: true
+    mediaId?: true
+    contentType?: true
+    platform?: true
+    tone?: true
+    promptText?: true
+    generatedContent?: true
+    keywords?: true
+    creditsUsed?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ContentGenerationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentGeneration to aggregate.
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentGenerations to fetch.
+     */
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContentGenerationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentGenerations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentGenerations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContentGenerations
+    **/
+    _count?: true | ContentGenerationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ContentGenerationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ContentGenerationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContentGenerationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContentGenerationMaxAggregateInputType
+  }
+
+  export type GetContentGenerationAggregateType<T extends ContentGenerationAggregateArgs> = {
+        [P in keyof T & keyof AggregateContentGeneration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContentGeneration[P]>
+      : GetScalarType<T[P], AggregateContentGeneration[P]>
+  }
+
+
+
+
+  export type ContentGenerationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentGenerationWhereInput
+    orderBy?: ContentGenerationOrderByWithAggregationInput | ContentGenerationOrderByWithAggregationInput[]
+    by: ContentGenerationScalarFieldEnum[] | ContentGenerationScalarFieldEnum
+    having?: ContentGenerationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContentGenerationCountAggregateInputType | true
+    _avg?: ContentGenerationAvgAggregateInputType
+    _sum?: ContentGenerationSumAggregateInputType
+    _min?: ContentGenerationMinAggregateInputType
+    _max?: ContentGenerationMaxAggregateInputType
+  }
+
+  export type ContentGenerationGroupByOutputType = {
+    id: string
+    userId: string
+    mediaId: string | null
+    contentType: string
+    platform: string | null
+    tone: string
+    promptText: string | null
+    generatedContent: string
+    keywords: string[]
+    creditsUsed: number
+    createdAt: Date
+    _count: ContentGenerationCountAggregateOutputType | null
+    _avg: ContentGenerationAvgAggregateOutputType | null
+    _sum: ContentGenerationSumAggregateOutputType | null
+    _min: ContentGenerationMinAggregateOutputType | null
+    _max: ContentGenerationMaxAggregateOutputType | null
+  }
+
+  type GetContentGenerationGroupByPayload<T extends ContentGenerationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContentGenerationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContentGenerationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContentGenerationGroupByOutputType[P]>
+            : GetScalarType<T[P], ContentGenerationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContentGenerationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mediaId?: boolean
+    contentType?: boolean
+    platform?: boolean
+    tone?: boolean
+    promptText?: boolean
+    generatedContent?: boolean
+    keywords?: boolean
+    creditsUsed?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+    savedBy?: boolean | ContentGeneration$savedByArgs<ExtArgs>
+    _count?: boolean | ContentGenerationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contentGeneration"]>
+
+  export type ContentGenerationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mediaId?: boolean
+    contentType?: boolean
+    platform?: boolean
+    tone?: boolean
+    promptText?: boolean
+    generatedContent?: boolean
+    keywords?: boolean
+    creditsUsed?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+  }, ExtArgs["result"]["contentGeneration"]>
+
+  export type ContentGenerationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mediaId?: boolean
+    contentType?: boolean
+    platform?: boolean
+    tone?: boolean
+    promptText?: boolean
+    generatedContent?: boolean
+    keywords?: boolean
+    creditsUsed?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+  }, ExtArgs["result"]["contentGeneration"]>
+
+  export type ContentGenerationSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    mediaId?: boolean
+    contentType?: boolean
+    platform?: boolean
+    tone?: boolean
+    promptText?: boolean
+    generatedContent?: boolean
+    keywords?: boolean
+    creditsUsed?: boolean
+    createdAt?: boolean
+  }
+
+  export type ContentGenerationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "mediaId" | "contentType" | "platform" | "tone" | "promptText" | "generatedContent" | "keywords" | "creditsUsed" | "createdAt", ExtArgs["result"]["contentGeneration"]>
+  export type ContentGenerationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+    savedBy?: boolean | ContentGeneration$savedByArgs<ExtArgs>
+    _count?: boolean | ContentGenerationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContentGenerationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+  }
+  export type ContentGenerationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    media?: boolean | ContentGeneration$mediaArgs<ExtArgs>
+  }
+
+  export type $ContentGenerationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContentGeneration"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      media: Prisma.$MediaPayload<ExtArgs> | null
+      savedBy: Prisma.$SavedContentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      mediaId: string | null
+      contentType: string
+      platform: string | null
+      tone: string
+      promptText: string | null
+      generatedContent: string
+      keywords: string[]
+      creditsUsed: number
+      createdAt: Date
+    }, ExtArgs["result"]["contentGeneration"]>
+    composites: {}
+  }
+
+  type ContentGenerationGetPayload<S extends boolean | null | undefined | ContentGenerationDefaultArgs> = $Result.GetResult<Prisma.$ContentGenerationPayload, S>
+
+  type ContentGenerationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContentGenerationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContentGenerationCountAggregateInputType | true
+    }
+
+  export interface ContentGenerationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContentGeneration'], meta: { name: 'ContentGeneration' } }
+    /**
+     * Find zero or one ContentGeneration that matches the filter.
+     * @param {ContentGenerationFindUniqueArgs} args - Arguments to find a ContentGeneration
+     * @example
+     * // Get one ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContentGenerationFindUniqueArgs>(args: SelectSubset<T, ContentGenerationFindUniqueArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ContentGeneration that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContentGenerationFindUniqueOrThrowArgs} args - Arguments to find a ContentGeneration
+     * @example
+     * // Get one ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContentGenerationFindUniqueOrThrowArgs>(args: SelectSubset<T, ContentGenerationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentGeneration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationFindFirstArgs} args - Arguments to find a ContentGeneration
+     * @example
+     * // Get one ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContentGenerationFindFirstArgs>(args?: SelectSubset<T, ContentGenerationFindFirstArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentGeneration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationFindFirstOrThrowArgs} args - Arguments to find a ContentGeneration
+     * @example
+     * // Get one ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContentGenerationFindFirstOrThrowArgs>(args?: SelectSubset<T, ContentGenerationFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ContentGenerations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContentGenerations
+     * const contentGenerations = await prisma.contentGeneration.findMany()
+     * 
+     * // Get first 10 ContentGenerations
+     * const contentGenerations = await prisma.contentGeneration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contentGenerationWithIdOnly = await prisma.contentGeneration.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContentGenerationFindManyArgs>(args?: SelectSubset<T, ContentGenerationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ContentGeneration.
+     * @param {ContentGenerationCreateArgs} args - Arguments to create a ContentGeneration.
+     * @example
+     * // Create one ContentGeneration
+     * const ContentGeneration = await prisma.contentGeneration.create({
+     *   data: {
+     *     // ... data to create a ContentGeneration
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContentGenerationCreateArgs>(args: SelectSubset<T, ContentGenerationCreateArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ContentGenerations.
+     * @param {ContentGenerationCreateManyArgs} args - Arguments to create many ContentGenerations.
+     * @example
+     * // Create many ContentGenerations
+     * const contentGeneration = await prisma.contentGeneration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContentGenerationCreateManyArgs>(args?: SelectSubset<T, ContentGenerationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContentGenerations and returns the data saved in the database.
+     * @param {ContentGenerationCreateManyAndReturnArgs} args - Arguments to create many ContentGenerations.
+     * @example
+     * // Create many ContentGenerations
+     * const contentGeneration = await prisma.contentGeneration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContentGenerations and only return the `id`
+     * const contentGenerationWithIdOnly = await prisma.contentGeneration.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContentGenerationCreateManyAndReturnArgs>(args?: SelectSubset<T, ContentGenerationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ContentGeneration.
+     * @param {ContentGenerationDeleteArgs} args - Arguments to delete one ContentGeneration.
+     * @example
+     * // Delete one ContentGeneration
+     * const ContentGeneration = await prisma.contentGeneration.delete({
+     *   where: {
+     *     // ... filter to delete one ContentGeneration
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContentGenerationDeleteArgs>(args: SelectSubset<T, ContentGenerationDeleteArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ContentGeneration.
+     * @param {ContentGenerationUpdateArgs} args - Arguments to update one ContentGeneration.
+     * @example
+     * // Update one ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContentGenerationUpdateArgs>(args: SelectSubset<T, ContentGenerationUpdateArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ContentGenerations.
+     * @param {ContentGenerationDeleteManyArgs} args - Arguments to filter ContentGenerations to delete.
+     * @example
+     * // Delete a few ContentGenerations
+     * const { count } = await prisma.contentGeneration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContentGenerationDeleteManyArgs>(args?: SelectSubset<T, ContentGenerationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentGenerations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContentGenerations
+     * const contentGeneration = await prisma.contentGeneration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContentGenerationUpdateManyArgs>(args: SelectSubset<T, ContentGenerationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentGenerations and returns the data updated in the database.
+     * @param {ContentGenerationUpdateManyAndReturnArgs} args - Arguments to update many ContentGenerations.
+     * @example
+     * // Update many ContentGenerations
+     * const contentGeneration = await prisma.contentGeneration.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ContentGenerations and only return the `id`
+     * const contentGenerationWithIdOnly = await prisma.contentGeneration.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContentGenerationUpdateManyAndReturnArgs>(args: SelectSubset<T, ContentGenerationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ContentGeneration.
+     * @param {ContentGenerationUpsertArgs} args - Arguments to update or create a ContentGeneration.
+     * @example
+     * // Update or create a ContentGeneration
+     * const contentGeneration = await prisma.contentGeneration.upsert({
+     *   create: {
+     *     // ... data to create a ContentGeneration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContentGeneration we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContentGenerationUpsertArgs>(args: SelectSubset<T, ContentGenerationUpsertArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ContentGenerations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationCountArgs} args - Arguments to filter ContentGenerations to count.
+     * @example
+     * // Count the number of ContentGenerations
+     * const count = await prisma.contentGeneration.count({
+     *   where: {
+     *     // ... the filter for the ContentGenerations we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContentGenerationCountArgs>(
+      args?: Subset<T, ContentGenerationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContentGenerationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContentGeneration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContentGenerationAggregateArgs>(args: Subset<T, ContentGenerationAggregateArgs>): Prisma.PrismaPromise<GetContentGenerationAggregateType<T>>
+
+    /**
+     * Group by ContentGeneration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentGenerationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContentGenerationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContentGenerationGroupByArgs['orderBy'] }
+        : { orderBy?: ContentGenerationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContentGenerationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContentGenerationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContentGeneration model
+   */
+  readonly fields: ContentGenerationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContentGeneration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContentGenerationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    media<T extends ContentGeneration$mediaArgs<ExtArgs> = {}>(args?: Subset<T, ContentGeneration$mediaArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    savedBy<T extends ContentGeneration$savedByArgs<ExtArgs> = {}>(args?: Subset<T, ContentGeneration$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContentGeneration model
+   */
+  interface ContentGenerationFieldRefs {
+    readonly id: FieldRef<"ContentGeneration", 'String'>
+    readonly userId: FieldRef<"ContentGeneration", 'String'>
+    readonly mediaId: FieldRef<"ContentGeneration", 'String'>
+    readonly contentType: FieldRef<"ContentGeneration", 'String'>
+    readonly platform: FieldRef<"ContentGeneration", 'String'>
+    readonly tone: FieldRef<"ContentGeneration", 'String'>
+    readonly promptText: FieldRef<"ContentGeneration", 'String'>
+    readonly generatedContent: FieldRef<"ContentGeneration", 'String'>
+    readonly keywords: FieldRef<"ContentGeneration", 'String[]'>
+    readonly creditsUsed: FieldRef<"ContentGeneration", 'Int'>
+    readonly createdAt: FieldRef<"ContentGeneration", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContentGeneration findUnique
+   */
+  export type ContentGenerationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentGeneration to fetch.
+     */
+    where: ContentGenerationWhereUniqueInput
+  }
+
+  /**
+   * ContentGeneration findUniqueOrThrow
+   */
+  export type ContentGenerationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentGeneration to fetch.
+     */
+    where: ContentGenerationWhereUniqueInput
+  }
+
+  /**
+   * ContentGeneration findFirst
+   */
+  export type ContentGenerationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentGeneration to fetch.
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentGenerations to fetch.
+     */
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentGenerations.
+     */
+    cursor?: ContentGenerationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentGenerations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentGenerations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentGenerations.
+     */
+    distinct?: ContentGenerationScalarFieldEnum | ContentGenerationScalarFieldEnum[]
+  }
+
+  /**
+   * ContentGeneration findFirstOrThrow
+   */
+  export type ContentGenerationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentGeneration to fetch.
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentGenerations to fetch.
+     */
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentGenerations.
+     */
+    cursor?: ContentGenerationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentGenerations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentGenerations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentGenerations.
+     */
+    distinct?: ContentGenerationScalarFieldEnum | ContentGenerationScalarFieldEnum[]
+  }
+
+  /**
+   * ContentGeneration findMany
+   */
+  export type ContentGenerationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter, which ContentGenerations to fetch.
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentGenerations to fetch.
+     */
+    orderBy?: ContentGenerationOrderByWithRelationInput | ContentGenerationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContentGenerations.
+     */
+    cursor?: ContentGenerationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentGenerations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentGenerations.
+     */
+    skip?: number
+    distinct?: ContentGenerationScalarFieldEnum | ContentGenerationScalarFieldEnum[]
+  }
+
+  /**
+   * ContentGeneration create
+   */
+  export type ContentGenerationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ContentGeneration.
+     */
+    data: XOR<ContentGenerationCreateInput, ContentGenerationUncheckedCreateInput>
+  }
+
+  /**
+   * ContentGeneration createMany
+   */
+  export type ContentGenerationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContentGenerations.
+     */
+    data: ContentGenerationCreateManyInput | ContentGenerationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentGeneration createManyAndReturn
+   */
+  export type ContentGenerationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * The data used to create many ContentGenerations.
+     */
+    data: ContentGenerationCreateManyInput | ContentGenerationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ContentGeneration update
+   */
+  export type ContentGenerationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ContentGeneration.
+     */
+    data: XOR<ContentGenerationUpdateInput, ContentGenerationUncheckedUpdateInput>
+    /**
+     * Choose, which ContentGeneration to update.
+     */
+    where: ContentGenerationWhereUniqueInput
+  }
+
+  /**
+   * ContentGeneration updateMany
+   */
+  export type ContentGenerationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContentGenerations.
+     */
+    data: XOR<ContentGenerationUpdateManyMutationInput, ContentGenerationUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentGenerations to update
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * Limit how many ContentGenerations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentGeneration updateManyAndReturn
+   */
+  export type ContentGenerationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * The data used to update ContentGenerations.
+     */
+    data: XOR<ContentGenerationUpdateManyMutationInput, ContentGenerationUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentGenerations to update
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * Limit how many ContentGenerations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ContentGeneration upsert
+   */
+  export type ContentGenerationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ContentGeneration to update in case it exists.
+     */
+    where: ContentGenerationWhereUniqueInput
+    /**
+     * In case the ContentGeneration found by the `where` argument doesn't exist, create a new ContentGeneration with this data.
+     */
+    create: XOR<ContentGenerationCreateInput, ContentGenerationUncheckedCreateInput>
+    /**
+     * In case the ContentGeneration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContentGenerationUpdateInput, ContentGenerationUncheckedUpdateInput>
+  }
+
+  /**
+   * ContentGeneration delete
+   */
+  export type ContentGenerationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+    /**
+     * Filter which ContentGeneration to delete.
+     */
+    where: ContentGenerationWhereUniqueInput
+  }
+
+  /**
+   * ContentGeneration deleteMany
+   */
+  export type ContentGenerationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentGenerations to delete
+     */
+    where?: ContentGenerationWhereInput
+    /**
+     * Limit how many ContentGenerations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentGeneration.media
+   */
+  export type ContentGeneration$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Media
+     */
+    omit?: MediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    where?: MediaWhereInput
+  }
+
+  /**
+   * ContentGeneration.savedBy
+   */
+  export type ContentGeneration$savedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    where?: SavedContentWhereInput
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    cursor?: SavedContentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SavedContentScalarFieldEnum | SavedContentScalarFieldEnum[]
+  }
+
+  /**
+   * ContentGeneration without action
+   */
+  export type ContentGenerationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentGeneration
+     */
+    select?: ContentGenerationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentGeneration
+     */
+    omit?: ContentGenerationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentGenerationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SavedContent
+   */
+
+  export type AggregateSavedContent = {
+    _count: SavedContentCountAggregateOutputType | null
+    _min: SavedContentMinAggregateOutputType | null
+    _max: SavedContentMaxAggregateOutputType | null
+  }
+
+  export type SavedContentMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    contentGenerationId: string | null
+    isFavorite: boolean | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type SavedContentMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    contentGenerationId: string | null
+    isFavorite: boolean | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type SavedContentCountAggregateOutputType = {
+    id: number
+    userId: number
+    contentGenerationId: number
+    isFavorite: number
+    notes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type SavedContentMinAggregateInputType = {
+    id?: true
+    userId?: true
+    contentGenerationId?: true
+    isFavorite?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type SavedContentMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    contentGenerationId?: true
+    isFavorite?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type SavedContentCountAggregateInputType = {
+    id?: true
+    userId?: true
+    contentGenerationId?: true
+    isFavorite?: true
+    notes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type SavedContentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SavedContent to aggregate.
+     */
+    where?: SavedContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SavedContents to fetch.
+     */
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SavedContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SavedContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SavedContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SavedContents
+    **/
+    _count?: true | SavedContentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SavedContentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SavedContentMaxAggregateInputType
+  }
+
+  export type GetSavedContentAggregateType<T extends SavedContentAggregateArgs> = {
+        [P in keyof T & keyof AggregateSavedContent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSavedContent[P]>
+      : GetScalarType<T[P], AggregateSavedContent[P]>
+  }
+
+
+
+
+  export type SavedContentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SavedContentWhereInput
+    orderBy?: SavedContentOrderByWithAggregationInput | SavedContentOrderByWithAggregationInput[]
+    by: SavedContentScalarFieldEnum[] | SavedContentScalarFieldEnum
+    having?: SavedContentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SavedContentCountAggregateInputType | true
+    _min?: SavedContentMinAggregateInputType
+    _max?: SavedContentMaxAggregateInputType
+  }
+
+  export type SavedContentGroupByOutputType = {
+    id: string
+    userId: string
+    contentGenerationId: string
+    isFavorite: boolean
+    notes: string | null
+    createdAt: Date
+    _count: SavedContentCountAggregateOutputType | null
+    _min: SavedContentMinAggregateOutputType | null
+    _max: SavedContentMaxAggregateOutputType | null
+  }
+
+  type GetSavedContentGroupByPayload<T extends SavedContentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SavedContentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SavedContentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SavedContentGroupByOutputType[P]>
+            : GetScalarType<T[P], SavedContentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SavedContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    contentGenerationId?: boolean
+    isFavorite?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["savedContent"]>
+
+  export type SavedContentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    contentGenerationId?: boolean
+    isFavorite?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["savedContent"]>
+
+  export type SavedContentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    contentGenerationId?: boolean
+    isFavorite?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["savedContent"]>
+
+  export type SavedContentSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    contentGenerationId?: boolean
+    isFavorite?: boolean
+    notes?: boolean
+    createdAt?: boolean
+  }
+
+  export type SavedContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "contentGenerationId" | "isFavorite" | "notes" | "createdAt", ExtArgs["result"]["savedContent"]>
+  export type SavedContentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }
+  export type SavedContentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }
+  export type SavedContentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    contentGeneration?: boolean | ContentGenerationDefaultArgs<ExtArgs>
+  }
+
+  export type $SavedContentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SavedContent"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      contentGeneration: Prisma.$ContentGenerationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      contentGenerationId: string
+      isFavorite: boolean
+      notes: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["savedContent"]>
+    composites: {}
+  }
+
+  type SavedContentGetPayload<S extends boolean | null | undefined | SavedContentDefaultArgs> = $Result.GetResult<Prisma.$SavedContentPayload, S>
+
+  type SavedContentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SavedContentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SavedContentCountAggregateInputType | true
+    }
+
+  export interface SavedContentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SavedContent'], meta: { name: 'SavedContent' } }
+    /**
+     * Find zero or one SavedContent that matches the filter.
+     * @param {SavedContentFindUniqueArgs} args - Arguments to find a SavedContent
+     * @example
+     * // Get one SavedContent
+     * const savedContent = await prisma.savedContent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SavedContentFindUniqueArgs>(args: SelectSubset<T, SavedContentFindUniqueArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SavedContent that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SavedContentFindUniqueOrThrowArgs} args - Arguments to find a SavedContent
+     * @example
+     * // Get one SavedContent
+     * const savedContent = await prisma.savedContent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SavedContentFindUniqueOrThrowArgs>(args: SelectSubset<T, SavedContentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SavedContent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentFindFirstArgs} args - Arguments to find a SavedContent
+     * @example
+     * // Get one SavedContent
+     * const savedContent = await prisma.savedContent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SavedContentFindFirstArgs>(args?: SelectSubset<T, SavedContentFindFirstArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SavedContent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentFindFirstOrThrowArgs} args - Arguments to find a SavedContent
+     * @example
+     * // Get one SavedContent
+     * const savedContent = await prisma.savedContent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SavedContentFindFirstOrThrowArgs>(args?: SelectSubset<T, SavedContentFindFirstOrThrowArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SavedContents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SavedContents
+     * const savedContents = await prisma.savedContent.findMany()
+     * 
+     * // Get first 10 SavedContents
+     * const savedContents = await prisma.savedContent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const savedContentWithIdOnly = await prisma.savedContent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SavedContentFindManyArgs>(args?: SelectSubset<T, SavedContentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SavedContent.
+     * @param {SavedContentCreateArgs} args - Arguments to create a SavedContent.
+     * @example
+     * // Create one SavedContent
+     * const SavedContent = await prisma.savedContent.create({
+     *   data: {
+     *     // ... data to create a SavedContent
+     *   }
+     * })
+     * 
+     */
+    create<T extends SavedContentCreateArgs>(args: SelectSubset<T, SavedContentCreateArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SavedContents.
+     * @param {SavedContentCreateManyArgs} args - Arguments to create many SavedContents.
+     * @example
+     * // Create many SavedContents
+     * const savedContent = await prisma.savedContent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SavedContentCreateManyArgs>(args?: SelectSubset<T, SavedContentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SavedContents and returns the data saved in the database.
+     * @param {SavedContentCreateManyAndReturnArgs} args - Arguments to create many SavedContents.
+     * @example
+     * // Create many SavedContents
+     * const savedContent = await prisma.savedContent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SavedContents and only return the `id`
+     * const savedContentWithIdOnly = await prisma.savedContent.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SavedContentCreateManyAndReturnArgs>(args?: SelectSubset<T, SavedContentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SavedContent.
+     * @param {SavedContentDeleteArgs} args - Arguments to delete one SavedContent.
+     * @example
+     * // Delete one SavedContent
+     * const SavedContent = await prisma.savedContent.delete({
+     *   where: {
+     *     // ... filter to delete one SavedContent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SavedContentDeleteArgs>(args: SelectSubset<T, SavedContentDeleteArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SavedContent.
+     * @param {SavedContentUpdateArgs} args - Arguments to update one SavedContent.
+     * @example
+     * // Update one SavedContent
+     * const savedContent = await prisma.savedContent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SavedContentUpdateArgs>(args: SelectSubset<T, SavedContentUpdateArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SavedContents.
+     * @param {SavedContentDeleteManyArgs} args - Arguments to filter SavedContents to delete.
+     * @example
+     * // Delete a few SavedContents
+     * const { count } = await prisma.savedContent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SavedContentDeleteManyArgs>(args?: SelectSubset<T, SavedContentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SavedContents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SavedContents
+     * const savedContent = await prisma.savedContent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SavedContentUpdateManyArgs>(args: SelectSubset<T, SavedContentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SavedContents and returns the data updated in the database.
+     * @param {SavedContentUpdateManyAndReturnArgs} args - Arguments to update many SavedContents.
+     * @example
+     * // Update many SavedContents
+     * const savedContent = await prisma.savedContent.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SavedContents and only return the `id`
+     * const savedContentWithIdOnly = await prisma.savedContent.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SavedContentUpdateManyAndReturnArgs>(args: SelectSubset<T, SavedContentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SavedContent.
+     * @param {SavedContentUpsertArgs} args - Arguments to update or create a SavedContent.
+     * @example
+     * // Update or create a SavedContent
+     * const savedContent = await prisma.savedContent.upsert({
+     *   create: {
+     *     // ... data to create a SavedContent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SavedContent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SavedContentUpsertArgs>(args: SelectSubset<T, SavedContentUpsertArgs<ExtArgs>>): Prisma__SavedContentClient<$Result.GetResult<Prisma.$SavedContentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SavedContents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentCountArgs} args - Arguments to filter SavedContents to count.
+     * @example
+     * // Count the number of SavedContents
+     * const count = await prisma.savedContent.count({
+     *   where: {
+     *     // ... the filter for the SavedContents we want to count
+     *   }
+     * })
+    **/
+    count<T extends SavedContentCountArgs>(
+      args?: Subset<T, SavedContentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SavedContentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SavedContent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SavedContentAggregateArgs>(args: Subset<T, SavedContentAggregateArgs>): Prisma.PrismaPromise<GetSavedContentAggregateType<T>>
+
+    /**
+     * Group by SavedContent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SavedContentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SavedContentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SavedContentGroupByArgs['orderBy'] }
+        : { orderBy?: SavedContentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SavedContentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSavedContentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SavedContent model
+   */
+  readonly fields: SavedContentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SavedContent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SavedContentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    contentGeneration<T extends ContentGenerationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ContentGenerationDefaultArgs<ExtArgs>>): Prisma__ContentGenerationClient<$Result.GetResult<Prisma.$ContentGenerationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SavedContent model
+   */
+  interface SavedContentFieldRefs {
+    readonly id: FieldRef<"SavedContent", 'String'>
+    readonly userId: FieldRef<"SavedContent", 'String'>
+    readonly contentGenerationId: FieldRef<"SavedContent", 'String'>
+    readonly isFavorite: FieldRef<"SavedContent", 'Boolean'>
+    readonly notes: FieldRef<"SavedContent", 'String'>
+    readonly createdAt: FieldRef<"SavedContent", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SavedContent findUnique
+   */
+  export type SavedContentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter, which SavedContent to fetch.
+     */
+    where: SavedContentWhereUniqueInput
+  }
+
+  /**
+   * SavedContent findUniqueOrThrow
+   */
+  export type SavedContentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter, which SavedContent to fetch.
+     */
+    where: SavedContentWhereUniqueInput
+  }
+
+  /**
+   * SavedContent findFirst
+   */
+  export type SavedContentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter, which SavedContent to fetch.
+     */
+    where?: SavedContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SavedContents to fetch.
+     */
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SavedContents.
+     */
+    cursor?: SavedContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SavedContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SavedContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SavedContents.
+     */
+    distinct?: SavedContentScalarFieldEnum | SavedContentScalarFieldEnum[]
+  }
+
+  /**
+   * SavedContent findFirstOrThrow
+   */
+  export type SavedContentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter, which SavedContent to fetch.
+     */
+    where?: SavedContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SavedContents to fetch.
+     */
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SavedContents.
+     */
+    cursor?: SavedContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SavedContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SavedContents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SavedContents.
+     */
+    distinct?: SavedContentScalarFieldEnum | SavedContentScalarFieldEnum[]
+  }
+
+  /**
+   * SavedContent findMany
+   */
+  export type SavedContentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter, which SavedContents to fetch.
+     */
+    where?: SavedContentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SavedContents to fetch.
+     */
+    orderBy?: SavedContentOrderByWithRelationInput | SavedContentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SavedContents.
+     */
+    cursor?: SavedContentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SavedContents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SavedContents.
+     */
+    skip?: number
+    distinct?: SavedContentScalarFieldEnum | SavedContentScalarFieldEnum[]
+  }
+
+  /**
+   * SavedContent create
+   */
+  export type SavedContentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SavedContent.
+     */
+    data: XOR<SavedContentCreateInput, SavedContentUncheckedCreateInput>
+  }
+
+  /**
+   * SavedContent createMany
+   */
+  export type SavedContentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SavedContents.
+     */
+    data: SavedContentCreateManyInput | SavedContentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SavedContent createManyAndReturn
+   */
+  export type SavedContentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * The data used to create many SavedContents.
+     */
+    data: SavedContentCreateManyInput | SavedContentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SavedContent update
+   */
+  export type SavedContentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SavedContent.
+     */
+    data: XOR<SavedContentUpdateInput, SavedContentUncheckedUpdateInput>
+    /**
+     * Choose, which SavedContent to update.
+     */
+    where: SavedContentWhereUniqueInput
+  }
+
+  /**
+   * SavedContent updateMany
+   */
+  export type SavedContentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SavedContents.
+     */
+    data: XOR<SavedContentUpdateManyMutationInput, SavedContentUncheckedUpdateManyInput>
+    /**
+     * Filter which SavedContents to update
+     */
+    where?: SavedContentWhereInput
+    /**
+     * Limit how many SavedContents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SavedContent updateManyAndReturn
+   */
+  export type SavedContentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * The data used to update SavedContents.
+     */
+    data: XOR<SavedContentUpdateManyMutationInput, SavedContentUncheckedUpdateManyInput>
+    /**
+     * Filter which SavedContents to update
+     */
+    where?: SavedContentWhereInput
+    /**
+     * Limit how many SavedContents to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SavedContent upsert
+   */
+  export type SavedContentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SavedContent to update in case it exists.
+     */
+    where: SavedContentWhereUniqueInput
+    /**
+     * In case the SavedContent found by the `where` argument doesn't exist, create a new SavedContent with this data.
+     */
+    create: XOR<SavedContentCreateInput, SavedContentUncheckedCreateInput>
+    /**
+     * In case the SavedContent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SavedContentUpdateInput, SavedContentUncheckedUpdateInput>
+  }
+
+  /**
+   * SavedContent delete
+   */
+  export type SavedContentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+    /**
+     * Filter which SavedContent to delete.
+     */
+    where: SavedContentWhereUniqueInput
+  }
+
+  /**
+   * SavedContent deleteMany
+   */
+  export type SavedContentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SavedContents to delete
+     */
+    where?: SavedContentWhereInput
+    /**
+     * Limit how many SavedContents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SavedContent without action
+   */
+  export type SavedContentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavedContent
+     */
+    select?: SavedContentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SavedContent
+     */
+    omit?: SavedContentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SavedContentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GenerationStats
+   */
+
+  export type AggregateGenerationStats = {
+    _count: GenerationStatsCountAggregateOutputType | null
+    _avg: GenerationStatsAvgAggregateOutputType | null
+    _sum: GenerationStatsSumAggregateOutputType | null
+    _min: GenerationStatsMinAggregateOutputType | null
+    _max: GenerationStatsMaxAggregateOutputType | null
+  }
+
+  export type GenerationStatsAvgAggregateOutputType = {
+    totalGenerations: number | null
+    websiteDescriptions: number | null
+    socialMediaContent: number | null
+    imagesProcessed: number | null
+    totalCreditsUsed: number | null
+  }
+
+  export type GenerationStatsSumAggregateOutputType = {
+    totalGenerations: number | null
+    websiteDescriptions: number | null
+    socialMediaContent: number | null
+    imagesProcessed: number | null
+    totalCreditsUsed: number | null
+  }
+
+  export type GenerationStatsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    totalGenerations: number | null
+    websiteDescriptions: number | null
+    socialMediaContent: number | null
+    imagesProcessed: number | null
+    totalCreditsUsed: number | null
+    lastGeneratedAt: Date | null
+  }
+
+  export type GenerationStatsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    totalGenerations: number | null
+    websiteDescriptions: number | null
+    socialMediaContent: number | null
+    imagesProcessed: number | null
+    totalCreditsUsed: number | null
+    lastGeneratedAt: Date | null
+  }
+
+  export type GenerationStatsCountAggregateOutputType = {
+    id: number
+    userId: number
+    totalGenerations: number
+    websiteDescriptions: number
+    socialMediaContent: number
+    imagesProcessed: number
+    totalCreditsUsed: number
+    lastGeneratedAt: number
+    _all: number
+  }
+
+
+  export type GenerationStatsAvgAggregateInputType = {
+    totalGenerations?: true
+    websiteDescriptions?: true
+    socialMediaContent?: true
+    imagesProcessed?: true
+    totalCreditsUsed?: true
+  }
+
+  export type GenerationStatsSumAggregateInputType = {
+    totalGenerations?: true
+    websiteDescriptions?: true
+    socialMediaContent?: true
+    imagesProcessed?: true
+    totalCreditsUsed?: true
+  }
+
+  export type GenerationStatsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    totalGenerations?: true
+    websiteDescriptions?: true
+    socialMediaContent?: true
+    imagesProcessed?: true
+    totalCreditsUsed?: true
+    lastGeneratedAt?: true
+  }
+
+  export type GenerationStatsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    totalGenerations?: true
+    websiteDescriptions?: true
+    socialMediaContent?: true
+    imagesProcessed?: true
+    totalCreditsUsed?: true
+    lastGeneratedAt?: true
+  }
+
+  export type GenerationStatsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    totalGenerations?: true
+    websiteDescriptions?: true
+    socialMediaContent?: true
+    imagesProcessed?: true
+    totalCreditsUsed?: true
+    lastGeneratedAt?: true
+    _all?: true
+  }
+
+  export type GenerationStatsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerationStats to aggregate.
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerationStats to fetch.
+     */
+    orderBy?: GenerationStatsOrderByWithRelationInput | GenerationStatsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GenerationStatsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerationStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerationStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GenerationStats
+    **/
+    _count?: true | GenerationStatsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GenerationStatsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GenerationStatsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GenerationStatsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GenerationStatsMaxAggregateInputType
+  }
+
+  export type GetGenerationStatsAggregateType<T extends GenerationStatsAggregateArgs> = {
+        [P in keyof T & keyof AggregateGenerationStats]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGenerationStats[P]>
+      : GetScalarType<T[P], AggregateGenerationStats[P]>
+  }
+
+
+
+
+  export type GenerationStatsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerationStatsWhereInput
+    orderBy?: GenerationStatsOrderByWithAggregationInput | GenerationStatsOrderByWithAggregationInput[]
+    by: GenerationStatsScalarFieldEnum[] | GenerationStatsScalarFieldEnum
+    having?: GenerationStatsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GenerationStatsCountAggregateInputType | true
+    _avg?: GenerationStatsAvgAggregateInputType
+    _sum?: GenerationStatsSumAggregateInputType
+    _min?: GenerationStatsMinAggregateInputType
+    _max?: GenerationStatsMaxAggregateInputType
+  }
+
+  export type GenerationStatsGroupByOutputType = {
+    id: string
+    userId: string
+    totalGenerations: number
+    websiteDescriptions: number
+    socialMediaContent: number
+    imagesProcessed: number
+    totalCreditsUsed: number
+    lastGeneratedAt: Date | null
+    _count: GenerationStatsCountAggregateOutputType | null
+    _avg: GenerationStatsAvgAggregateOutputType | null
+    _sum: GenerationStatsSumAggregateOutputType | null
+    _min: GenerationStatsMinAggregateOutputType | null
+    _max: GenerationStatsMaxAggregateOutputType | null
+  }
+
+  type GetGenerationStatsGroupByPayload<T extends GenerationStatsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GenerationStatsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GenerationStatsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GenerationStatsGroupByOutputType[P]>
+            : GetScalarType<T[P], GenerationStatsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GenerationStatsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    totalGenerations?: boolean
+    websiteDescriptions?: boolean
+    socialMediaContent?: boolean
+    imagesProcessed?: boolean
+    totalCreditsUsed?: boolean
+    lastGeneratedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generationStats"]>
+
+  export type GenerationStatsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    totalGenerations?: boolean
+    websiteDescriptions?: boolean
+    socialMediaContent?: boolean
+    imagesProcessed?: boolean
+    totalCreditsUsed?: boolean
+    lastGeneratedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generationStats"]>
+
+  export type GenerationStatsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    totalGenerations?: boolean
+    websiteDescriptions?: boolean
+    socialMediaContent?: boolean
+    imagesProcessed?: boolean
+    totalCreditsUsed?: boolean
+    lastGeneratedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generationStats"]>
+
+  export type GenerationStatsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    totalGenerations?: boolean
+    websiteDescriptions?: boolean
+    socialMediaContent?: boolean
+    imagesProcessed?: boolean
+    totalCreditsUsed?: boolean
+    lastGeneratedAt?: boolean
+  }
+
+  export type GenerationStatsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "totalGenerations" | "websiteDescriptions" | "socialMediaContent" | "imagesProcessed" | "totalCreditsUsed" | "lastGeneratedAt", ExtArgs["result"]["generationStats"]>
+  export type GenerationStatsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GenerationStatsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GenerationStatsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $GenerationStatsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GenerationStats"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      totalGenerations: number
+      websiteDescriptions: number
+      socialMediaContent: number
+      imagesProcessed: number
+      totalCreditsUsed: number
+      lastGeneratedAt: Date | null
+    }, ExtArgs["result"]["generationStats"]>
+    composites: {}
+  }
+
+  type GenerationStatsGetPayload<S extends boolean | null | undefined | GenerationStatsDefaultArgs> = $Result.GetResult<Prisma.$GenerationStatsPayload, S>
+
+  type GenerationStatsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GenerationStatsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GenerationStatsCountAggregateInputType | true
+    }
+
+  export interface GenerationStatsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GenerationStats'], meta: { name: 'GenerationStats' } }
+    /**
+     * Find zero or one GenerationStats that matches the filter.
+     * @param {GenerationStatsFindUniqueArgs} args - Arguments to find a GenerationStats
+     * @example
+     * // Get one GenerationStats
+     * const generationStats = await prisma.generationStats.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GenerationStatsFindUniqueArgs>(args: SelectSubset<T, GenerationStatsFindUniqueArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GenerationStats that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GenerationStatsFindUniqueOrThrowArgs} args - Arguments to find a GenerationStats
+     * @example
+     * // Get one GenerationStats
+     * const generationStats = await prisma.generationStats.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GenerationStatsFindUniqueOrThrowArgs>(args: SelectSubset<T, GenerationStatsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerationStats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsFindFirstArgs} args - Arguments to find a GenerationStats
+     * @example
+     * // Get one GenerationStats
+     * const generationStats = await prisma.generationStats.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GenerationStatsFindFirstArgs>(args?: SelectSubset<T, GenerationStatsFindFirstArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerationStats that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsFindFirstOrThrowArgs} args - Arguments to find a GenerationStats
+     * @example
+     * // Get one GenerationStats
+     * const generationStats = await prisma.generationStats.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GenerationStatsFindFirstOrThrowArgs>(args?: SelectSubset<T, GenerationStatsFindFirstOrThrowArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GenerationStats that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GenerationStats
+     * const generationStats = await prisma.generationStats.findMany()
+     * 
+     * // Get first 10 GenerationStats
+     * const generationStats = await prisma.generationStats.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const generationStatsWithIdOnly = await prisma.generationStats.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GenerationStatsFindManyArgs>(args?: SelectSubset<T, GenerationStatsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GenerationStats.
+     * @param {GenerationStatsCreateArgs} args - Arguments to create a GenerationStats.
+     * @example
+     * // Create one GenerationStats
+     * const GenerationStats = await prisma.generationStats.create({
+     *   data: {
+     *     // ... data to create a GenerationStats
+     *   }
+     * })
+     * 
+     */
+    create<T extends GenerationStatsCreateArgs>(args: SelectSubset<T, GenerationStatsCreateArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GenerationStats.
+     * @param {GenerationStatsCreateManyArgs} args - Arguments to create many GenerationStats.
+     * @example
+     * // Create many GenerationStats
+     * const generationStats = await prisma.generationStats.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GenerationStatsCreateManyArgs>(args?: SelectSubset<T, GenerationStatsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GenerationStats and returns the data saved in the database.
+     * @param {GenerationStatsCreateManyAndReturnArgs} args - Arguments to create many GenerationStats.
+     * @example
+     * // Create many GenerationStats
+     * const generationStats = await prisma.generationStats.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GenerationStats and only return the `id`
+     * const generationStatsWithIdOnly = await prisma.generationStats.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GenerationStatsCreateManyAndReturnArgs>(args?: SelectSubset<T, GenerationStatsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GenerationStats.
+     * @param {GenerationStatsDeleteArgs} args - Arguments to delete one GenerationStats.
+     * @example
+     * // Delete one GenerationStats
+     * const GenerationStats = await prisma.generationStats.delete({
+     *   where: {
+     *     // ... filter to delete one GenerationStats
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GenerationStatsDeleteArgs>(args: SelectSubset<T, GenerationStatsDeleteArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GenerationStats.
+     * @param {GenerationStatsUpdateArgs} args - Arguments to update one GenerationStats.
+     * @example
+     * // Update one GenerationStats
+     * const generationStats = await prisma.generationStats.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GenerationStatsUpdateArgs>(args: SelectSubset<T, GenerationStatsUpdateArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GenerationStats.
+     * @param {GenerationStatsDeleteManyArgs} args - Arguments to filter GenerationStats to delete.
+     * @example
+     * // Delete a few GenerationStats
+     * const { count } = await prisma.generationStats.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GenerationStatsDeleteManyArgs>(args?: SelectSubset<T, GenerationStatsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerationStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GenerationStats
+     * const generationStats = await prisma.generationStats.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GenerationStatsUpdateManyArgs>(args: SelectSubset<T, GenerationStatsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerationStats and returns the data updated in the database.
+     * @param {GenerationStatsUpdateManyAndReturnArgs} args - Arguments to update many GenerationStats.
+     * @example
+     * // Update many GenerationStats
+     * const generationStats = await prisma.generationStats.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GenerationStats and only return the `id`
+     * const generationStatsWithIdOnly = await prisma.generationStats.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GenerationStatsUpdateManyAndReturnArgs>(args: SelectSubset<T, GenerationStatsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GenerationStats.
+     * @param {GenerationStatsUpsertArgs} args - Arguments to update or create a GenerationStats.
+     * @example
+     * // Update or create a GenerationStats
+     * const generationStats = await prisma.generationStats.upsert({
+     *   create: {
+     *     // ... data to create a GenerationStats
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GenerationStats we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GenerationStatsUpsertArgs>(args: SelectSubset<T, GenerationStatsUpsertArgs<ExtArgs>>): Prisma__GenerationStatsClient<$Result.GetResult<Prisma.$GenerationStatsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GenerationStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsCountArgs} args - Arguments to filter GenerationStats to count.
+     * @example
+     * // Count the number of GenerationStats
+     * const count = await prisma.generationStats.count({
+     *   where: {
+     *     // ... the filter for the GenerationStats we want to count
+     *   }
+     * })
+    **/
+    count<T extends GenerationStatsCountArgs>(
+      args?: Subset<T, GenerationStatsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GenerationStatsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GenerationStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GenerationStatsAggregateArgs>(args: Subset<T, GenerationStatsAggregateArgs>): Prisma.PrismaPromise<GetGenerationStatsAggregateType<T>>
+
+    /**
+     * Group by GenerationStats.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerationStatsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GenerationStatsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GenerationStatsGroupByArgs['orderBy'] }
+        : { orderBy?: GenerationStatsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GenerationStatsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGenerationStatsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GenerationStats model
+   */
+  readonly fields: GenerationStatsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GenerationStats.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GenerationStatsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GenerationStats model
+   */
+  interface GenerationStatsFieldRefs {
+    readonly id: FieldRef<"GenerationStats", 'String'>
+    readonly userId: FieldRef<"GenerationStats", 'String'>
+    readonly totalGenerations: FieldRef<"GenerationStats", 'Int'>
+    readonly websiteDescriptions: FieldRef<"GenerationStats", 'Int'>
+    readonly socialMediaContent: FieldRef<"GenerationStats", 'Int'>
+    readonly imagesProcessed: FieldRef<"GenerationStats", 'Int'>
+    readonly totalCreditsUsed: FieldRef<"GenerationStats", 'Int'>
+    readonly lastGeneratedAt: FieldRef<"GenerationStats", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GenerationStats findUnique
+   */
+  export type GenerationStatsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerationStats to fetch.
+     */
+    where: GenerationStatsWhereUniqueInput
+  }
+
+  /**
+   * GenerationStats findUniqueOrThrow
+   */
+  export type GenerationStatsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerationStats to fetch.
+     */
+    where: GenerationStatsWhereUniqueInput
+  }
+
+  /**
+   * GenerationStats findFirst
+   */
+  export type GenerationStatsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerationStats to fetch.
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerationStats to fetch.
+     */
+    orderBy?: GenerationStatsOrderByWithRelationInput | GenerationStatsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerationStats.
+     */
+    cursor?: GenerationStatsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerationStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerationStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerationStats.
+     */
+    distinct?: GenerationStatsScalarFieldEnum | GenerationStatsScalarFieldEnum[]
+  }
+
+  /**
+   * GenerationStats findFirstOrThrow
+   */
+  export type GenerationStatsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerationStats to fetch.
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerationStats to fetch.
+     */
+    orderBy?: GenerationStatsOrderByWithRelationInput | GenerationStatsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerationStats.
+     */
+    cursor?: GenerationStatsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerationStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerationStats.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerationStats.
+     */
+    distinct?: GenerationStatsScalarFieldEnum | GenerationStatsScalarFieldEnum[]
+  }
+
+  /**
+   * GenerationStats findMany
+   */
+  export type GenerationStatsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerationStats to fetch.
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerationStats to fetch.
+     */
+    orderBy?: GenerationStatsOrderByWithRelationInput | GenerationStatsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GenerationStats.
+     */
+    cursor?: GenerationStatsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerationStats from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerationStats.
+     */
+    skip?: number
+    distinct?: GenerationStatsScalarFieldEnum | GenerationStatsScalarFieldEnum[]
+  }
+
+  /**
+   * GenerationStats create
+   */
+  export type GenerationStatsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GenerationStats.
+     */
+    data: XOR<GenerationStatsCreateInput, GenerationStatsUncheckedCreateInput>
+  }
+
+  /**
+   * GenerationStats createMany
+   */
+  export type GenerationStatsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GenerationStats.
+     */
+    data: GenerationStatsCreateManyInput | GenerationStatsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GenerationStats createManyAndReturn
+   */
+  export type GenerationStatsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * The data used to create many GenerationStats.
+     */
+    data: GenerationStatsCreateManyInput | GenerationStatsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerationStats update
+   */
+  export type GenerationStatsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GenerationStats.
+     */
+    data: XOR<GenerationStatsUpdateInput, GenerationStatsUncheckedUpdateInput>
+    /**
+     * Choose, which GenerationStats to update.
+     */
+    where: GenerationStatsWhereUniqueInput
+  }
+
+  /**
+   * GenerationStats updateMany
+   */
+  export type GenerationStatsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GenerationStats.
+     */
+    data: XOR<GenerationStatsUpdateManyMutationInput, GenerationStatsUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerationStats to update
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * Limit how many GenerationStats to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerationStats updateManyAndReturn
+   */
+  export type GenerationStatsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * The data used to update GenerationStats.
+     */
+    data: XOR<GenerationStatsUpdateManyMutationInput, GenerationStatsUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerationStats to update
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * Limit how many GenerationStats to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerationStats upsert
+   */
+  export type GenerationStatsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GenerationStats to update in case it exists.
+     */
+    where: GenerationStatsWhereUniqueInput
+    /**
+     * In case the GenerationStats found by the `where` argument doesn't exist, create a new GenerationStats with this data.
+     */
+    create: XOR<GenerationStatsCreateInput, GenerationStatsUncheckedCreateInput>
+    /**
+     * In case the GenerationStats was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GenerationStatsUpdateInput, GenerationStatsUncheckedUpdateInput>
+  }
+
+  /**
+   * GenerationStats delete
+   */
+  export type GenerationStatsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
+    /**
+     * Filter which GenerationStats to delete.
+     */
+    where: GenerationStatsWhereUniqueInput
+  }
+
+  /**
+   * GenerationStats deleteMany
+   */
+  export type GenerationStatsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerationStats to delete
+     */
+    where?: GenerationStatsWhereInput
+    /**
+     * Limit how many GenerationStats to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerationStats without action
+   */
+  export type GenerationStatsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerationStats
+     */
+    select?: GenerationStatsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerationStats
+     */
+    omit?: GenerationStatsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerationStatsInclude<ExtArgs> | null
   }
 
 
@@ -8646,6 +12557,49 @@ export namespace Prisma {
   };
 
   export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+
+
+  export const ContentGenerationScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    mediaId: 'mediaId',
+    contentType: 'contentType',
+    platform: 'platform',
+    tone: 'tone',
+    promptText: 'promptText',
+    generatedContent: 'generatedContent',
+    keywords: 'keywords',
+    creditsUsed: 'creditsUsed',
+    createdAt: 'createdAt'
+  };
+
+  export type ContentGenerationScalarFieldEnum = (typeof ContentGenerationScalarFieldEnum)[keyof typeof ContentGenerationScalarFieldEnum]
+
+
+  export const SavedContentScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    contentGenerationId: 'contentGenerationId',
+    isFavorite: 'isFavorite',
+    notes: 'notes',
+    createdAt: 'createdAt'
+  };
+
+  export type SavedContentScalarFieldEnum = (typeof SavedContentScalarFieldEnum)[keyof typeof SavedContentScalarFieldEnum]
+
+
+  export const GenerationStatsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    totalGenerations: 'totalGenerations',
+    websiteDescriptions: 'websiteDescriptions',
+    socialMediaContent: 'socialMediaContent',
+    imagesProcessed: 'imagesProcessed',
+    totalCreditsUsed: 'totalCreditsUsed',
+    lastGeneratedAt: 'lastGeneratedAt'
+  };
+
+  export type GenerationStatsScalarFieldEnum = (typeof GenerationStatsScalarFieldEnum)[keyof typeof GenerationStatsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8787,6 +12741,9 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     products?: ProductListRelationFilter
     mediaItems?: MediaListRelationFilter
+    contentHistory?: ContentGenerationListRelationFilter
+    savedContent?: SavedContentListRelationFilter
+    generationStats?: XOR<GenerationStatsNullableScalarRelationFilter, GenerationStatsWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8802,6 +12759,9 @@ export namespace Prisma {
     subscription?: SubscriptionOrderByWithRelationInput
     products?: ProductOrderByRelationAggregateInput
     mediaItems?: MediaOrderByRelationAggregateInput
+    contentHistory?: ContentGenerationOrderByRelationAggregateInput
+    savedContent?: SavedContentOrderByRelationAggregateInput
+    generationStats?: GenerationStatsOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8820,6 +12780,9 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     products?: ProductListRelationFilter
     mediaItems?: MediaListRelationFilter
+    contentHistory?: ContentGenerationListRelationFilter
+    savedContent?: SavedContentListRelationFilter
+    generationStats?: XOR<GenerationStatsNullableScalarRelationFilter, GenerationStatsWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9211,6 +13174,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Media"> | Date | string
     product?: XOR<ProductNullableScalarRelationFilter, ProductWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    contentGenerations?: ContentGenerationListRelationFilter
   }
 
   export type MediaOrderByWithRelationInput = {
@@ -9226,6 +13190,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     product?: ProductOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
+    contentGenerations?: ContentGenerationOrderByRelationAggregateInput
   }
 
   export type MediaWhereUniqueInput = Prisma.AtLeast<{
@@ -9244,6 +13209,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Media"> | Date | string
     product?: XOR<ProductNullableScalarRelationFilter, ProductWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    contentGenerations?: ContentGenerationListRelationFilter
   }, "id">
 
   export type MediaOrderByWithAggregationInput = {
@@ -9280,6 +13246,235 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
   }
 
+  export type ContentGenerationWhereInput = {
+    AND?: ContentGenerationWhereInput | ContentGenerationWhereInput[]
+    OR?: ContentGenerationWhereInput[]
+    NOT?: ContentGenerationWhereInput | ContentGenerationWhereInput[]
+    id?: StringFilter<"ContentGeneration"> | string
+    userId?: StringFilter<"ContentGeneration"> | string
+    mediaId?: StringNullableFilter<"ContentGeneration"> | string | null
+    contentType?: StringFilter<"ContentGeneration"> | string
+    platform?: StringNullableFilter<"ContentGeneration"> | string | null
+    tone?: StringFilter<"ContentGeneration"> | string
+    promptText?: StringNullableFilter<"ContentGeneration"> | string | null
+    generatedContent?: StringFilter<"ContentGeneration"> | string
+    keywords?: StringNullableListFilter<"ContentGeneration">
+    creditsUsed?: IntFilter<"ContentGeneration"> | number
+    createdAt?: DateTimeFilter<"ContentGeneration"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    media?: XOR<MediaNullableScalarRelationFilter, MediaWhereInput> | null
+    savedBy?: SavedContentListRelationFilter
+  }
+
+  export type ContentGenerationOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    contentType?: SortOrder
+    platform?: SortOrderInput | SortOrder
+    tone?: SortOrder
+    promptText?: SortOrderInput | SortOrder
+    generatedContent?: SortOrder
+    keywords?: SortOrder
+    creditsUsed?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    media?: MediaOrderByWithRelationInput
+    savedBy?: SavedContentOrderByRelationAggregateInput
+  }
+
+  export type ContentGenerationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ContentGenerationWhereInput | ContentGenerationWhereInput[]
+    OR?: ContentGenerationWhereInput[]
+    NOT?: ContentGenerationWhereInput | ContentGenerationWhereInput[]
+    userId?: StringFilter<"ContentGeneration"> | string
+    mediaId?: StringNullableFilter<"ContentGeneration"> | string | null
+    contentType?: StringFilter<"ContentGeneration"> | string
+    platform?: StringNullableFilter<"ContentGeneration"> | string | null
+    tone?: StringFilter<"ContentGeneration"> | string
+    promptText?: StringNullableFilter<"ContentGeneration"> | string | null
+    generatedContent?: StringFilter<"ContentGeneration"> | string
+    keywords?: StringNullableListFilter<"ContentGeneration">
+    creditsUsed?: IntFilter<"ContentGeneration"> | number
+    createdAt?: DateTimeFilter<"ContentGeneration"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    media?: XOR<MediaNullableScalarRelationFilter, MediaWhereInput> | null
+    savedBy?: SavedContentListRelationFilter
+  }, "id">
+
+  export type ContentGenerationOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    contentType?: SortOrder
+    platform?: SortOrderInput | SortOrder
+    tone?: SortOrder
+    promptText?: SortOrderInput | SortOrder
+    generatedContent?: SortOrder
+    keywords?: SortOrder
+    creditsUsed?: SortOrder
+    createdAt?: SortOrder
+    _count?: ContentGenerationCountOrderByAggregateInput
+    _avg?: ContentGenerationAvgOrderByAggregateInput
+    _max?: ContentGenerationMaxOrderByAggregateInput
+    _min?: ContentGenerationMinOrderByAggregateInput
+    _sum?: ContentGenerationSumOrderByAggregateInput
+  }
+
+  export type ContentGenerationScalarWhereWithAggregatesInput = {
+    AND?: ContentGenerationScalarWhereWithAggregatesInput | ContentGenerationScalarWhereWithAggregatesInput[]
+    OR?: ContentGenerationScalarWhereWithAggregatesInput[]
+    NOT?: ContentGenerationScalarWhereWithAggregatesInput | ContentGenerationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ContentGeneration"> | string
+    userId?: StringWithAggregatesFilter<"ContentGeneration"> | string
+    mediaId?: StringNullableWithAggregatesFilter<"ContentGeneration"> | string | null
+    contentType?: StringWithAggregatesFilter<"ContentGeneration"> | string
+    platform?: StringNullableWithAggregatesFilter<"ContentGeneration"> | string | null
+    tone?: StringWithAggregatesFilter<"ContentGeneration"> | string
+    promptText?: StringNullableWithAggregatesFilter<"ContentGeneration"> | string | null
+    generatedContent?: StringWithAggregatesFilter<"ContentGeneration"> | string
+    keywords?: StringNullableListFilter<"ContentGeneration">
+    creditsUsed?: IntWithAggregatesFilter<"ContentGeneration"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ContentGeneration"> | Date | string
+  }
+
+  export type SavedContentWhereInput = {
+    AND?: SavedContentWhereInput | SavedContentWhereInput[]
+    OR?: SavedContentWhereInput[]
+    NOT?: SavedContentWhereInput | SavedContentWhereInput[]
+    id?: StringFilter<"SavedContent"> | string
+    userId?: StringFilter<"SavedContent"> | string
+    contentGenerationId?: StringFilter<"SavedContent"> | string
+    isFavorite?: BoolFilter<"SavedContent"> | boolean
+    notes?: StringNullableFilter<"SavedContent"> | string | null
+    createdAt?: DateTimeFilter<"SavedContent"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    contentGeneration?: XOR<ContentGenerationScalarRelationFilter, ContentGenerationWhereInput>
+  }
+
+  export type SavedContentOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    contentGenerationId?: SortOrder
+    isFavorite?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    contentGeneration?: ContentGenerationOrderByWithRelationInput
+  }
+
+  export type SavedContentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_contentGenerationId?: SavedContentUserIdContentGenerationIdCompoundUniqueInput
+    AND?: SavedContentWhereInput | SavedContentWhereInput[]
+    OR?: SavedContentWhereInput[]
+    NOT?: SavedContentWhereInput | SavedContentWhereInput[]
+    userId?: StringFilter<"SavedContent"> | string
+    contentGenerationId?: StringFilter<"SavedContent"> | string
+    isFavorite?: BoolFilter<"SavedContent"> | boolean
+    notes?: StringNullableFilter<"SavedContent"> | string | null
+    createdAt?: DateTimeFilter<"SavedContent"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    contentGeneration?: XOR<ContentGenerationScalarRelationFilter, ContentGenerationWhereInput>
+  }, "id" | "userId_contentGenerationId">
+
+  export type SavedContentOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    contentGenerationId?: SortOrder
+    isFavorite?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: SavedContentCountOrderByAggregateInput
+    _max?: SavedContentMaxOrderByAggregateInput
+    _min?: SavedContentMinOrderByAggregateInput
+  }
+
+  export type SavedContentScalarWhereWithAggregatesInput = {
+    AND?: SavedContentScalarWhereWithAggregatesInput | SavedContentScalarWhereWithAggregatesInput[]
+    OR?: SavedContentScalarWhereWithAggregatesInput[]
+    NOT?: SavedContentScalarWhereWithAggregatesInput | SavedContentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SavedContent"> | string
+    userId?: StringWithAggregatesFilter<"SavedContent"> | string
+    contentGenerationId?: StringWithAggregatesFilter<"SavedContent"> | string
+    isFavorite?: BoolWithAggregatesFilter<"SavedContent"> | boolean
+    notes?: StringNullableWithAggregatesFilter<"SavedContent"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"SavedContent"> | Date | string
+  }
+
+  export type GenerationStatsWhereInput = {
+    AND?: GenerationStatsWhereInput | GenerationStatsWhereInput[]
+    OR?: GenerationStatsWhereInput[]
+    NOT?: GenerationStatsWhereInput | GenerationStatsWhereInput[]
+    id?: StringFilter<"GenerationStats"> | string
+    userId?: StringFilter<"GenerationStats"> | string
+    totalGenerations?: IntFilter<"GenerationStats"> | number
+    websiteDescriptions?: IntFilter<"GenerationStats"> | number
+    socialMediaContent?: IntFilter<"GenerationStats"> | number
+    imagesProcessed?: IntFilter<"GenerationStats"> | number
+    totalCreditsUsed?: IntFilter<"GenerationStats"> | number
+    lastGeneratedAt?: DateTimeNullableFilter<"GenerationStats"> | Date | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type GenerationStatsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+    lastGeneratedAt?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type GenerationStatsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: GenerationStatsWhereInput | GenerationStatsWhereInput[]
+    OR?: GenerationStatsWhereInput[]
+    NOT?: GenerationStatsWhereInput | GenerationStatsWhereInput[]
+    totalGenerations?: IntFilter<"GenerationStats"> | number
+    websiteDescriptions?: IntFilter<"GenerationStats"> | number
+    socialMediaContent?: IntFilter<"GenerationStats"> | number
+    imagesProcessed?: IntFilter<"GenerationStats"> | number
+    totalCreditsUsed?: IntFilter<"GenerationStats"> | number
+    lastGeneratedAt?: DateTimeNullableFilter<"GenerationStats"> | Date | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type GenerationStatsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+    lastGeneratedAt?: SortOrderInput | SortOrder
+    _count?: GenerationStatsCountOrderByAggregateInput
+    _avg?: GenerationStatsAvgOrderByAggregateInput
+    _max?: GenerationStatsMaxOrderByAggregateInput
+    _min?: GenerationStatsMinOrderByAggregateInput
+    _sum?: GenerationStatsSumOrderByAggregateInput
+  }
+
+  export type GenerationStatsScalarWhereWithAggregatesInput = {
+    AND?: GenerationStatsScalarWhereWithAggregatesInput | GenerationStatsScalarWhereWithAggregatesInput[]
+    OR?: GenerationStatsScalarWhereWithAggregatesInput[]
+    NOT?: GenerationStatsScalarWhereWithAggregatesInput | GenerationStatsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GenerationStats"> | string
+    userId?: StringWithAggregatesFilter<"GenerationStats"> | string
+    totalGenerations?: IntWithAggregatesFilter<"GenerationStats"> | number
+    websiteDescriptions?: IntWithAggregatesFilter<"GenerationStats"> | number
+    socialMediaContent?: IntWithAggregatesFilter<"GenerationStats"> | number
+    imagesProcessed?: IntWithAggregatesFilter<"GenerationStats"> | number
+    totalCreditsUsed?: IntWithAggregatesFilter<"GenerationStats"> | number
+    lastGeneratedAt?: DateTimeNullableWithAggregatesFilter<"GenerationStats"> | Date | string | null
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -9293,6 +13488,9 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9308,6 +13506,9 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9323,6 +13524,9 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9338,6 +13542,9 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9766,6 +13973,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     product?: ProductCreateNestedOneWithoutMediaItemsInput
     user: UserCreateNestedOneWithoutMediaItemsInput
+    contentGenerations?: ContentGenerationCreateNestedManyWithoutMediaInput
   }
 
   export type MediaUncheckedCreateInput = {
@@ -9779,6 +13987,7 @@ export namespace Prisma {
     isPublic?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contentGenerations?: ContentGenerationUncheckedCreateNestedManyWithoutMediaInput
   }
 
   export type MediaUpdateInput = {
@@ -9792,6 +14001,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductUpdateOneWithoutMediaItemsNestedInput
     user?: UserUpdateOneRequiredWithoutMediaItemsNestedInput
+    contentGenerations?: ContentGenerationUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateInput = {
@@ -9805,6 +14015,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentGenerations?: ContentGenerationUncheckedUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaCreateManyInput = {
@@ -9842,6 +14053,243 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentGenerationCreateInput = {
+    id?: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutContentHistoryInput
+    media?: MediaCreateNestedOneWithoutContentGenerationsInput
+    savedBy?: SavedContentCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationUncheckedCreateInput = {
+    id?: string
+    userId: string
+    mediaId?: string | null
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    savedBy?: SavedContentUncheckedCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutContentHistoryNestedInput
+    media?: MediaUpdateOneWithoutContentGenerationsNestedInput
+    savedBy?: SavedContentUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    savedBy?: SavedContentUncheckedUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationCreateManyInput = {
+    id?: string
+    userId: string
+    mediaId?: string | null
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+  }
+
+  export type ContentGenerationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentGenerationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentCreateInput = {
+    id?: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutSavedContentInput
+    contentGeneration: ContentGenerationCreateNestedOneWithoutSavedByInput
+  }
+
+  export type SavedContentUncheckedCreateInput = {
+    id?: string
+    userId: string
+    contentGenerationId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type SavedContentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSavedContentNestedInput
+    contentGeneration?: ContentGenerationUpdateOneRequiredWithoutSavedByNestedInput
+  }
+
+  export type SavedContentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    contentGenerationId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentCreateManyInput = {
+    id?: string
+    userId: string
+    contentGenerationId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type SavedContentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    contentGenerationId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerationStatsCreateInput = {
+    id?: string
+    totalGenerations?: number
+    websiteDescriptions?: number
+    socialMediaContent?: number
+    imagesProcessed?: number
+    totalCreditsUsed?: number
+    lastGeneratedAt?: Date | string | null
+    user: UserCreateNestedOneWithoutGenerationStatsInput
+  }
+
+  export type GenerationStatsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    totalGenerations?: number
+    websiteDescriptions?: number
+    socialMediaContent?: number
+    imagesProcessed?: number
+    totalCreditsUsed?: number
+    lastGeneratedAt?: Date | string | null
+  }
+
+  export type GenerationStatsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutGenerationStatsNestedInput
+  }
+
+  export type GenerationStatsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GenerationStatsCreateManyInput = {
+    id?: string
+    userId: string
+    totalGenerations?: number
+    websiteDescriptions?: number
+    socialMediaContent?: number
+    imagesProcessed?: number
+    totalCreditsUsed?: number
+    lastGeneratedAt?: Date | string | null
+  }
+
+  export type GenerationStatsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GenerationStatsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9919,6 +14367,23 @@ export namespace Prisma {
     none?: MediaWhereInput
   }
 
+  export type ContentGenerationListRelationFilter = {
+    every?: ContentGenerationWhereInput
+    some?: ContentGenerationWhereInput
+    none?: ContentGenerationWhereInput
+  }
+
+  export type SavedContentListRelationFilter = {
+    every?: SavedContentWhereInput
+    some?: SavedContentWhereInput
+    none?: SavedContentWhereInput
+  }
+
+  export type GenerationStatsNullableScalarRelationFilter = {
+    is?: GenerationStatsWhereInput | null
+    isNot?: GenerationStatsWhereInput | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9933,6 +14398,14 @@ export namespace Prisma {
   }
 
   export type MediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ContentGenerationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SavedContentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10438,6 +14911,145 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type MediaNullableScalarRelationFilter = {
+    is?: MediaWhereInput | null
+    isNot?: MediaWhereInput | null
+  }
+
+  export type ContentGenerationCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mediaId?: SortOrder
+    contentType?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    promptText?: SortOrder
+    generatedContent?: SortOrder
+    keywords?: SortOrder
+    creditsUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ContentGenerationAvgOrderByAggregateInput = {
+    creditsUsed?: SortOrder
+  }
+
+  export type ContentGenerationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mediaId?: SortOrder
+    contentType?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    promptText?: SortOrder
+    generatedContent?: SortOrder
+    creditsUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ContentGenerationMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mediaId?: SortOrder
+    contentType?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    promptText?: SortOrder
+    generatedContent?: SortOrder
+    creditsUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ContentGenerationSumOrderByAggregateInput = {
+    creditsUsed?: SortOrder
+  }
+
+  export type ContentGenerationScalarRelationFilter = {
+    is?: ContentGenerationWhereInput
+    isNot?: ContentGenerationWhereInput
+  }
+
+  export type SavedContentUserIdContentGenerationIdCompoundUniqueInput = {
+    userId: string
+    contentGenerationId: string
+  }
+
+  export type SavedContentCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    contentGenerationId?: SortOrder
+    isFavorite?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SavedContentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    contentGenerationId?: SortOrder
+    isFavorite?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SavedContentMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    contentGenerationId?: SortOrder
+    isFavorite?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GenerationStatsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+    lastGeneratedAt?: SortOrder
+  }
+
+  export type GenerationStatsAvgOrderByAggregateInput = {
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+  }
+
+  export type GenerationStatsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+    lastGeneratedAt?: SortOrder
+  }
+
+  export type GenerationStatsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+    lastGeneratedAt?: SortOrder
+  }
+
+  export type GenerationStatsSumOrderByAggregateInput = {
+    totalGenerations?: SortOrder
+    websiteDescriptions?: SortOrder
+    socialMediaContent?: SortOrder
+    imagesProcessed?: SortOrder
+    totalCreditsUsed?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10465,6 +15077,26 @@ export namespace Prisma {
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
+  export type ContentGenerationCreateNestedManyWithoutUserInput = {
+    create?: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput> | ContentGenerationCreateWithoutUserInput[] | ContentGenerationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutUserInput | ContentGenerationCreateOrConnectWithoutUserInput[]
+    createMany?: ContentGenerationCreateManyUserInputEnvelope
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+  }
+
+  export type SavedContentCreateNestedManyWithoutUserInput = {
+    create?: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput> | SavedContentCreateWithoutUserInput[] | SavedContentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutUserInput | SavedContentCreateOrConnectWithoutUserInput[]
+    createMany?: SavedContentCreateManyUserInputEnvelope
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+  }
+
+  export type GenerationStatsCreateNestedOneWithoutUserInput = {
+    create?: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: GenerationStatsCreateOrConnectWithoutUserInput
+    connect?: GenerationStatsWhereUniqueInput
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10490,6 +15122,26 @@ export namespace Prisma {
     connectOrCreate?: MediaCreateOrConnectWithoutUserInput | MediaCreateOrConnectWithoutUserInput[]
     createMany?: MediaCreateManyUserInputEnvelope
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+  }
+
+  export type ContentGenerationUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput> | ContentGenerationCreateWithoutUserInput[] | ContentGenerationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutUserInput | ContentGenerationCreateOrConnectWithoutUserInput[]
+    createMany?: ContentGenerationCreateManyUserInputEnvelope
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+  }
+
+  export type SavedContentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput> | SavedContentCreateWithoutUserInput[] | SavedContentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutUserInput | SavedContentCreateOrConnectWithoutUserInput[]
+    createMany?: SavedContentCreateManyUserInputEnvelope
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+  }
+
+  export type GenerationStatsUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: GenerationStatsCreateOrConnectWithoutUserInput
+    connect?: GenerationStatsWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10560,6 +15212,44 @@ export namespace Prisma {
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
+  export type ContentGenerationUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput> | ContentGenerationCreateWithoutUserInput[] | ContentGenerationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutUserInput | ContentGenerationCreateOrConnectWithoutUserInput[]
+    upsert?: ContentGenerationUpsertWithWhereUniqueWithoutUserInput | ContentGenerationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ContentGenerationCreateManyUserInputEnvelope
+    set?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    disconnect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    delete?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    update?: ContentGenerationUpdateWithWhereUniqueWithoutUserInput | ContentGenerationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ContentGenerationUpdateManyWithWhereWithoutUserInput | ContentGenerationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+  }
+
+  export type SavedContentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput> | SavedContentCreateWithoutUserInput[] | SavedContentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutUserInput | SavedContentCreateOrConnectWithoutUserInput[]
+    upsert?: SavedContentUpsertWithWhereUniqueWithoutUserInput | SavedContentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SavedContentCreateManyUserInputEnvelope
+    set?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    disconnect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    delete?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    update?: SavedContentUpdateWithWhereUniqueWithoutUserInput | SavedContentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SavedContentUpdateManyWithWhereWithoutUserInput | SavedContentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+  }
+
+  export type GenerationStatsUpdateOneWithoutUserNestedInput = {
+    create?: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: GenerationStatsCreateOrConnectWithoutUserInput
+    upsert?: GenerationStatsUpsertWithoutUserInput
+    disconnect?: GenerationStatsWhereInput | boolean
+    delete?: GenerationStatsWhereInput | boolean
+    connect?: GenerationStatsWhereUniqueInput
+    update?: XOR<XOR<GenerationStatsUpdateToOneWithWhereWithoutUserInput, GenerationStatsUpdateWithoutUserInput>, GenerationStatsUncheckedUpdateWithoutUserInput>
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10610,6 +15300,44 @@ export namespace Prisma {
     update?: MediaUpdateWithWhereUniqueWithoutUserInput | MediaUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: MediaUpdateManyWithWhereWithoutUserInput | MediaUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
+  }
+
+  export type ContentGenerationUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput> | ContentGenerationCreateWithoutUserInput[] | ContentGenerationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutUserInput | ContentGenerationCreateOrConnectWithoutUserInput[]
+    upsert?: ContentGenerationUpsertWithWhereUniqueWithoutUserInput | ContentGenerationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ContentGenerationCreateManyUserInputEnvelope
+    set?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    disconnect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    delete?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    update?: ContentGenerationUpdateWithWhereUniqueWithoutUserInput | ContentGenerationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ContentGenerationUpdateManyWithWhereWithoutUserInput | ContentGenerationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+  }
+
+  export type SavedContentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput> | SavedContentCreateWithoutUserInput[] | SavedContentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutUserInput | SavedContentCreateOrConnectWithoutUserInput[]
+    upsert?: SavedContentUpsertWithWhereUniqueWithoutUserInput | SavedContentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SavedContentCreateManyUserInputEnvelope
+    set?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    disconnect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    delete?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    update?: SavedContentUpdateWithWhereUniqueWithoutUserInput | SavedContentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SavedContentUpdateManyWithWhereWithoutUserInput | SavedContentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+  }
+
+  export type GenerationStatsUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: GenerationStatsCreateOrConnectWithoutUserInput
+    upsert?: GenerationStatsUpsertWithoutUserInput
+    disconnect?: GenerationStatsWhereInput | boolean
+    delete?: GenerationStatsWhereInput | boolean
+    connect?: GenerationStatsWhereUniqueInput
+    update?: XOR<XOR<GenerationStatsUpdateToOneWithWhereWithoutUserInput, GenerationStatsUpdateWithoutUserInput>, GenerationStatsUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -10814,6 +15542,20 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type ContentGenerationCreateNestedManyWithoutMediaInput = {
+    create?: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput> | ContentGenerationCreateWithoutMediaInput[] | ContentGenerationUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutMediaInput | ContentGenerationCreateOrConnectWithoutMediaInput[]
+    createMany?: ContentGenerationCreateManyMediaInputEnvelope
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+  }
+
+  export type ContentGenerationUncheckedCreateNestedManyWithoutMediaInput = {
+    create?: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput> | ContentGenerationCreateWithoutMediaInput[] | ContentGenerationUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutMediaInput | ContentGenerationCreateOrConnectWithoutMediaInput[]
+    createMany?: ContentGenerationCreateManyMediaInputEnvelope
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -10834,6 +15576,157 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutMediaItemsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMediaItemsInput, UserUpdateWithoutMediaItemsInput>, UserUncheckedUpdateWithoutMediaItemsInput>
+  }
+
+  export type ContentGenerationUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput> | ContentGenerationCreateWithoutMediaInput[] | ContentGenerationUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutMediaInput | ContentGenerationCreateOrConnectWithoutMediaInput[]
+    upsert?: ContentGenerationUpsertWithWhereUniqueWithoutMediaInput | ContentGenerationUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: ContentGenerationCreateManyMediaInputEnvelope
+    set?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    disconnect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    delete?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    update?: ContentGenerationUpdateWithWhereUniqueWithoutMediaInput | ContentGenerationUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: ContentGenerationUpdateManyWithWhereWithoutMediaInput | ContentGenerationUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+  }
+
+  export type ContentGenerationUncheckedUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput> | ContentGenerationCreateWithoutMediaInput[] | ContentGenerationUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutMediaInput | ContentGenerationCreateOrConnectWithoutMediaInput[]
+    upsert?: ContentGenerationUpsertWithWhereUniqueWithoutMediaInput | ContentGenerationUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: ContentGenerationCreateManyMediaInputEnvelope
+    set?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    disconnect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    delete?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    connect?: ContentGenerationWhereUniqueInput | ContentGenerationWhereUniqueInput[]
+    update?: ContentGenerationUpdateWithWhereUniqueWithoutMediaInput | ContentGenerationUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: ContentGenerationUpdateManyWithWhereWithoutMediaInput | ContentGenerationUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+  }
+
+  export type ContentGenerationCreatekeywordsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutContentHistoryInput = {
+    create?: XOR<UserCreateWithoutContentHistoryInput, UserUncheckedCreateWithoutContentHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutContentHistoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MediaCreateNestedOneWithoutContentGenerationsInput = {
+    create?: XOR<MediaCreateWithoutContentGenerationsInput, MediaUncheckedCreateWithoutContentGenerationsInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutContentGenerationsInput
+    connect?: MediaWhereUniqueInput
+  }
+
+  export type SavedContentCreateNestedManyWithoutContentGenerationInput = {
+    create?: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput> | SavedContentCreateWithoutContentGenerationInput[] | SavedContentUncheckedCreateWithoutContentGenerationInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutContentGenerationInput | SavedContentCreateOrConnectWithoutContentGenerationInput[]
+    createMany?: SavedContentCreateManyContentGenerationInputEnvelope
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+  }
+
+  export type SavedContentUncheckedCreateNestedManyWithoutContentGenerationInput = {
+    create?: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput> | SavedContentCreateWithoutContentGenerationInput[] | SavedContentUncheckedCreateWithoutContentGenerationInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutContentGenerationInput | SavedContentCreateOrConnectWithoutContentGenerationInput[]
+    createMany?: SavedContentCreateManyContentGenerationInputEnvelope
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+  }
+
+  export type ContentGenerationUpdatekeywordsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutContentHistoryNestedInput = {
+    create?: XOR<UserCreateWithoutContentHistoryInput, UserUncheckedCreateWithoutContentHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutContentHistoryInput
+    upsert?: UserUpsertWithoutContentHistoryInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutContentHistoryInput, UserUpdateWithoutContentHistoryInput>, UserUncheckedUpdateWithoutContentHistoryInput>
+  }
+
+  export type MediaUpdateOneWithoutContentGenerationsNestedInput = {
+    create?: XOR<MediaCreateWithoutContentGenerationsInput, MediaUncheckedCreateWithoutContentGenerationsInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutContentGenerationsInput
+    upsert?: MediaUpsertWithoutContentGenerationsInput
+    disconnect?: MediaWhereInput | boolean
+    delete?: MediaWhereInput | boolean
+    connect?: MediaWhereUniqueInput
+    update?: XOR<XOR<MediaUpdateToOneWithWhereWithoutContentGenerationsInput, MediaUpdateWithoutContentGenerationsInput>, MediaUncheckedUpdateWithoutContentGenerationsInput>
+  }
+
+  export type SavedContentUpdateManyWithoutContentGenerationNestedInput = {
+    create?: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput> | SavedContentCreateWithoutContentGenerationInput[] | SavedContentUncheckedCreateWithoutContentGenerationInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutContentGenerationInput | SavedContentCreateOrConnectWithoutContentGenerationInput[]
+    upsert?: SavedContentUpsertWithWhereUniqueWithoutContentGenerationInput | SavedContentUpsertWithWhereUniqueWithoutContentGenerationInput[]
+    createMany?: SavedContentCreateManyContentGenerationInputEnvelope
+    set?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    disconnect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    delete?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    update?: SavedContentUpdateWithWhereUniqueWithoutContentGenerationInput | SavedContentUpdateWithWhereUniqueWithoutContentGenerationInput[]
+    updateMany?: SavedContentUpdateManyWithWhereWithoutContentGenerationInput | SavedContentUpdateManyWithWhereWithoutContentGenerationInput[]
+    deleteMany?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+  }
+
+  export type SavedContentUncheckedUpdateManyWithoutContentGenerationNestedInput = {
+    create?: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput> | SavedContentCreateWithoutContentGenerationInput[] | SavedContentUncheckedCreateWithoutContentGenerationInput[]
+    connectOrCreate?: SavedContentCreateOrConnectWithoutContentGenerationInput | SavedContentCreateOrConnectWithoutContentGenerationInput[]
+    upsert?: SavedContentUpsertWithWhereUniqueWithoutContentGenerationInput | SavedContentUpsertWithWhereUniqueWithoutContentGenerationInput[]
+    createMany?: SavedContentCreateManyContentGenerationInputEnvelope
+    set?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    disconnect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    delete?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    connect?: SavedContentWhereUniqueInput | SavedContentWhereUniqueInput[]
+    update?: SavedContentUpdateWithWhereUniqueWithoutContentGenerationInput | SavedContentUpdateWithWhereUniqueWithoutContentGenerationInput[]
+    updateMany?: SavedContentUpdateManyWithWhereWithoutContentGenerationInput | SavedContentUpdateManyWithWhereWithoutContentGenerationInput[]
+    deleteMany?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutSavedContentInput = {
+    create?: XOR<UserCreateWithoutSavedContentInput, UserUncheckedCreateWithoutSavedContentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSavedContentInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ContentGenerationCreateNestedOneWithoutSavedByInput = {
+    create?: XOR<ContentGenerationCreateWithoutSavedByInput, ContentGenerationUncheckedCreateWithoutSavedByInput>
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutSavedByInput
+    connect?: ContentGenerationWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSavedContentNestedInput = {
+    create?: XOR<UserCreateWithoutSavedContentInput, UserUncheckedCreateWithoutSavedContentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSavedContentInput
+    upsert?: UserUpsertWithoutSavedContentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSavedContentInput, UserUpdateWithoutSavedContentInput>, UserUncheckedUpdateWithoutSavedContentInput>
+  }
+
+  export type ContentGenerationUpdateOneRequiredWithoutSavedByNestedInput = {
+    create?: XOR<ContentGenerationCreateWithoutSavedByInput, ContentGenerationUncheckedCreateWithoutSavedByInput>
+    connectOrCreate?: ContentGenerationCreateOrConnectWithoutSavedByInput
+    upsert?: ContentGenerationUpsertWithoutSavedByInput
+    connect?: ContentGenerationWhereUniqueInput
+    update?: XOR<XOR<ContentGenerationUpdateToOneWithWhereWithoutSavedByInput, ContentGenerationUpdateWithoutSavedByInput>, ContentGenerationUncheckedUpdateWithoutSavedByInput>
+  }
+
+  export type UserCreateNestedOneWithoutGenerationStatsInput = {
+    create?: XOR<UserCreateWithoutGenerationStatsInput, UserUncheckedCreateWithoutGenerationStatsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerationStatsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutGenerationStatsNestedInput = {
+    create?: XOR<UserCreateWithoutGenerationStatsInput, UserUncheckedCreateWithoutGenerationStatsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerationStatsInput
+    upsert?: UserUpsertWithoutGenerationStatsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGenerationStatsInput, UserUpdateWithoutGenerationStatsInput>, UserUncheckedUpdateWithoutGenerationStatsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11204,6 +16097,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     product?: ProductCreateNestedOneWithoutMediaItemsInput
+    contentGenerations?: ContentGenerationCreateNestedManyWithoutMediaInput
   }
 
   export type MediaUncheckedCreateWithoutUserInput = {
@@ -11216,6 +16110,7 @@ export namespace Prisma {
     isPublic?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contentGenerations?: ContentGenerationUncheckedCreateNestedManyWithoutMediaInput
   }
 
   export type MediaCreateOrConnectWithoutUserInput = {
@@ -11226,6 +16121,95 @@ export namespace Prisma {
   export type MediaCreateManyUserInputEnvelope = {
     data: MediaCreateManyUserInput | MediaCreateManyUserInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ContentGenerationCreateWithoutUserInput = {
+    id?: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    media?: MediaCreateNestedOneWithoutContentGenerationsInput
+    savedBy?: SavedContentCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationUncheckedCreateWithoutUserInput = {
+    id?: string
+    mediaId?: string | null
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    savedBy?: SavedContentUncheckedCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationCreateOrConnectWithoutUserInput = {
+    where: ContentGenerationWhereUniqueInput
+    create: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput>
+  }
+
+  export type ContentGenerationCreateManyUserInputEnvelope = {
+    data: ContentGenerationCreateManyUserInput | ContentGenerationCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SavedContentCreateWithoutUserInput = {
+    id?: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    contentGeneration: ContentGenerationCreateNestedOneWithoutSavedByInput
+  }
+
+  export type SavedContentUncheckedCreateWithoutUserInput = {
+    id?: string
+    contentGenerationId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type SavedContentCreateOrConnectWithoutUserInput = {
+    where: SavedContentWhereUniqueInput
+    create: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput>
+  }
+
+  export type SavedContentCreateManyUserInputEnvelope = {
+    data: SavedContentCreateManyUserInput | SavedContentCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GenerationStatsCreateWithoutUserInput = {
+    id?: string
+    totalGenerations?: number
+    websiteDescriptions?: number
+    socialMediaContent?: number
+    imagesProcessed?: number
+    totalCreditsUsed?: number
+    lastGeneratedAt?: Date | string | null
+  }
+
+  export type GenerationStatsUncheckedCreateWithoutUserInput = {
+    id?: string
+    totalGenerations?: number
+    websiteDescriptions?: number
+    socialMediaContent?: number
+    imagesProcessed?: number
+    totalCreditsUsed?: number
+    lastGeneratedAt?: Date | string | null
+  }
+
+  export type GenerationStatsCreateOrConnectWithoutUserInput = {
+    where: GenerationStatsWhereUniqueInput
+    create: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -11362,6 +16346,98 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Media"> | Date | string
   }
 
+  export type ContentGenerationUpsertWithWhereUniqueWithoutUserInput = {
+    where: ContentGenerationWhereUniqueInput
+    update: XOR<ContentGenerationUpdateWithoutUserInput, ContentGenerationUncheckedUpdateWithoutUserInput>
+    create: XOR<ContentGenerationCreateWithoutUserInput, ContentGenerationUncheckedCreateWithoutUserInput>
+  }
+
+  export type ContentGenerationUpdateWithWhereUniqueWithoutUserInput = {
+    where: ContentGenerationWhereUniqueInput
+    data: XOR<ContentGenerationUpdateWithoutUserInput, ContentGenerationUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ContentGenerationUpdateManyWithWhereWithoutUserInput = {
+    where: ContentGenerationScalarWhereInput
+    data: XOR<ContentGenerationUpdateManyMutationInput, ContentGenerationUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ContentGenerationScalarWhereInput = {
+    AND?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+    OR?: ContentGenerationScalarWhereInput[]
+    NOT?: ContentGenerationScalarWhereInput | ContentGenerationScalarWhereInput[]
+    id?: StringFilter<"ContentGeneration"> | string
+    userId?: StringFilter<"ContentGeneration"> | string
+    mediaId?: StringNullableFilter<"ContentGeneration"> | string | null
+    contentType?: StringFilter<"ContentGeneration"> | string
+    platform?: StringNullableFilter<"ContentGeneration"> | string | null
+    tone?: StringFilter<"ContentGeneration"> | string
+    promptText?: StringNullableFilter<"ContentGeneration"> | string | null
+    generatedContent?: StringFilter<"ContentGeneration"> | string
+    keywords?: StringNullableListFilter<"ContentGeneration">
+    creditsUsed?: IntFilter<"ContentGeneration"> | number
+    createdAt?: DateTimeFilter<"ContentGeneration"> | Date | string
+  }
+
+  export type SavedContentUpsertWithWhereUniqueWithoutUserInput = {
+    where: SavedContentWhereUniqueInput
+    update: XOR<SavedContentUpdateWithoutUserInput, SavedContentUncheckedUpdateWithoutUserInput>
+    create: XOR<SavedContentCreateWithoutUserInput, SavedContentUncheckedCreateWithoutUserInput>
+  }
+
+  export type SavedContentUpdateWithWhereUniqueWithoutUserInput = {
+    where: SavedContentWhereUniqueInput
+    data: XOR<SavedContentUpdateWithoutUserInput, SavedContentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SavedContentUpdateManyWithWhereWithoutUserInput = {
+    where: SavedContentScalarWhereInput
+    data: XOR<SavedContentUpdateManyMutationInput, SavedContentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SavedContentScalarWhereInput = {
+    AND?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+    OR?: SavedContentScalarWhereInput[]
+    NOT?: SavedContentScalarWhereInput | SavedContentScalarWhereInput[]
+    id?: StringFilter<"SavedContent"> | string
+    userId?: StringFilter<"SavedContent"> | string
+    contentGenerationId?: StringFilter<"SavedContent"> | string
+    isFavorite?: BoolFilter<"SavedContent"> | boolean
+    notes?: StringNullableFilter<"SavedContent"> | string | null
+    createdAt?: DateTimeFilter<"SavedContent"> | Date | string
+  }
+
+  export type GenerationStatsUpsertWithoutUserInput = {
+    update: XOR<GenerationStatsUpdateWithoutUserInput, GenerationStatsUncheckedUpdateWithoutUserInput>
+    create: XOR<GenerationStatsCreateWithoutUserInput, GenerationStatsUncheckedCreateWithoutUserInput>
+    where?: GenerationStatsWhereInput
+  }
+
+  export type GenerationStatsUpdateToOneWithWhereWithoutUserInput = {
+    where?: GenerationStatsWhereInput
+    data: XOR<GenerationStatsUpdateWithoutUserInput, GenerationStatsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GenerationStatsUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type GenerationStatsUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    totalGenerations?: IntFieldUpdateOperationsInput | number
+    websiteDescriptions?: IntFieldUpdateOperationsInput | number
+    socialMediaContent?: IntFieldUpdateOperationsInput | number
+    imagesProcessed?: IntFieldUpdateOperationsInput | number
+    totalCreditsUsed?: IntFieldUpdateOperationsInput | number
+    lastGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
@@ -11374,6 +16450,9 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -11388,6 +16467,9 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -11418,6 +16500,9 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -11432,6 +16517,9 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type SubscriptionCreateWithoutTierInput = {
@@ -11509,6 +16597,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubscriptionInput = {
@@ -11523,6 +16614,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubscriptionInput = {
@@ -11580,6 +16674,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubscriptionInput = {
@@ -11594,6 +16691,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type SubscriptionTierUpsertWithoutSubscriptionsInput = {
@@ -11639,6 +16739,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutMediaItemsInput
+    contentGenerations?: ContentGenerationCreateNestedManyWithoutMediaInput
   }
 
   export type MediaUncheckedCreateWithoutProductInput = {
@@ -11651,6 +16752,7 @@ export namespace Prisma {
     isPublic?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contentGenerations?: ContentGenerationUncheckedCreateNestedManyWithoutMediaInput
   }
 
   export type MediaCreateOrConnectWithoutProductInput = {
@@ -11675,6 +16777,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProductsInput = {
@@ -11689,6 +16794,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProductsInput = {
@@ -11735,6 +16843,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProductsInput = {
@@ -11749,6 +16860,9 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type ProductCreateWithoutMediaItemsInput = {
@@ -11796,6 +16910,9 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMediaItemsInput = {
@@ -11810,11 +16927,52 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMediaItemsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutMediaItemsInput, UserUncheckedCreateWithoutMediaItemsInput>
+  }
+
+  export type ContentGenerationCreateWithoutMediaInput = {
+    id?: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutContentHistoryInput
+    savedBy?: SavedContentCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationUncheckedCreateWithoutMediaInput = {
+    id?: string
+    userId: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    savedBy?: SavedContentUncheckedCreateNestedManyWithoutContentGenerationInput
+  }
+
+  export type ContentGenerationCreateOrConnectWithoutMediaInput = {
+    where: ContentGenerationWhereUniqueInput
+    create: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput>
+  }
+
+  export type ContentGenerationCreateManyMediaInputEnvelope = {
+    data: ContentGenerationCreateManyMediaInput | ContentGenerationCreateManyMediaInput[]
+    skipDuplicates?: boolean
   }
 
   export type ProductUpsertWithoutMediaItemsInput = {
@@ -11879,6 +17037,9 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMediaItemsInput = {
@@ -11893,6 +17054,459 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type ContentGenerationUpsertWithWhereUniqueWithoutMediaInput = {
+    where: ContentGenerationWhereUniqueInput
+    update: XOR<ContentGenerationUpdateWithoutMediaInput, ContentGenerationUncheckedUpdateWithoutMediaInput>
+    create: XOR<ContentGenerationCreateWithoutMediaInput, ContentGenerationUncheckedCreateWithoutMediaInput>
+  }
+
+  export type ContentGenerationUpdateWithWhereUniqueWithoutMediaInput = {
+    where: ContentGenerationWhereUniqueInput
+    data: XOR<ContentGenerationUpdateWithoutMediaInput, ContentGenerationUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type ContentGenerationUpdateManyWithWhereWithoutMediaInput = {
+    where: ContentGenerationScalarWhereInput
+    data: XOR<ContentGenerationUpdateManyMutationInput, ContentGenerationUncheckedUpdateManyWithoutMediaInput>
+  }
+
+  export type UserCreateWithoutContentHistoryInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionCreateNestedOneWithoutUserInput
+    products?: ProductCreateNestedManyWithoutUserInput
+    mediaItems?: MediaCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutContentHistoryInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
+    products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutContentHistoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutContentHistoryInput, UserUncheckedCreateWithoutContentHistoryInput>
+  }
+
+  export type MediaCreateWithoutContentGenerationsInput = {
+    id?: string
+    url: string
+    name: string
+    size: number
+    type: string
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product?: ProductCreateNestedOneWithoutMediaItemsInput
+    user: UserCreateNestedOneWithoutMediaItemsInput
+  }
+
+  export type MediaUncheckedCreateWithoutContentGenerationsInput = {
+    id?: string
+    url: string
+    name: string
+    size: number
+    type: string
+    productId?: string | null
+    userId: string
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MediaCreateOrConnectWithoutContentGenerationsInput = {
+    where: MediaWhereUniqueInput
+    create: XOR<MediaCreateWithoutContentGenerationsInput, MediaUncheckedCreateWithoutContentGenerationsInput>
+  }
+
+  export type SavedContentCreateWithoutContentGenerationInput = {
+    id?: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutSavedContentInput
+  }
+
+  export type SavedContentUncheckedCreateWithoutContentGenerationInput = {
+    id?: string
+    userId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type SavedContentCreateOrConnectWithoutContentGenerationInput = {
+    where: SavedContentWhereUniqueInput
+    create: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput>
+  }
+
+  export type SavedContentCreateManyContentGenerationInputEnvelope = {
+    data: SavedContentCreateManyContentGenerationInput | SavedContentCreateManyContentGenerationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutContentHistoryInput = {
+    update: XOR<UserUpdateWithoutContentHistoryInput, UserUncheckedUpdateWithoutContentHistoryInput>
+    create: XOR<UserCreateWithoutContentHistoryInput, UserUncheckedCreateWithoutContentHistoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutContentHistoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutContentHistoryInput, UserUncheckedUpdateWithoutContentHistoryInput>
+  }
+
+  export type UserUpdateWithoutContentHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUpdateOneWithoutUserNestedInput
+    products?: ProductUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutContentHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+    products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type MediaUpsertWithoutContentGenerationsInput = {
+    update: XOR<MediaUpdateWithoutContentGenerationsInput, MediaUncheckedUpdateWithoutContentGenerationsInput>
+    create: XOR<MediaCreateWithoutContentGenerationsInput, MediaUncheckedCreateWithoutContentGenerationsInput>
+    where?: MediaWhereInput
+  }
+
+  export type MediaUpdateToOneWithWhereWithoutContentGenerationsInput = {
+    where?: MediaWhereInput
+    data: XOR<MediaUpdateWithoutContentGenerationsInput, MediaUncheckedUpdateWithoutContentGenerationsInput>
+  }
+
+  export type MediaUpdateWithoutContentGenerationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneWithoutMediaItemsNestedInput
+    user?: UserUpdateOneRequiredWithoutMediaItemsNestedInput
+  }
+
+  export type MediaUncheckedUpdateWithoutContentGenerationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    productId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentUpsertWithWhereUniqueWithoutContentGenerationInput = {
+    where: SavedContentWhereUniqueInput
+    update: XOR<SavedContentUpdateWithoutContentGenerationInput, SavedContentUncheckedUpdateWithoutContentGenerationInput>
+    create: XOR<SavedContentCreateWithoutContentGenerationInput, SavedContentUncheckedCreateWithoutContentGenerationInput>
+  }
+
+  export type SavedContentUpdateWithWhereUniqueWithoutContentGenerationInput = {
+    where: SavedContentWhereUniqueInput
+    data: XOR<SavedContentUpdateWithoutContentGenerationInput, SavedContentUncheckedUpdateWithoutContentGenerationInput>
+  }
+
+  export type SavedContentUpdateManyWithWhereWithoutContentGenerationInput = {
+    where: SavedContentScalarWhereInput
+    data: XOR<SavedContentUpdateManyMutationInput, SavedContentUncheckedUpdateManyWithoutContentGenerationInput>
+  }
+
+  export type UserCreateWithoutSavedContentInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionCreateNestedOneWithoutUserInput
+    products?: ProductCreateNestedManyWithoutUserInput
+    mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSavedContentInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
+    products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    generationStats?: GenerationStatsUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSavedContentInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSavedContentInput, UserUncheckedCreateWithoutSavedContentInput>
+  }
+
+  export type ContentGenerationCreateWithoutSavedByInput = {
+    id?: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutContentHistoryInput
+    media?: MediaCreateNestedOneWithoutContentGenerationsInput
+  }
+
+  export type ContentGenerationUncheckedCreateWithoutSavedByInput = {
+    id?: string
+    userId: string
+    mediaId?: string | null
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+  }
+
+  export type ContentGenerationCreateOrConnectWithoutSavedByInput = {
+    where: ContentGenerationWhereUniqueInput
+    create: XOR<ContentGenerationCreateWithoutSavedByInput, ContentGenerationUncheckedCreateWithoutSavedByInput>
+  }
+
+  export type UserUpsertWithoutSavedContentInput = {
+    update: XOR<UserUpdateWithoutSavedContentInput, UserUncheckedUpdateWithoutSavedContentInput>
+    create: XOR<UserCreateWithoutSavedContentInput, UserUncheckedCreateWithoutSavedContentInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSavedContentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSavedContentInput, UserUncheckedUpdateWithoutSavedContentInput>
+  }
+
+  export type UserUpdateWithoutSavedContentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUpdateOneWithoutUserNestedInput
+    products?: ProductUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSavedContentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+    products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    generationStats?: GenerationStatsUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type ContentGenerationUpsertWithoutSavedByInput = {
+    update: XOR<ContentGenerationUpdateWithoutSavedByInput, ContentGenerationUncheckedUpdateWithoutSavedByInput>
+    create: XOR<ContentGenerationCreateWithoutSavedByInput, ContentGenerationUncheckedCreateWithoutSavedByInput>
+    where?: ContentGenerationWhereInput
+  }
+
+  export type ContentGenerationUpdateToOneWithWhereWithoutSavedByInput = {
+    where?: ContentGenerationWhereInput
+    data: XOR<ContentGenerationUpdateWithoutSavedByInput, ContentGenerationUncheckedUpdateWithoutSavedByInput>
+  }
+
+  export type ContentGenerationUpdateWithoutSavedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutContentHistoryNestedInput
+    media?: MediaUpdateOneWithoutContentGenerationsNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateWithoutSavedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutGenerationStatsInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionCreateNestedOneWithoutUserInput
+    products?: ProductCreateNestedManyWithoutUserInput
+    mediaItems?: MediaCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGenerationStatsInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
+    products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    contentHistory?: ContentGenerationUncheckedCreateNestedManyWithoutUserInput
+    savedContent?: SavedContentUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGenerationStatsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGenerationStatsInput, UserUncheckedCreateWithoutGenerationStatsInput>
+  }
+
+  export type UserUpsertWithoutGenerationStatsInput = {
+    update: XOR<UserUpdateWithoutGenerationStatsInput, UserUncheckedUpdateWithoutGenerationStatsInput>
+    create: XOR<UserCreateWithoutGenerationStatsInput, UserUncheckedCreateWithoutGenerationStatsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGenerationStatsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGenerationStatsInput, UserUncheckedUpdateWithoutGenerationStatsInput>
+  }
+
+  export type UserUpdateWithoutGenerationStatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUpdateOneWithoutUserNestedInput
+    products?: ProductUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGenerationStatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+    products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    contentHistory?: ContentGenerationUncheckedUpdateManyWithoutUserNestedInput
+    savedContent?: SavedContentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -11934,6 +17548,27 @@ export namespace Prisma {
     isPublic?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ContentGenerationCreateManyUserInput = {
+    id?: string
+    mediaId?: string | null
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+  }
+
+  export type SavedContentCreateManyUserInput = {
+    id?: string
+    contentGenerationId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -12035,6 +17670,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     product?: ProductUpdateOneWithoutMediaItemsNestedInput
+    contentGenerations?: ContentGenerationUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateWithoutUserInput = {
@@ -12047,6 +17683,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentGenerations?: ContentGenerationUncheckedUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateManyWithoutUserInput = {
@@ -12059,6 +17696,71 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentGenerationUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: MediaUpdateOneWithoutContentGenerationsNestedInput
+    savedBy?: SavedContentUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    savedBy?: SavedContentUncheckedUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentGeneration?: ContentGenerationUpdateOneRequiredWithoutSavedByNestedInput
+  }
+
+  export type SavedContentUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentGenerationId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentGenerationId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubscriptionCreateManyTierInput = {
@@ -12127,6 +17829,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMediaItemsNestedInput
+    contentGenerations?: ContentGenerationUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateWithoutProductInput = {
@@ -12139,6 +17842,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentGenerations?: ContentGenerationUncheckedUpdateManyWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateManyWithoutProductInput = {
@@ -12151,6 +17855,92 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentGenerationCreateManyMediaInput = {
+    id?: string
+    userId: string
+    contentType: string
+    platform?: string | null
+    tone: string
+    promptText?: string | null
+    generatedContent: string
+    keywords?: ContentGenerationCreatekeywordsInput | string[]
+    creditsUsed?: number
+    createdAt?: Date | string
+  }
+
+  export type ContentGenerationUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutContentHistoryNestedInput
+    savedBy?: SavedContentUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    savedBy?: SavedContentUncheckedUpdateManyWithoutContentGenerationNestedInput
+  }
+
+  export type ContentGenerationUncheckedUpdateManyWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    promptText?: NullableStringFieldUpdateOperationsInput | string | null
+    generatedContent?: StringFieldUpdateOperationsInput | string
+    keywords?: ContentGenerationUpdatekeywordsInput | string[]
+    creditsUsed?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentCreateManyContentGenerationInput = {
+    id?: string
+    userId: string
+    isFavorite?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type SavedContentUpdateWithoutContentGenerationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSavedContentNestedInput
+  }
+
+  export type SavedContentUncheckedUpdateWithoutContentGenerationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SavedContentUncheckedUpdateManyWithoutContentGenerationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    isFavorite?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

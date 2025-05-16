@@ -15,18 +15,21 @@ datasource db {
 }
 
 model User {
-  id            String        @id @default(cuid())
-  name          String?
-  email         String        @unique
-  password      String
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  accounts      Account[]
-  subscription  Subscription?
-  products      Product[]
-  mediaItems    Media[]
+  id              String              @id @default(cuid())
+  name            String?
+  email           String              @unique
+  password        String
+  emailVerified   DateTime?
+  image           String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  accounts        Account[]
+  subscription    Subscription?
+  products        Product[]
+  mediaItems      Media[]
+  contentHistory  ContentGeneration[]
+  savedContent    SavedContent[]
+  generationStats GenerationStats?
 }
 
 model Account {
@@ -108,17 +111,63 @@ enum ProductStatus {
 }
 
 model Media {
-  id          String   @id @default(cuid())
-  url         String
-  name        String
-  size        Int
-  type        String
-  productId   String?
-  userId      String
-  isPublic    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                 String              @id @default(cuid())
+  url                String
+  name               String
+  size               Int
+  type               String
+  productId          String?
+  userId             String
+  isPublic           Boolean             @default(false)
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
   
-  product     Product? @relation(fields: [productId], references: [id])
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product            Product?            @relation(fields: [productId], references: [id])
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contentGenerations ContentGeneration[]
+}
+
+model ContentGeneration {
+  id              String    @id @default(cuid())
+  userId          String
+  mediaId         String?
+  contentType     String    // website, social, etc.
+  platform        String?   // instagram, tiktok, etc.
+  tone            String    // professional, casual, etc.
+  promptText      String?
+  generatedContent String    @db.Text
+  keywords        String[]
+  creditsUsed     Int       @default(1)
+  createdAt       DateTime  @default(now())
+  
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  media           Media?    @relation(fields: [mediaId], references: [id])
+  savedBy         SavedContent[]
+}
+
+model SavedContent {
+  id                 String            @id @default(cuid())
+  userId             String
+  contentGenerationId String
+  isFavorite         Boolean           @default(false)
+  notes              String?
+  createdAt          DateTime          @default(now())
+  
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contentGeneration  ContentGeneration @relation(fields: [contentGenerationId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, contentGenerationId])
+}
+
+model GenerationStats {
+  id                      String   @id @default(cuid())
+  userId                  String   @unique
+  totalGenerations        Int      @default(0)
+  websiteDescriptions     Int      @default(0)
+  socialMediaContent      Int      @default(0)
+  imagesProcessed         Int      @default(0)
+  totalCreditsUsed        Int      @default(0)
+  lastGeneratedAt         DateTime?
+  
+  user                    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

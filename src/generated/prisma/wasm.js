@@ -198,6 +198,40 @@ exports.Prisma.MediaScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ContentGenerationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  mediaId: 'mediaId',
+  contentType: 'contentType',
+  platform: 'platform',
+  tone: 'tone',
+  promptText: 'promptText',
+  generatedContent: 'generatedContent',
+  keywords: 'keywords',
+  creditsUsed: 'creditsUsed',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SavedContentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  contentGenerationId: 'contentGenerationId',
+  isFavorite: 'isFavorite',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.GenerationStatsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  totalGenerations: 'totalGenerations',
+  websiteDescriptions: 'websiteDescriptions',
+  socialMediaContent: 'socialMediaContent',
+  imagesProcessed: 'imagesProcessed',
+  totalCreditsUsed: 'totalCreditsUsed',
+  lastGeneratedAt: 'lastGeneratedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -231,7 +265,10 @@ exports.Prisma.ModelName = {
   SubscriptionTier: 'SubscriptionTier',
   Subscription: 'Subscription',
   Product: 'Product',
-  Media: 'Media'
+  Media: 'Media',
+  ContentGeneration: 'ContentGeneration',
+  SavedContent: 'SavedContent',
+  GenerationStats: 'GenerationStats'
 };
 
 /**

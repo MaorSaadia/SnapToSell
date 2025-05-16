@@ -116,6 +116,20 @@ export default function DashboardPage() {
 
           <Card>
             <CardHeader>
+              <CardTitle>Analytics Dashboard</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-500">
+                Track your AI usage, view content history, and analyze your content generation patterns.
+              </p>
+              <Button asChild variant="outline" className="w-full sm:w-auto">
+                <Link href="/dashboard/analytics">View Analytics</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
               <CardTitle>Recent Activity</CardTitle>
             </CardHeader>
             <CardContent>

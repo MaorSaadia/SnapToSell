@@ -98,8 +98,45 @@ const ContentGenerationForm: React.FC<ContentGenerationFormProps> = ({
         : {}),
     };
 
-    // Call the generate function
-    await onGenerate(options, imageBase64, textPrompt || undefined);
+    try {
+      // Track generation event for analytics
+      // This would typically be an API call to record the generation in the database
+      const trackAnalytics = async () => {
+        try {
+          // Example API call (would be implemented on backend)
+          // await fetch('/api/analytics/track', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify({
+          //     contentType,
+          //     platform: contentType === "social" ? platform : null,
+          //     tone,
+          //     promptText: textPrompt || null,
+          //     hasImage: !!imageBase64,
+          //     keywords: keywordsArray || [],
+          //   }),
+          // });
+          console.log('Analytics tracked:', {
+            contentType,
+            platform: contentType === "social" ? platform : null,
+            tone,
+            keywords: keywordsArray || [],
+          });
+        } catch (error) {
+          console.error('Failed to track analytics:', error);
+          // Non-blocking error - content was still generated
+        }
+      };
+
+      // Call the generate function
+      await onGenerate(options, imageBase64, textPrompt || undefined);
+      
+      // Track analytics after successful generation
+      trackAnalytics();
+    } catch (error) {
+      console.error('Content generation failed:', error);
+      // You could display an error notification here
+    }
   };
 
   const handleImageSelect = (base64: string) => {
