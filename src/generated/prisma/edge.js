@@ -281,12 +281,11 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgresql://snap-to-sell-db_owner:npg_NZibPFp1I0Ra@ep-aged-scene-a2n1lt6c-pooler.eu-central-1.aws.neon.tech/snap-to-sell-db?sslmode=require"
       }
     }
   },

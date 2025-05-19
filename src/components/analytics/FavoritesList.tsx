@@ -38,6 +38,7 @@ export default function FavoritesList({
   const formatTimestamp = (timestamp: string) => {
     try {
       return formatDistanceToNow(new Date(timestamp), { addSuffix: true });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_error) {
       return "Invalid date";
     }
