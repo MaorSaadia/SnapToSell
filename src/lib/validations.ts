@@ -33,9 +33,6 @@ export const registerSchema = z.object({
     .min(1, { message: "Password is required" })
     .min(6, { message: "Password must be at least 6 characters long" }),
   company: z.string().optional(),
-  termsAccepted: z.boolean().refine((val) => val === true, {
-    message: "You must accept the Terms of Service and Privacy Policy",
-  }),
 });
 
 export type RegisterFormData = z.infer<typeof registerSchema>;

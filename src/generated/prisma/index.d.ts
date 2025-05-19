@@ -43,6 +43,11 @@ export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
  * 
  */
 export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
+/**
+ * Model Generated
+ * 
+ */
+export type Generated = $Result.DefaultSelection<Prisma.$GeneratedPayload>
 
 /**
  * Enums
@@ -260,6 +265,16 @@ export class PrismaClient<
     * ```
     */
   get media(): Prisma.MediaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.generated`: Exposes CRUD operations for the **Generated** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Generateds
+    * const generateds = await prisma.generated.findMany()
+    * ```
+    */
+  get generated(): Prisma.GeneratedDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -318,8 +333,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.8.2
+   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
    */
   export type PrismaVersion = {
     client: string
@@ -705,7 +720,8 @@ export namespace Prisma {
     SubscriptionTier: 'SubscriptionTier',
     Subscription: 'Subscription',
     Product: 'Product',
-    Media: 'Media'
+    Media: 'Media',
+    Generated: 'Generated'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -724,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "subscriptionTier" | "subscription" | "product" | "media"
+      modelProps: "user" | "account" | "subscriptionTier" | "subscription" | "product" | "media" | "generated"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1172,6 +1188,80 @@ export namespace Prisma {
           }
         }
       }
+      Generated: {
+        payload: Prisma.$GeneratedPayload<ExtArgs>
+        fields: Prisma.GeneratedFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GeneratedFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GeneratedFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          findFirst: {
+            args: Prisma.GeneratedFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GeneratedFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          findMany: {
+            args: Prisma.GeneratedFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>[]
+          }
+          create: {
+            args: Prisma.GeneratedCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          createMany: {
+            args: Prisma.GeneratedCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GeneratedCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>[]
+          }
+          delete: {
+            args: Prisma.GeneratedDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          update: {
+            args: Prisma.GeneratedUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          deleteMany: {
+            args: Prisma.GeneratedDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GeneratedUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GeneratedUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>[]
+          }
+          upsert: {
+            args: Prisma.GeneratedUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GeneratedPayload>
+          }
+          aggregate: {
+            args: Prisma.GeneratedAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGenerated>
+          }
+          groupBy: {
+            args: Prisma.GeneratedGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GeneratedGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GeneratedCountArgs<ExtArgs>
+            result: $Utils.Optional<GeneratedCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1262,6 +1352,7 @@ export namespace Prisma {
     subscription?: SubscriptionOmit
     product?: ProductOmit
     media?: MediaOmit
+    generated?: GeneratedOmit
   }
 
   /* Types for Logging */
@@ -1359,12 +1450,14 @@ export namespace Prisma {
     accounts: number
     products: number
     mediaItems: number
+    generated: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     products?: boolean | UserCountOutputTypeCountProductsArgs
     mediaItems?: boolean | UserCountOutputTypeCountMediaItemsArgs
+    generated?: boolean | UserCountOutputTypeCountGeneratedArgs
   }
 
   // Custom InputTypes
@@ -1397,6 +1490,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMediaItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MediaWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGeneratedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GeneratedWhereInput
   }
 
 
@@ -1658,6 +1758,7 @@ export namespace Prisma {
     subscription?: boolean | User$subscriptionArgs<ExtArgs>
     products?: boolean | User$productsArgs<ExtArgs>
     mediaItems?: boolean | User$mediaItemsArgs<ExtArgs>
+    generated?: boolean | User$generatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1700,6 +1801,7 @@ export namespace Prisma {
     subscription?: boolean | User$subscriptionArgs<ExtArgs>
     products?: boolean | User$productsArgs<ExtArgs>
     mediaItems?: boolean | User$mediaItemsArgs<ExtArgs>
+    generated?: boolean | User$generatedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1712,6 +1814,7 @@ export namespace Prisma {
       subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
       products: Prisma.$ProductPayload<ExtArgs>[]
       mediaItems: Prisma.$MediaPayload<ExtArgs>[]
+      generated: Prisma.$GeneratedPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2120,6 +2223,7 @@ export namespace Prisma {
     subscription<T extends User$subscriptionArgs<ExtArgs> = {}>(args?: Subset<T, User$subscriptionArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     products<T extends User$productsArgs<ExtArgs> = {}>(args?: Subset<T, User$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mediaItems<T extends User$mediaItemsArgs<ExtArgs> = {}>(args?: Subset<T, User$mediaItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    generated<T extends User$generatedArgs<ExtArgs> = {}>(args?: Subset<T, User$generatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2633,6 +2737,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+  }
+
+  /**
+   * User.generated
+   */
+  export type User$generatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    where?: GeneratedWhereInput
+    orderBy?: GeneratedOrderByWithRelationInput | GeneratedOrderByWithRelationInput[]
+    cursor?: GeneratedWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GeneratedScalarFieldEnum | GeneratedScalarFieldEnum[]
   }
 
   /**
@@ -8539,6 +8667,1151 @@ export namespace Prisma {
 
 
   /**
+   * Model Generated
+   */
+
+  export type AggregateGenerated = {
+    _count: GeneratedCountAggregateOutputType | null
+    _min: GeneratedMinAggregateOutputType | null
+    _max: GeneratedMaxAggregateOutputType | null
+  }
+
+  export type GeneratedMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    productName: string | null
+    type: string | null
+    platform: string | null
+    tone: string | null
+    content: string | null
+    image: string | null
+    prompt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GeneratedMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    productName: string | null
+    type: string | null
+    platform: string | null
+    tone: string | null
+    content: string | null
+    image: string | null
+    prompt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GeneratedCountAggregateOutputType = {
+    id: number
+    userId: number
+    productName: number
+    type: number
+    platform: number
+    tone: number
+    content: number
+    image: number
+    prompt: number
+    keywords: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GeneratedMinAggregateInputType = {
+    id?: true
+    userId?: true
+    productName?: true
+    type?: true
+    platform?: true
+    tone?: true
+    content?: true
+    image?: true
+    prompt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GeneratedMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    productName?: true
+    type?: true
+    platform?: true
+    tone?: true
+    content?: true
+    image?: true
+    prompt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GeneratedCountAggregateInputType = {
+    id?: true
+    userId?: true
+    productName?: true
+    type?: true
+    platform?: true
+    tone?: true
+    content?: true
+    image?: true
+    prompt?: true
+    keywords?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GeneratedAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Generated to aggregate.
+     */
+    where?: GeneratedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Generateds to fetch.
+     */
+    orderBy?: GeneratedOrderByWithRelationInput | GeneratedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GeneratedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Generateds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Generateds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Generateds
+    **/
+    _count?: true | GeneratedCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GeneratedMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GeneratedMaxAggregateInputType
+  }
+
+  export type GetGeneratedAggregateType<T extends GeneratedAggregateArgs> = {
+        [P in keyof T & keyof AggregateGenerated]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGenerated[P]>
+      : GetScalarType<T[P], AggregateGenerated[P]>
+  }
+
+
+
+
+  export type GeneratedGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GeneratedWhereInput
+    orderBy?: GeneratedOrderByWithAggregationInput | GeneratedOrderByWithAggregationInput[]
+    by: GeneratedScalarFieldEnum[] | GeneratedScalarFieldEnum
+    having?: GeneratedScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GeneratedCountAggregateInputType | true
+    _min?: GeneratedMinAggregateInputType
+    _max?: GeneratedMaxAggregateInputType
+  }
+
+  export type GeneratedGroupByOutputType = {
+    id: string
+    userId: string
+    productName: string
+    type: string
+    platform: string | null
+    tone: string
+    content: string
+    image: string | null
+    prompt: string | null
+    keywords: string[]
+    createdAt: Date
+    updatedAt: Date
+    _count: GeneratedCountAggregateOutputType | null
+    _min: GeneratedMinAggregateOutputType | null
+    _max: GeneratedMaxAggregateOutputType | null
+  }
+
+  type GetGeneratedGroupByPayload<T extends GeneratedGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GeneratedGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GeneratedGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GeneratedGroupByOutputType[P]>
+            : GetScalarType<T[P], GeneratedGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GeneratedSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productName?: boolean
+    type?: boolean
+    platform?: boolean
+    tone?: boolean
+    content?: boolean
+    image?: boolean
+    prompt?: boolean
+    keywords?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generated"]>
+
+  export type GeneratedSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productName?: boolean
+    type?: boolean
+    platform?: boolean
+    tone?: boolean
+    content?: boolean
+    image?: boolean
+    prompt?: boolean
+    keywords?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generated"]>
+
+  export type GeneratedSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productName?: boolean
+    type?: boolean
+    platform?: boolean
+    tone?: boolean
+    content?: boolean
+    image?: boolean
+    prompt?: boolean
+    keywords?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generated"]>
+
+  export type GeneratedSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    productName?: boolean
+    type?: boolean
+    platform?: boolean
+    tone?: boolean
+    content?: boolean
+    image?: boolean
+    prompt?: boolean
+    keywords?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GeneratedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productName" | "type" | "platform" | "tone" | "content" | "image" | "prompt" | "keywords" | "createdAt" | "updatedAt", ExtArgs["result"]["generated"]>
+  export type GeneratedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GeneratedIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GeneratedIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $GeneratedPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Generated"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      productName: string
+      type: string
+      platform: string | null
+      tone: string
+      content: string
+      image: string | null
+      prompt: string | null
+      keywords: string[]
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["generated"]>
+    composites: {}
+  }
+
+  type GeneratedGetPayload<S extends boolean | null | undefined | GeneratedDefaultArgs> = $Result.GetResult<Prisma.$GeneratedPayload, S>
+
+  type GeneratedCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GeneratedFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GeneratedCountAggregateInputType | true
+    }
+
+  export interface GeneratedDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Generated'], meta: { name: 'Generated' } }
+    /**
+     * Find zero or one Generated that matches the filter.
+     * @param {GeneratedFindUniqueArgs} args - Arguments to find a Generated
+     * @example
+     * // Get one Generated
+     * const generated = await prisma.generated.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GeneratedFindUniqueArgs>(args: SelectSubset<T, GeneratedFindUniqueArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Generated that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GeneratedFindUniqueOrThrowArgs} args - Arguments to find a Generated
+     * @example
+     * // Get one Generated
+     * const generated = await prisma.generated.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GeneratedFindUniqueOrThrowArgs>(args: SelectSubset<T, GeneratedFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Generated that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedFindFirstArgs} args - Arguments to find a Generated
+     * @example
+     * // Get one Generated
+     * const generated = await prisma.generated.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GeneratedFindFirstArgs>(args?: SelectSubset<T, GeneratedFindFirstArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Generated that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedFindFirstOrThrowArgs} args - Arguments to find a Generated
+     * @example
+     * // Get one Generated
+     * const generated = await prisma.generated.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GeneratedFindFirstOrThrowArgs>(args?: SelectSubset<T, GeneratedFindFirstOrThrowArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Generateds that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Generateds
+     * const generateds = await prisma.generated.findMany()
+     * 
+     * // Get first 10 Generateds
+     * const generateds = await prisma.generated.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const generatedWithIdOnly = await prisma.generated.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GeneratedFindManyArgs>(args?: SelectSubset<T, GeneratedFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Generated.
+     * @param {GeneratedCreateArgs} args - Arguments to create a Generated.
+     * @example
+     * // Create one Generated
+     * const Generated = await prisma.generated.create({
+     *   data: {
+     *     // ... data to create a Generated
+     *   }
+     * })
+     * 
+     */
+    create<T extends GeneratedCreateArgs>(args: SelectSubset<T, GeneratedCreateArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Generateds.
+     * @param {GeneratedCreateManyArgs} args - Arguments to create many Generateds.
+     * @example
+     * // Create many Generateds
+     * const generated = await prisma.generated.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GeneratedCreateManyArgs>(args?: SelectSubset<T, GeneratedCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Generateds and returns the data saved in the database.
+     * @param {GeneratedCreateManyAndReturnArgs} args - Arguments to create many Generateds.
+     * @example
+     * // Create many Generateds
+     * const generated = await prisma.generated.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Generateds and only return the `id`
+     * const generatedWithIdOnly = await prisma.generated.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GeneratedCreateManyAndReturnArgs>(args?: SelectSubset<T, GeneratedCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Generated.
+     * @param {GeneratedDeleteArgs} args - Arguments to delete one Generated.
+     * @example
+     * // Delete one Generated
+     * const Generated = await prisma.generated.delete({
+     *   where: {
+     *     // ... filter to delete one Generated
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GeneratedDeleteArgs>(args: SelectSubset<T, GeneratedDeleteArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Generated.
+     * @param {GeneratedUpdateArgs} args - Arguments to update one Generated.
+     * @example
+     * // Update one Generated
+     * const generated = await prisma.generated.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GeneratedUpdateArgs>(args: SelectSubset<T, GeneratedUpdateArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Generateds.
+     * @param {GeneratedDeleteManyArgs} args - Arguments to filter Generateds to delete.
+     * @example
+     * // Delete a few Generateds
+     * const { count } = await prisma.generated.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GeneratedDeleteManyArgs>(args?: SelectSubset<T, GeneratedDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Generateds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Generateds
+     * const generated = await prisma.generated.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GeneratedUpdateManyArgs>(args: SelectSubset<T, GeneratedUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Generateds and returns the data updated in the database.
+     * @param {GeneratedUpdateManyAndReturnArgs} args - Arguments to update many Generateds.
+     * @example
+     * // Update many Generateds
+     * const generated = await prisma.generated.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Generateds and only return the `id`
+     * const generatedWithIdOnly = await prisma.generated.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GeneratedUpdateManyAndReturnArgs>(args: SelectSubset<T, GeneratedUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Generated.
+     * @param {GeneratedUpsertArgs} args - Arguments to update or create a Generated.
+     * @example
+     * // Update or create a Generated
+     * const generated = await prisma.generated.upsert({
+     *   create: {
+     *     // ... data to create a Generated
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Generated we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GeneratedUpsertArgs>(args: SelectSubset<T, GeneratedUpsertArgs<ExtArgs>>): Prisma__GeneratedClient<$Result.GetResult<Prisma.$GeneratedPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Generateds.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedCountArgs} args - Arguments to filter Generateds to count.
+     * @example
+     * // Count the number of Generateds
+     * const count = await prisma.generated.count({
+     *   where: {
+     *     // ... the filter for the Generateds we want to count
+     *   }
+     * })
+    **/
+    count<T extends GeneratedCountArgs>(
+      args?: Subset<T, GeneratedCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GeneratedCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Generated.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GeneratedAggregateArgs>(args: Subset<T, GeneratedAggregateArgs>): Prisma.PrismaPromise<GetGeneratedAggregateType<T>>
+
+    /**
+     * Group by Generated.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GeneratedGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GeneratedGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GeneratedGroupByArgs['orderBy'] }
+        : { orderBy?: GeneratedGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GeneratedGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGeneratedGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Generated model
+   */
+  readonly fields: GeneratedFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Generated.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GeneratedClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Generated model
+   */
+  interface GeneratedFieldRefs {
+    readonly id: FieldRef<"Generated", 'String'>
+    readonly userId: FieldRef<"Generated", 'String'>
+    readonly productName: FieldRef<"Generated", 'String'>
+    readonly type: FieldRef<"Generated", 'String'>
+    readonly platform: FieldRef<"Generated", 'String'>
+    readonly tone: FieldRef<"Generated", 'String'>
+    readonly content: FieldRef<"Generated", 'String'>
+    readonly image: FieldRef<"Generated", 'String'>
+    readonly prompt: FieldRef<"Generated", 'String'>
+    readonly keywords: FieldRef<"Generated", 'String[]'>
+    readonly createdAt: FieldRef<"Generated", 'DateTime'>
+    readonly updatedAt: FieldRef<"Generated", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Generated findUnique
+   */
+  export type GeneratedFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter, which Generated to fetch.
+     */
+    where: GeneratedWhereUniqueInput
+  }
+
+  /**
+   * Generated findUniqueOrThrow
+   */
+  export type GeneratedFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter, which Generated to fetch.
+     */
+    where: GeneratedWhereUniqueInput
+  }
+
+  /**
+   * Generated findFirst
+   */
+  export type GeneratedFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter, which Generated to fetch.
+     */
+    where?: GeneratedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Generateds to fetch.
+     */
+    orderBy?: GeneratedOrderByWithRelationInput | GeneratedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Generateds.
+     */
+    cursor?: GeneratedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Generateds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Generateds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Generateds.
+     */
+    distinct?: GeneratedScalarFieldEnum | GeneratedScalarFieldEnum[]
+  }
+
+  /**
+   * Generated findFirstOrThrow
+   */
+  export type GeneratedFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter, which Generated to fetch.
+     */
+    where?: GeneratedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Generateds to fetch.
+     */
+    orderBy?: GeneratedOrderByWithRelationInput | GeneratedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Generateds.
+     */
+    cursor?: GeneratedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Generateds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Generateds.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Generateds.
+     */
+    distinct?: GeneratedScalarFieldEnum | GeneratedScalarFieldEnum[]
+  }
+
+  /**
+   * Generated findMany
+   */
+  export type GeneratedFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter, which Generateds to fetch.
+     */
+    where?: GeneratedWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Generateds to fetch.
+     */
+    orderBy?: GeneratedOrderByWithRelationInput | GeneratedOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Generateds.
+     */
+    cursor?: GeneratedWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Generateds from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Generateds.
+     */
+    skip?: number
+    distinct?: GeneratedScalarFieldEnum | GeneratedScalarFieldEnum[]
+  }
+
+  /**
+   * Generated create
+   */
+  export type GeneratedCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Generated.
+     */
+    data: XOR<GeneratedCreateInput, GeneratedUncheckedCreateInput>
+  }
+
+  /**
+   * Generated createMany
+   */
+  export type GeneratedCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Generateds.
+     */
+    data: GeneratedCreateManyInput | GeneratedCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Generated createManyAndReturn
+   */
+  export type GeneratedCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * The data used to create many Generateds.
+     */
+    data: GeneratedCreateManyInput | GeneratedCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Generated update
+   */
+  export type GeneratedUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Generated.
+     */
+    data: XOR<GeneratedUpdateInput, GeneratedUncheckedUpdateInput>
+    /**
+     * Choose, which Generated to update.
+     */
+    where: GeneratedWhereUniqueInput
+  }
+
+  /**
+   * Generated updateMany
+   */
+  export type GeneratedUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Generateds.
+     */
+    data: XOR<GeneratedUpdateManyMutationInput, GeneratedUncheckedUpdateManyInput>
+    /**
+     * Filter which Generateds to update
+     */
+    where?: GeneratedWhereInput
+    /**
+     * Limit how many Generateds to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Generated updateManyAndReturn
+   */
+  export type GeneratedUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * The data used to update Generateds.
+     */
+    data: XOR<GeneratedUpdateManyMutationInput, GeneratedUncheckedUpdateManyInput>
+    /**
+     * Filter which Generateds to update
+     */
+    where?: GeneratedWhereInput
+    /**
+     * Limit how many Generateds to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Generated upsert
+   */
+  export type GeneratedUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Generated to update in case it exists.
+     */
+    where: GeneratedWhereUniqueInput
+    /**
+     * In case the Generated found by the `where` argument doesn't exist, create a new Generated with this data.
+     */
+    create: XOR<GeneratedCreateInput, GeneratedUncheckedCreateInput>
+    /**
+     * In case the Generated was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GeneratedUpdateInput, GeneratedUncheckedUpdateInput>
+  }
+
+  /**
+   * Generated delete
+   */
+  export type GeneratedDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+    /**
+     * Filter which Generated to delete.
+     */
+    where: GeneratedWhereUniqueInput
+  }
+
+  /**
+   * Generated deleteMany
+   */
+  export type GeneratedDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Generateds to delete
+     */
+    where?: GeneratedWhereInput
+    /**
+     * Limit how many Generateds to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Generated without action
+   */
+  export type GeneratedDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Generated
+     */
+    select?: GeneratedSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Generated
+     */
+    omit?: GeneratedOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GeneratedInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8646,6 +9919,24 @@ export namespace Prisma {
   };
 
   export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+
+
+  export const GeneratedScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    productName: 'productName',
+    type: 'type',
+    platform: 'platform',
+    tone: 'tone',
+    content: 'content',
+    image: 'image',
+    prompt: 'prompt',
+    keywords: 'keywords',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GeneratedScalarFieldEnum = (typeof GeneratedScalarFieldEnum)[keyof typeof GeneratedScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8787,6 +10078,7 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     products?: ProductListRelationFilter
     mediaItems?: MediaListRelationFilter
+    generated?: GeneratedListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8802,6 +10094,7 @@ export namespace Prisma {
     subscription?: SubscriptionOrderByWithRelationInput
     products?: ProductOrderByRelationAggregateInput
     mediaItems?: MediaOrderByRelationAggregateInput
+    generated?: GeneratedOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8820,6 +10113,7 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionNullableScalarRelationFilter, SubscriptionWhereInput> | null
     products?: ProductListRelationFilter
     mediaItems?: MediaListRelationFilter
+    generated?: GeneratedListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9280,6 +10574,96 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
   }
 
+  export type GeneratedWhereInput = {
+    AND?: GeneratedWhereInput | GeneratedWhereInput[]
+    OR?: GeneratedWhereInput[]
+    NOT?: GeneratedWhereInput | GeneratedWhereInput[]
+    id?: StringFilter<"Generated"> | string
+    userId?: StringFilter<"Generated"> | string
+    productName?: StringFilter<"Generated"> | string
+    type?: StringFilter<"Generated"> | string
+    platform?: StringNullableFilter<"Generated"> | string | null
+    tone?: StringFilter<"Generated"> | string
+    content?: StringFilter<"Generated"> | string
+    image?: StringNullableFilter<"Generated"> | string | null
+    prompt?: StringNullableFilter<"Generated"> | string | null
+    keywords?: StringNullableListFilter<"Generated">
+    createdAt?: DateTimeFilter<"Generated"> | Date | string
+    updatedAt?: DateTimeFilter<"Generated"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type GeneratedOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productName?: SortOrder
+    type?: SortOrder
+    platform?: SortOrderInput | SortOrder
+    tone?: SortOrder
+    content?: SortOrder
+    image?: SortOrderInput | SortOrder
+    prompt?: SortOrderInput | SortOrder
+    keywords?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type GeneratedWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GeneratedWhereInput | GeneratedWhereInput[]
+    OR?: GeneratedWhereInput[]
+    NOT?: GeneratedWhereInput | GeneratedWhereInput[]
+    userId?: StringFilter<"Generated"> | string
+    productName?: StringFilter<"Generated"> | string
+    type?: StringFilter<"Generated"> | string
+    platform?: StringNullableFilter<"Generated"> | string | null
+    tone?: StringFilter<"Generated"> | string
+    content?: StringFilter<"Generated"> | string
+    image?: StringNullableFilter<"Generated"> | string | null
+    prompt?: StringNullableFilter<"Generated"> | string | null
+    keywords?: StringNullableListFilter<"Generated">
+    createdAt?: DateTimeFilter<"Generated"> | Date | string
+    updatedAt?: DateTimeFilter<"Generated"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type GeneratedOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productName?: SortOrder
+    type?: SortOrder
+    platform?: SortOrderInput | SortOrder
+    tone?: SortOrder
+    content?: SortOrder
+    image?: SortOrderInput | SortOrder
+    prompt?: SortOrderInput | SortOrder
+    keywords?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GeneratedCountOrderByAggregateInput
+    _max?: GeneratedMaxOrderByAggregateInput
+    _min?: GeneratedMinOrderByAggregateInput
+  }
+
+  export type GeneratedScalarWhereWithAggregatesInput = {
+    AND?: GeneratedScalarWhereWithAggregatesInput | GeneratedScalarWhereWithAggregatesInput[]
+    OR?: GeneratedScalarWhereWithAggregatesInput[]
+    NOT?: GeneratedScalarWhereWithAggregatesInput | GeneratedScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Generated"> | string
+    userId?: StringWithAggregatesFilter<"Generated"> | string
+    productName?: StringWithAggregatesFilter<"Generated"> | string
+    type?: StringWithAggregatesFilter<"Generated"> | string
+    platform?: StringNullableWithAggregatesFilter<"Generated"> | string | null
+    tone?: StringWithAggregatesFilter<"Generated"> | string
+    content?: StringWithAggregatesFilter<"Generated"> | string
+    image?: StringNullableWithAggregatesFilter<"Generated"> | string | null
+    prompt?: StringNullableWithAggregatesFilter<"Generated"> | string | null
+    keywords?: StringNullableListFilter<"Generated">
+    createdAt?: DateTimeWithAggregatesFilter<"Generated"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Generated"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
@@ -9293,6 +10677,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    generated?: GeneratedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9308,6 +10693,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    generated?: GeneratedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9323,6 +10709,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9338,6 +10725,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9844,6 +11232,110 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type GeneratedCreateInput = {
+    id?: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutGeneratedInput
+  }
+
+  export type GeneratedUncheckedCreateInput = {
+    id?: string
+    userId: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GeneratedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutGeneratedNestedInput
+  }
+
+  export type GeneratedUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GeneratedCreateManyInput = {
+    id?: string
+    userId: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GeneratedUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GeneratedUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -9919,6 +11411,12 @@ export namespace Prisma {
     none?: MediaWhereInput
   }
 
+  export type GeneratedListRelationFilter = {
+    every?: GeneratedWhereInput
+    some?: GeneratedWhereInput
+    none?: GeneratedWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9933,6 +11431,10 @@ export namespace Prisma {
   }
 
   export type MediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GeneratedOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10438,6 +11940,49 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type GeneratedCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productName?: SortOrder
+    type?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    content?: SortOrder
+    image?: SortOrder
+    prompt?: SortOrder
+    keywords?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GeneratedMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productName?: SortOrder
+    type?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    content?: SortOrder
+    image?: SortOrder
+    prompt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GeneratedMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productName?: SortOrder
+    type?: SortOrder
+    platform?: SortOrder
+    tone?: SortOrder
+    content?: SortOrder
+    image?: SortOrder
+    prompt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10465,6 +12010,13 @@ export namespace Prisma {
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
+  export type GeneratedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput> | GeneratedCreateWithoutUserInput[] | GeneratedUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GeneratedCreateOrConnectWithoutUserInput | GeneratedCreateOrConnectWithoutUserInput[]
+    createMany?: GeneratedCreateManyUserInputEnvelope
+    connect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10490,6 +12042,13 @@ export namespace Prisma {
     connectOrCreate?: MediaCreateOrConnectWithoutUserInput | MediaCreateOrConnectWithoutUserInput[]
     createMany?: MediaCreateManyUserInputEnvelope
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+  }
+
+  export type GeneratedUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput> | GeneratedCreateWithoutUserInput[] | GeneratedUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GeneratedCreateOrConnectWithoutUserInput | GeneratedCreateOrConnectWithoutUserInput[]
+    createMany?: GeneratedCreateManyUserInputEnvelope
+    connect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10560,6 +12119,20 @@ export namespace Prisma {
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
+  export type GeneratedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput> | GeneratedCreateWithoutUserInput[] | GeneratedUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GeneratedCreateOrConnectWithoutUserInput | GeneratedCreateOrConnectWithoutUserInput[]
+    upsert?: GeneratedUpsertWithWhereUniqueWithoutUserInput | GeneratedUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GeneratedCreateManyUserInputEnvelope
+    set?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    disconnect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    delete?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    connect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    update?: GeneratedUpdateWithWhereUniqueWithoutUserInput | GeneratedUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GeneratedUpdateManyWithWhereWithoutUserInput | GeneratedUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GeneratedScalarWhereInput | GeneratedScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -10610,6 +12183,20 @@ export namespace Prisma {
     update?: MediaUpdateWithWhereUniqueWithoutUserInput | MediaUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: MediaUpdateManyWithWhereWithoutUserInput | MediaUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
+  }
+
+  export type GeneratedUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput> | GeneratedCreateWithoutUserInput[] | GeneratedUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GeneratedCreateOrConnectWithoutUserInput | GeneratedCreateOrConnectWithoutUserInput[]
+    upsert?: GeneratedUpsertWithWhereUniqueWithoutUserInput | GeneratedUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GeneratedCreateManyUserInputEnvelope
+    set?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    disconnect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    delete?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    connect?: GeneratedWhereUniqueInput | GeneratedWhereUniqueInput[]
+    update?: GeneratedUpdateWithWhereUniqueWithoutUserInput | GeneratedUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GeneratedUpdateManyWithWhereWithoutUserInput | GeneratedUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GeneratedScalarWhereInput | GeneratedScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -10834,6 +12421,29 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutMediaItemsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMediaItemsInput, UserUpdateWithoutMediaItemsInput>, UserUncheckedUpdateWithoutMediaItemsInput>
+  }
+
+  export type GeneratedCreatekeywordsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutGeneratedInput = {
+    create?: XOR<UserCreateWithoutGeneratedInput, UserUncheckedCreateWithoutGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGeneratedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type GeneratedUpdatekeywordsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutGeneratedNestedInput = {
+    create?: XOR<UserCreateWithoutGeneratedInput, UserUncheckedCreateWithoutGeneratedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGeneratedInput
+    upsert?: UserUpsertWithoutGeneratedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGeneratedInput, UserUpdateWithoutGeneratedInput>, UserUncheckedUpdateWithoutGeneratedInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11228,6 +12838,44 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type GeneratedCreateWithoutUserInput = {
+    id?: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GeneratedUncheckedCreateWithoutUserInput = {
+    id?: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GeneratedCreateOrConnectWithoutUserInput = {
+    where: GeneratedWhereUniqueInput
+    create: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput>
+  }
+
+  export type GeneratedCreateManyUserInputEnvelope = {
+    data: GeneratedCreateManyUserInput | GeneratedCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -11362,6 +13010,40 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Media"> | Date | string
   }
 
+  export type GeneratedUpsertWithWhereUniqueWithoutUserInput = {
+    where: GeneratedWhereUniqueInput
+    update: XOR<GeneratedUpdateWithoutUserInput, GeneratedUncheckedUpdateWithoutUserInput>
+    create: XOR<GeneratedCreateWithoutUserInput, GeneratedUncheckedCreateWithoutUserInput>
+  }
+
+  export type GeneratedUpdateWithWhereUniqueWithoutUserInput = {
+    where: GeneratedWhereUniqueInput
+    data: XOR<GeneratedUpdateWithoutUserInput, GeneratedUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GeneratedUpdateManyWithWhereWithoutUserInput = {
+    where: GeneratedScalarWhereInput
+    data: XOR<GeneratedUpdateManyMutationInput, GeneratedUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GeneratedScalarWhereInput = {
+    AND?: GeneratedScalarWhereInput | GeneratedScalarWhereInput[]
+    OR?: GeneratedScalarWhereInput[]
+    NOT?: GeneratedScalarWhereInput | GeneratedScalarWhereInput[]
+    id?: StringFilter<"Generated"> | string
+    userId?: StringFilter<"Generated"> | string
+    productName?: StringFilter<"Generated"> | string
+    type?: StringFilter<"Generated"> | string
+    platform?: StringNullableFilter<"Generated"> | string | null
+    tone?: StringFilter<"Generated"> | string
+    content?: StringFilter<"Generated"> | string
+    image?: StringNullableFilter<"Generated"> | string | null
+    prompt?: StringNullableFilter<"Generated"> | string | null
+    keywords?: StringNullableListFilter<"Generated">
+    createdAt?: DateTimeFilter<"Generated"> | Date | string
+    updatedAt?: DateTimeFilter<"Generated"> | Date | string
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
@@ -11374,6 +13056,7 @@ export namespace Prisma {
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    generated?: GeneratedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -11388,6 +13071,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    generated?: GeneratedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -11418,6 +13102,7 @@ export namespace Prisma {
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -11432,6 +13117,7 @@ export namespace Prisma {
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubscriptionCreateWithoutTierInput = {
@@ -11509,6 +13195,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    generated?: GeneratedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubscriptionInput = {
@@ -11523,6 +13210,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    generated?: GeneratedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubscriptionInput = {
@@ -11580,6 +13268,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubscriptionInput = {
@@ -11594,6 +13283,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubscriptionTierUpsertWithoutSubscriptionsInput = {
@@ -11675,6 +13365,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     mediaItems?: MediaCreateNestedManyWithoutUserInput
+    generated?: GeneratedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProductsInput = {
@@ -11689,6 +13380,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+    generated?: GeneratedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProductsInput = {
@@ -11735,6 +13427,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     mediaItems?: MediaUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProductsInput = {
@@ -11749,6 +13442,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ProductCreateWithoutMediaItemsInput = {
@@ -11796,6 +13490,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     subscription?: SubscriptionCreateNestedOneWithoutUserInput
     products?: ProductCreateNestedManyWithoutUserInput
+    generated?: GeneratedCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMediaItemsInput = {
@@ -11810,6 +13505,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
     products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    generated?: GeneratedUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMediaItemsInput = {
@@ -11879,6 +13575,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUpdateOneWithoutUserNestedInput
     products?: ProductUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMediaItemsInput = {
@@ -11893,6 +13590,83 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
     products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    generated?: GeneratedUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutGeneratedInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionCreateNestedOneWithoutUserInput
+    products?: ProductCreateNestedManyWithoutUserInput
+    mediaItems?: MediaCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGeneratedInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    emailVerified?: Date | string | null
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    subscription?: SubscriptionUncheckedCreateNestedOneWithoutUserInput
+    products?: ProductUncheckedCreateNestedManyWithoutUserInput
+    mediaItems?: MediaUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGeneratedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGeneratedInput, UserUncheckedCreateWithoutGeneratedInput>
+  }
+
+  export type UserUpsertWithoutGeneratedInput = {
+    update: XOR<UserUpdateWithoutGeneratedInput, UserUncheckedUpdateWithoutGeneratedInput>
+    create: XOR<UserCreateWithoutGeneratedInput, UserUncheckedCreateWithoutGeneratedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGeneratedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGeneratedInput, UserUncheckedUpdateWithoutGeneratedInput>
+  }
+
+  export type UserUpdateWithoutGeneratedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUpdateOneWithoutUserNestedInput
+    products?: ProductUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGeneratedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    subscription?: SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+    products?: ProductUncheckedUpdateManyWithoutUserNestedInput
+    mediaItems?: MediaUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -11932,6 +13706,20 @@ export namespace Prisma {
     type: string
     productId?: string | null
     isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GeneratedCreateManyUserInput = {
+    id?: string
+    productName?: string
+    type?: string
+    platform?: string | null
+    tone?: string
+    content: string
+    image?: string | null
+    prompt?: string | null
+    keywords?: GeneratedCreatekeywordsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12057,6 +13845,48 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     productId?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GeneratedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GeneratedUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GeneratedUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productName?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    platform?: NullableStringFieldUpdateOperationsInput | string | null
+    tone?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    prompt?: NullableStringFieldUpdateOperationsInput | string | null
+    keywords?: GeneratedUpdatekeywordsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

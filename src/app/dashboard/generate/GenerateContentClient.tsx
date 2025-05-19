@@ -80,6 +80,9 @@ const GenerateContentClient: React.FC = () => {
 
       const data = await response.json();
       setGeneratedContent(data.content);
+      
+      // Save the generated content to history
+      await saveToHistory(data.content, options, imageBase64, textPrompt);
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unknown error occurred"
@@ -87,6 +90,43 @@ const GenerateContentClient: React.FC = () => {
       console.error("Error generating content:", err);
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  // Save content to history
+  const saveToHistory = async (
+    content: string,
+    options: ContentGenerationOptions,
+    imageBase64?: string,
+    textPrompt?: string
+  ) => {
+    try {
+      // Extract product name from prompt or use default
+      const productName = textPrompt 
+        ? textPrompt.split("\n")[0].substring(0, 50) // Use first line of prompt as product name
+        : "Unnamed Product";
+
+      // Save to history API
+      const response = await fetch("/api/history", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content,
+          options,
+          imageBase64,
+          textPrompt,
+          productName
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error saving to history:", errorData.error);
+      }
+    } catch (error) {
+      console.error("Error saving to history:", error);
     }
   };
 
@@ -135,6 +175,11 @@ const GenerateContentClient: React.FC = () => {
 
       const data = await response.json();
       setGeneratedContent(data.content);
+      
+      // Save the regenerated content to history
+      if (lastOptions) {
+        await saveToHistory(data.content, lastOptions, lastImageBase64 || undefined, lastTextPrompt || undefined);
+      }
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unknown error occurred"
