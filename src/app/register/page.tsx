@@ -16,7 +16,6 @@ export default function RegisterPage() {
     email: "",
     password: "",
     company: "",
-    termsAccepted: false,
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);

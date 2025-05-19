@@ -37,7 +37,7 @@ export async function GET() {
       });
       
       // Format the generated content to match our expected structure in the frontend
-      const formattedHistory = generatedContent.map(item => ({
+      const formattedHistory = generatedContent.map((item: { id: any; userId: any; productName: any; type: any; platform: any; tone: any; content: any; image: any; prompt: any; keywords: any; createdAt: any; }) => ({
         id: item.id,
         userId: item.userId,
         productName: item.productName,
