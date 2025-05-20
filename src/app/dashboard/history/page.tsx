@@ -100,9 +100,9 @@ export default function HistoryPage() {
   };
 
   // Get a preview of the content (first 100 characters)
-  const getContentPreview = (content: string) => {
-    return content.length > 100 ? `${content.substring(0, 100)}...` : content;
-  };
+  // const getContentPreview = (content: string) => {
+  //   return content.length > 100 ? `${content.substring(0, 100)}...` : content;
+  // };
 
   // Format date to be more readable
   const formatDate = (dateString: string) => {
@@ -131,11 +131,34 @@ export default function HistoryPage() {
     ));
   };
 
-  // Simple function to convert content to markdown for display
+  // Convert content to properly formatted HTML with markdown support
   const contentToMarkdown = (content: string) => {
-    return content
+    // Process markdown headers
+    const processedContent = content
+      // Handle headers (e.g., ## Header)
+      .replace(/^##\s+(.+)$/gm, '<h2>$1</h2>')
+      .replace(/^###\s+(.+)$/gm, '<h3>$1</h3>')
+      
+      // Handle bold text (**text**)
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      
+      // Handle italic text (*text*)
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      
+      // Handle lists
+      .replace(/^\s*-\s+(.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.+<\/li>\n)+/g, '<ul>$&</ul>');
+
+    // Split by paragraphs and wrap in <p> tags if not already wrapped in other HTML tags
+    return processedContent
       .split("\n\n")
-      .map(paragraph => `<p>${paragraph}</p>`)
+      .map(paragraph => {
+        // If paragraph doesn't already have HTML tags, wrap it in <p>
+        if (!/^<\w+>/.test(paragraph.trim()) && paragraph.trim().length > 0) {
+          return `<p>${paragraph}</p>`;
+        }
+        return paragraph;
+      })
       .join("");
   };
 
@@ -179,7 +202,6 @@ export default function HistoryPage() {
               </div>
               <Button 
                 onClick={() => window.location.href = '/dashboard/generate'}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
               >
                 Generate New Content
               </Button>
@@ -253,11 +275,11 @@ export default function HistoryPage() {
                                 </div>
                               </div>
                               
-                              <div className="prose prose-sm max-w-none mb-4">
+                              {/* <div className="prose prose-sm max-w-none mb-4">
                                 <div className="line-clamp-3 text-gray-600">
                                   {getContentPreview(item.content)}
                                 </div>
-                              </div>
+                              </div> */}
                               
                               {item.keywords && item.keywords.length > 0 && (
                                 <div className="flex flex-wrap gap-1 mb-4">
@@ -278,7 +300,7 @@ export default function HistoryPage() {
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                                  className="flex items-center gap-1"
                                   onClick={() => handleViewContent(item)}
                                 >
                                   <Eye className="h-4 w-4" />
@@ -287,7 +309,7 @@ export default function HistoryPage() {
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="flex items-center gap-1 text-green-600 hover:text-green-800"
+                                  className="flex items-center gap-1 "
                                   onClick={() => handleRegenerate(item)}
                                 >
                                   <Repeat className="h-4 w-4" />
@@ -296,7 +318,7 @@ export default function HistoryPage() {
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="flex items-center gap-1 text-gray-600 hover:text-gray-800"
+                                  className="flex items-center gap-1"
                                   onClick={() => handleDownload(item)}
                                 >
                                   <Download className="h-4 w-4" />
@@ -319,7 +341,7 @@ export default function HistoryPage() {
                       You haven&apos;t generated any content of this type yet. Head over to the{" "}
                       <a
                         href="/dashboard/generate"
-                        className="text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-gray-800 hover:text-gray-900 font-medium"
                       >
                         Generate Content
                       </a>{" "}
@@ -335,7 +357,7 @@ export default function HistoryPage() {
 
       {/* Content view dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+        <DialogContent className="max-w-5xl max-h-[90vh] w-[120vw] overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-xl">{selectedContent?.productName}</DialogTitle>
           </DialogHeader>
@@ -362,36 +384,12 @@ export default function HistoryPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Image column */}
-              {selectedContent?.imageBase64 && (
-                <div className="md:col-span-1">
-                  <div className="sticky top-4">
-                    <div className="relative h-64 w-full bg-gray-100 rounded-md overflow-hidden">
-                      <Image 
-                        src={selectedContent.imageBase64} 
-                        alt={selectedContent.productName || 'Product image'}
-                        fill
-                        className="object-contain"
-                        unoptimized
-                      />
-                    </div>
-                    {selectedContent.textPrompt && (
-                      <div className="mt-4 text-sm">
-                        <p className="font-medium mb-1">Original Prompt:</p>
-                        <p className="text-gray-600 italic">{selectedContent.textPrompt}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-              
               {/* Content column */}
-              <div className={`${selectedContent?.imageBase64 ? 'md:col-span-2' : 'md:col-span-3'}`}>
-                <ScrollArea className="h-[50vh] rounded-md border">
+              <div>
+                <ScrollArea className="h-[60vh] rounded-md border">
                   <div className="p-6">
                     <div 
-                      className="prose max-w-none" 
+                      className="prose prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-strong:text-blue-700 max-w-none" 
                       dangerouslySetInnerHTML={{ 
                         __html: selectedContent ? contentToMarkdown(selectedContent.content) : '' 
                       }} 
@@ -436,7 +434,6 @@ export default function HistoryPage() {
                   </Button>
                 </div>
               </div>
-            </div>
           </div>
         </DialogContent>
       </Dialog>
